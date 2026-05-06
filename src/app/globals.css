@@ -229,6 +229,21 @@ body {
 }
 
 /* =========================================================
+   CARD PADDING GUARDS
+   ========================================================= */
+[data-slot="card-header"] {
+  padding: 1.5rem 1.5rem 0.75rem !important;
+}
+
+[data-slot="card-content"] {
+  padding: 0 1.5rem 1rem !important;
+}
+
+[data-slot="card-footer"] {
+  padding: 1rem 1.5rem 1.5rem !important;
+}
+
+/* =========================================================
    SHADCN LAYER RESET (ensures dark theme always)
    ========================================================= */
 @layer base {

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
+import { Card, CardAction, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { TagBadge } from "@/components/shared/TagBadge";
 import type { Project } from "@/types";
 
@@ -24,14 +24,17 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
     >
       <Link href={`/projects/${project.slug}`} className="block h-full group">
         <Card
-          className="card-glow h-full flex flex-col p-6 rounded-[var(--radius-lg)] border"
+          className="card-glow h-full flex flex-col rounded-lg border py-0"
           style={{
             background: "var(--bg-surface)",
             borderColor: "var(--bg-border)",
           }}
         >
           {/* Header */}
-          <div className="flex items-start justify-between gap-4 mb-3">
+          <CardHeader
+            className="px-6 pt-6 pb-3"
+            style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingTop: "1.5rem", paddingBottom: "0.75rem" }}
+          >
             <h3
               className="font-display text-lg font-semibold leading-tight tracking-tight group-hover:text-accent-bright transition-colors"
               style={{
@@ -41,46 +44,62 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             >
               {project.title}
             </h3>
-            <div className="flex items-center gap-2 shrink-0 mt-0.5">
+            <CardAction className="flex items-center gap-2 shrink-0 mt-0.5">
               {project.repoUrl && (
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="p-1.5 rounded-md transition-colors hover:bg-[var(--bg-elevated)]"
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(project.repoUrl, "_blank", "noopener,noreferrer");
+                  }}
+                  className="p-1.5 rounded-md transition-colors hover:bg-bg-elevated"
                   style={{ color: "var(--text-tertiary)" }}
                   aria-label="View source"
                 >
                   <GithubLogoIcon size={15} />
-                </a>
+                </button>
               )}
               {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="p-1.5 rounded-md transition-colors hover:bg-[var(--bg-elevated)]"
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+                  }}
+                  className="p-1.5 rounded-md transition-colors hover:bg-bg-elevated"
                   style={{ color: "var(--text-tertiary)" }}
                   aria-label="Live site"
                 >
                   <ArrowUpRight size={15} />
-                </a>
+                </button>
               )}
-            </div>
-          </div>
+            </CardAction>
+          </CardHeader>
 
           {/* Description */}
-          <p
-            className="font-mono text-sm leading-relaxed mb-4 flex-1"
-            style={{ color: "var(--text-secondary)" }}
+          <CardContent
+            className="px-6 pb-4"
+            style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingBottom: "1rem" }}
           >
-            {project.shortDescription}
-          </p>
+            <p
+              className="font-mono text-sm leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              {project.shortDescription}
+            </p>
+          </CardContent>
 
           {/* Footer */}
-          <div className="flex items-center justify-between mt-auto pt-4" style={{ borderTop: "1px solid var(--bg-border)" }}>
+          <CardFooter
+            className="justify-between px-6 pb-6 pt-4"
+            style={{
+              borderColor: "var(--bg-border)",
+              paddingLeft: "1.5rem",
+              paddingRight: "1.5rem",
+              paddingTop: "1rem",
+              paddingBottom: "1.5rem",
+            }}
+          >
             <div className="flex flex-wrap gap-1.5">
               {project.tags.slice(0, 4).map((tag) => (
                 <TagBadge key={tag} label={tag} size="sm" />
@@ -92,7 +111,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             >
               {project.year}
             </span>
-          </div>
+          </CardFooter>
         </Card>
       </Link>
     </motion.div>

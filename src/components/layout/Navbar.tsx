@@ -42,7 +42,7 @@ export function Navbar() {
         ([entry]) => {
           if (entry.isIntersecting) setActiveSection(id);
         },
-        { threshold: 0.4 }
+        { threshold: 0.4 },
       );
       observer.observe(el);
       observers.push(observer);
@@ -62,11 +62,11 @@ export function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled
-          ? "rgba(8, 13, 8, 0.92)"
-          : "transparent",
+        background: scrolled ? "rgba(8, 13, 8, 0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid var(--bg-border)" : "1px solid transparent",
+        borderBottom: scrolled
+          ? "1px solid var(--bg-border)"
+          : "1px solid transparent",
       }}
     >
       <nav className="section-container flex items-center justify-between h-16">
@@ -94,17 +94,22 @@ export function Navbar() {
                 onClick={() => handleNavClick(link.href)}
                 className="relative px-4 py-2 font-mono text-sm rounded-md transition-colors"
                 style={{
-                  color: isActive ? "var(--accent-bright)" : "var(--text-secondary)",
+                  color: isActive
+                    ? "var(--accent-bright)"
+                    : "var(--text-secondary)",
                   background: "transparent",
                 }}
                 onMouseEnter={(e) => {
-                  if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)";
+                  if (!isActive)
+                    (e.currentTarget as HTMLButtonElement).style.color =
+                      "var(--text-primary)";
                 }}
                 onMouseLeave={(e) => {
-                  if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)";
+                  if (!isActive)
+                    (e.currentTarget as HTMLButtonElement).style.color =
+                      "var(--text-secondary)";
                 }}
               >
-                {link.label}
                 {isActive && (
                   <motion.span
                     layoutId="nav-indicator"
@@ -120,8 +125,8 @@ export function Navbar() {
 
           <a href={`mailto:${profile.email}`} className="ml-2">
             <Button
-              size="sm"
-              className="font-mono text-xs gap-1.5"
+              size="lg"
+              className="font-mono text-xs gap-2 px-4"
               style={{
                 background: "var(--accent-bright)",
                 color: "var(--bg-base)",
@@ -164,8 +169,12 @@ export function Navbar() {
                     onClick={() => handleNavClick(link.href)}
                     className="text-left px-4 py-3 rounded-lg font-mono text-sm transition-colors"
                     style={{
-                      color: isActive ? "var(--accent-bright)" : "var(--text-secondary)",
-                      background: isActive ? "var(--bg-elevated)" : "transparent",
+                      color: isActive
+                        ? "var(--accent-bright)"
+                        : "var(--text-secondary)",
+                      background: isActive
+                        ? "var(--bg-elevated)"
+                        : "transparent",
                     }}
                   >
                     {link.label}
@@ -174,9 +183,14 @@ export function Navbar() {
               })}
             </nav>
             <div className="pb-8">
-              <a href={`mailto:${profile.email}`} className="block" onClick={() => setOpen(false)}>
+              <a
+                href={`mailto:${profile.email}`}
+                className="block"
+                onClick={() => setOpen(false)}
+              >
                 <Button
-                  className="w-full font-mono text-sm gap-2"
+                  size="lg"
+                  className="w-full font-mono text-sm gap-2 px-4"
                   style={{
                     background: "var(--accent-bright)",
                     color: "var(--bg-base)",

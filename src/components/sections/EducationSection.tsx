@@ -53,7 +53,9 @@ export function EducationSection() {
                   color: "var(--text-primary)",
                 }}
               >
-                {entry.field ? `${entry.degree} in ${entry.field}` : entry.degree}
+                {entry.field
+                  ? `${entry.degree} in ${entry.field}`
+                  : entry.degree}
               </h3>
 
               {/* Institution */}
@@ -71,7 +73,10 @@ export function EducationSection() {
                       className="font-mono text-sm"
                       style={{ color: "var(--text-secondary)" }}
                     >
-                      <span style={{ color: "var(--text-primary)" }}>Grade:</span> {entry.grade}
+                      <span style={{ color: "var(--text-primary)" }}>
+                        Grade:
+                      </span>{" "}
+                      {entry.grade}
                     </p>
                   )}
 
@@ -80,7 +85,10 @@ export function EducationSection() {
                       className="font-mono text-sm leading-relaxed"
                       style={{ color: "var(--text-secondary)" }}
                     >
-                      <span style={{ color: "var(--text-primary)" }}>Activities and societies:</span> {entry.activities}
+                      <span style={{ color: "var(--text-primary)" }}>
+                        Activities and societies:
+                      </span>{" "}
+                      {entry.activities}
                     </p>
                   )}
 
@@ -89,7 +97,10 @@ export function EducationSection() {
                       className="font-mono text-sm leading-relaxed"
                       style={{ color: "var(--text-secondary)" }}
                     >
-                      <span style={{ color: "var(--text-primary)" }}>Skills:</span> {entry.skills.join(", ")}
+                      <span style={{ color: "var(--text-primary)" }}>
+                        Skills:
+                      </span>{" "}
+                      {entry.skills.join(", ")}
                     </p>
                   )}
                 </div>

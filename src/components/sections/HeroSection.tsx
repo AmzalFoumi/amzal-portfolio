@@ -3,10 +3,15 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LinkedinLogoIcon, EnvelopeIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  EnvelopeIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/data/profile";
 
 const SOCIAL_LINKS = [
+  { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
   { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinLogoIcon },
   { label: "Email", href: `mailto:${profile.email}`, icon: EnvelopeIcon },
 ];
@@ -79,19 +84,16 @@ export function HeroSection() {
         </motion.p>
 
         {/* Bio */}
-        <motion.p
+        {/* <motion.p
           {...fadeUp(0.24)}
           className="font-mono text-sm leading-relaxed max-w-xl mb-10"
           style={{ color: "var(--text-secondary)" }}
         >
           {profile.summary[0]}
-        </motion.p>
+        </motion.p> */}
 
         {/* CTAs */}
-        <motion.div
-          {...fadeUp(0.32)}
-          className="flex flex-wrap gap-3 mb-10"
-        >
+        <motion.div {...fadeUp(0.32)} className="flex flex-wrap gap-3 mb-10">
           <Button
             onClick={() => scrollTo("projects")}
             className="font-mono text-sm gap-2 px-6"
@@ -124,7 +126,9 @@ export function HeroSection() {
               key={label}
               href={href}
               target={href.startsWith("mailto") ? undefined : "_blank"}
-              rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+              rel={
+                href.startsWith("mailto") ? undefined : "noopener noreferrer"
+              }
               aria-label={label}
               className="p-2 rounded-md border transition-all duration-200"
               style={{
@@ -146,8 +150,14 @@ export function HeroSection() {
               <Icon size={18} />
             </a>
           ))}
-          <span className="w-12 h-px" style={{ background: "var(--bg-border)" }} />
-          <span className="font-mono text-xs" style={{ color: "var(--text-tertiary)" }}>
+          <span
+            className="w-12 h-px"
+            style={{ background: "var(--bg-border)" }}
+          />
+          <span
+            className="font-mono text-xs"
+            style={{ color: "var(--text-tertiary)" }}
+          >
             amzalfoumi
           </span>
         </motion.div>

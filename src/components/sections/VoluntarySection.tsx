@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { TagBadge } from "@/components/shared/TagBadge";
-import { Card } from "@/components/ui/card";
+import { Card, CardAction, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { voluntary } from "@/data/voluntary";
 
 export function VoluntarySection() {
@@ -26,14 +26,17 @@ export function VoluntarySection() {
               transition={{ duration: 0.4, delay: i * 0.1 }}
             >
               <Card
-                className="card-glow h-full flex flex-col p-6 rounded-lg border"
+                className="card-glow h-full flex flex-col rounded-lg border py-0"
                 style={{
                   background: "var(--bg-elevated)",
                   borderColor: "var(--bg-border)",
                 }}
               >
                 {/* Header */}
-                <div className="flex items-start justify-between gap-3 mb-3">
+                <CardHeader
+                  className="px-6 pt-6 pb-4"
+                  style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingTop: "1.5rem", paddingBottom: "1rem" }}
+                >
                   <div>
                     <h3
                       className="font-display text-lg font-bold leading-tight"
@@ -59,34 +62,49 @@ export function VoluntarySection() {
                       </p>
                     )}
                   </div>
-                  {/* Year badge */}
-                  <span
-                    className="font-mono text-xs px-2.5 py-1 rounded-md shrink-0"
-                    style={{
-                      background: "var(--bg-border)",
-                      color: "var(--text-tertiary)",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {entry.startYear} – {entry.endYear}
-                  </span>
-                </div>
+                  <CardAction>
+                    <span
+                      className="font-mono text-xs px-2.5 py-1 rounded-md shrink-0"
+                      style={{
+                        background: "var(--bg-border)",
+                        color: "var(--text-tertiary)",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {entry.startYear} – {entry.endYear}
+                    </span>
+                  </CardAction>
+                </CardHeader>
 
                 {/* Description */}
-                <p
-                  className="font-mono text-sm leading-relaxed flex-1 mb-4"
-                  style={{ color: "var(--text-secondary)" }}
+                <CardContent
+                  className="px-6 pb-4"
+                  style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingBottom: "1rem" }}
                 >
-                  {entry.description}
-                </p>
+                  <p
+                    className="font-mono text-sm leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {entry.description}
+                  </p>
+                </CardContent>
 
                 {/* Tags */}
                 {entry.tags && entry.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 mt-auto pt-4" style={{ borderTop: "1px solid var(--bg-border)" }}>
+                  <CardFooter
+                    className="flex flex-wrap gap-1.5 px-6 pb-6 pt-4"
+                    style={{
+                      borderColor: "var(--bg-border)",
+                      paddingLeft: "1.5rem",
+                      paddingRight: "1.5rem",
+                      paddingTop: "1rem",
+                      paddingBottom: "1.5rem",
+                    }}
+                  >
                     {entry.tags.map((tag) => (
                       <TagBadge key={tag} label={tag} size="sm" />
                     ))}
-                  </div>
+                  </CardFooter>
                 )}
               </Card>
             </motion.div>

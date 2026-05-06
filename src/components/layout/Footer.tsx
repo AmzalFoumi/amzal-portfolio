@@ -1,10 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { GithubLogoIcon, LinkedinLogoIcon, EnvelopeIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  EnvelopeIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/data/profile";
 
 const SOCIAL_LINKS = [
+  { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
   { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinLogoIcon },
   { label: "Email", href: `mailto:${profile.email}`, icon: EnvelopeIcon },
 ];
@@ -26,11 +31,17 @@ export function Footer() {
           <div>
             <p
               className="font-display text-sm font-semibold"
-              style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+              }}
             >
               {profile.name}
             </p>
-            <p className="font-mono text-xs mt-0.5" style={{ color: "var(--text-tertiary)" }}>
+            <p
+              className="font-mono text-xs mt-0.5"
+              style={{ color: "var(--text-tertiary)" }}
+            >
               {profile.title}
             </p>
           </div>
@@ -42,15 +53,19 @@ export function Footer() {
                 key={label}
                 href={href}
                 target={href.startsWith("mailto") ? undefined : "_blank"}
-                rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                rel={
+                  href.startsWith("mailto") ? undefined : "noopener noreferrer"
+                }
                 aria-label={label}
                 className="p-2 rounded-md transition-colors"
                 style={{ color: "var(--text-tertiary)" }}
                 onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "var(--accent-bright)")
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    "var(--accent-bright)")
                 }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)")
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    "var(--text-tertiary)")
                 }
               >
                 <Icon size={16} />

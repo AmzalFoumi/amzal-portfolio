@@ -4,12 +4,45 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* =========================================================
+   THEME — maps CSS variables to Tailwind v4 utility names
+   ========================================================= */
 @theme inline {
+  /* Portfolio brand colors */
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-brand: var(--accent);
+
+  /* Background scale */
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-border: var(--bg-border);
+
+  /* Text scale */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  /* Shadcn defaults forwarded */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-mono);
-  --font-heading: var(--font-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -18,113 +51,191 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Fonts */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
+
+  /* Radii */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: calc(var(--radius-lg) * 1.5);
+  --radius-2xl: calc(var(--radius-lg) * 2);
 }
 
+/* =========================================================
+   CSS CUSTOM PROPERTIES
+   ========================================================= */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* ── Brand ── */
+  --accent:        #020402;
+  --accent-bright: #22c55e;
+  --accent-muted:  #16a34a;
+
+  /* ── Backgrounds ── */
+  --bg-base:     #080d08;
+  --bg-surface:  #0f140f;
+  --bg-elevated: #161d16;
+  --bg-border:   #1e271e;
+
+  /* ── Text ── */
+  --text-primary:   #e8f5e8;
+  --text-secondary: #8aad8a;
+  --text-tertiary:  #4a6b4a;
+
+  /* ── Semantic ── */
+  --ring:        #22c55e40;
+  --shadow-glow: #22c55e18;
+
+  /* ── Spacing / Layout ── */
+  --radius-sm:       4px;
+  --radius-md:       8px;
+  --radius-lg:       16px;
+  --section-gap:     120px;
+  --container-max:   1100px;
+  --container-pad:   24px;
+
+  /* ── Shadcn compatibility layer ── */
+  --background:               #080d08;
+  --foreground:               #e8f5e8;
+  --card:                     #0f140f;
+  --card-foreground:          #e8f5e8;
+  --popover:                  #161d16;
+  --popover-foreground:       #e8f5e8;
+  --primary:                  #22c55e;
+  --primary-foreground:       #080d08;
+  --secondary:                #161d16;
+  --secondary-foreground:     #e8f5e8;
+  --muted:                    #161d16;
+  --muted-foreground:         #8aad8a;
+  --accent-foreground:        #22c55e;
+  --destructive:              #ef4444;
+  --border:                   #1e271e;
+  --input:                    #1e271e;
+  --radius:                   8px;
+  --sidebar:                  #0f140f;
+  --sidebar-foreground:       #e8f5e8;
+  --sidebar-primary:          #22c55e;
+  --sidebar-primary-foreground: #080d08;
+  --sidebar-accent:           #161d16;
+  --sidebar-accent-foreground:#e8f5e8;
+  --sidebar-border:           #1e271e;
+  --sidebar-ring:             #22c55e40;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/* =========================================================
+   BASE RESETS
+   ========================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body), ui-monospace, "Cascadia Code", monospace;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: var(--accent-bright);
+  color: var(--bg-base);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--bg-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+/* =========================================================
+   UTILITY CLASSES
+   ========================================================= */
+.section-container {
+  max-width: var(--container-max);
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.section {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+
+.font-display {
+  font-family: var(--font-display), "Syne", sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-body), ui-monospace, monospace;
+}
+
+.text-accent {
+  color: var(--accent-bright);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-sm);
+  color: var(--accent-bright);
+  font-family: var(--font-body), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   DOT GRID HERO BACKGROUND
+   ========================================================= */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--bg-border) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* =========================================================
+   GLOW CARD EFFECT
+   ========================================================= */
+.card-glow {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-glow:hover {
+  border-color: var(--accent-bright) !important;
+  box-shadow: 0 0 24px var(--shadow-glow), 0 4px 16px rgba(0,0,0,0.4);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   SHADCN LAYER RESET (ensures dark theme always)
+   ========================================================= */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-mono;
   }
 }

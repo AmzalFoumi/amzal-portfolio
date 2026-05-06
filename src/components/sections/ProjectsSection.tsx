@@ -5,15 +5,19 @@ import { projects } from "@/data/projects";
 export function ProjectsSection() {
   // Featured projects first, then the rest
   const sorted = [...projects].sort((a, b) =>
-    a.featured === b.featured ? 0 : a.featured ? -1 : 1
+    a.featured === b.featured ? 0 : a.featured ? -1 : 1,
   );
 
   return (
-    <section id="projects" className="section" style={{ background: "var(--bg-surface)" }}>
+    <section
+      id="projects"
+      className="section"
+      style={{ background: "var(--bg-surface)" }}
+    >
       <div className="section-container">
         <SectionHeading
           number="02"
-          title="Projects"
+          title="Notable Projects"
           subtitle="A selection of things I've built"
         />
 

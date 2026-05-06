@@ -71,65 +71,67 @@
    ========================================================= */
 :root {
   /* ── Brand ── */
-  --accent:        #020402;
+  --accent: #020402;
   --accent-bright: #22c55e;
-  --accent-muted:  #16a34a;
+  --accent-muted: #16a34a;
 
   /* ── Backgrounds ── */
-  --bg-base:     #080d08;
-  --bg-surface:  #0f140f;
+  --bg-base: #080d08;
+  --bg-surface: #0f140f;
   --bg-elevated: #161d16;
-  --bg-border:   #1e271e;
+  --bg-border: #1e271e;
 
   /* ── Text ── */
-  --text-primary:   #e8f5e8;
+  --text-primary: #e8f5e8;
   --text-secondary: #8aad8a;
-  --text-tertiary:  #4a6b4a;
+  --text-tertiary: #4a6b4a;
 
   /* ── Semantic ── */
-  --ring:        #22c55e40;
+  --ring: #22c55e40;
   --shadow-glow: #22c55e18;
 
   /* ── Spacing / Layout ── */
-  --radius-sm:       4px;
-  --radius-md:       8px;
-  --radius-lg:       16px;
-  --section-gap:     120px;
-  --container-max:   1100px;
-  --container-pad:   24px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --section-gap: 120px;
+  --container-max: 1100px;
+  --container-pad: 24px;
 
   /* ── Shadcn compatibility layer ── */
-  --background:               #080d08;
-  --foreground:               #e8f5e8;
-  --card:                     #0f140f;
-  --card-foreground:          #e8f5e8;
-  --popover:                  #161d16;
-  --popover-foreground:       #e8f5e8;
-  --primary:                  #22c55e;
-  --primary-foreground:       #080d08;
-  --secondary:                #161d16;
-  --secondary-foreground:     #e8f5e8;
-  --muted:                    #161d16;
-  --muted-foreground:         #8aad8a;
-  --accent-foreground:        #22c55e;
-  --destructive:              #ef4444;
-  --border:                   #1e271e;
-  --input:                    #1e271e;
-  --radius:                   8px;
-  --sidebar:                  #0f140f;
-  --sidebar-foreground:       #e8f5e8;
-  --sidebar-primary:          #22c55e;
+  --background: #080d08;
+  --foreground: #e8f5e8;
+  --card: #0f140f;
+  --card-foreground: #e8f5e8;
+  --popover: #161d16;
+  --popover-foreground: #e8f5e8;
+  --primary: #22c55e;
+  --primary-foreground: #080d08;
+  --secondary: #161d16;
+  --secondary-foreground: #e8f5e8;
+  --muted: #161d16;
+  --muted-foreground: #8aad8a;
+  --accent-foreground: #22c55e;
+  --destructive: #ef4444;
+  --border: #1e271e;
+  --input: #1e271e;
+  --radius: 8px;
+  --sidebar: #0f140f;
+  --sidebar-foreground: #e8f5e8;
+  --sidebar-primary: #22c55e;
   --sidebar-primary-foreground: #080d08;
-  --sidebar-accent:           #161d16;
-  --sidebar-accent-foreground:#e8f5e8;
-  --sidebar-border:           #1e271e;
-  --sidebar-ring:             #22c55e40;
+  --sidebar-accent: #161d16;
+  --sidebar-accent-foreground: #e8f5e8;
+  --sidebar-border: #1e271e;
+  --sidebar-ring: #22c55e40;
 }
 
 /* =========================================================
    BASE RESETS
    ========================================================= */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -158,10 +160,19 @@ body {
 /* =========================================================
    SCROLLBAR
    ========================================================= */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-base); }
-::-webkit-scrollbar-thumb { background: var(--bg-border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
 
 /* =========================================================
    UTILITY CLASSES
@@ -211,7 +222,11 @@ body {
    DOT GRID HERO BACKGROUND
    ========================================================= */
 .dot-grid {
-  background-image: radial-gradient(circle, var(--bg-border) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    var(--bg-border) 1px,
+    transparent 1px
+  );
   background-size: 32px 32px;
 }
 
@@ -219,12 +234,17 @@ body {
    GLOW CARD EFFECT
    ========================================================= */
 .card-glow {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .card-glow:hover {
   border-color: var(--accent-bright) !important;
-  box-shadow: 0 0 24px var(--shadow-glow), 0 4px 16px rgba(0,0,0,0.4);
+  box-shadow:
+    0 0 24px var(--shadow-glow),
+    0 4px 16px rgba(0, 0, 0, 0.4);
   transform: translateY(-2px);
 }
 

@@ -12,10 +12,10 @@ const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
-  { label: "Voluntary", href: "#voluntary" },
+  { label: "Experience", href: "#experience" },
 ];
 
-const SECTION_IDS = ["home", "about", "projects", "education", "voluntary"];
+const SECTION_IDS = ["home", "about", "projects", "education", "experience"];
 
 export function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
@@ -84,7 +84,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-4">
           {NAV_LINKS.map((link) => {
             const sectionId = link.href.replace("#", "");
             const isActive = activeSection === sectionId;

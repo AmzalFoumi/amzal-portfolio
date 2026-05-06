@@ -38,12 +38,12 @@ export function Footer() {
             >
               {profile.name}
             </p>
-            <p
+            {/* <p
               className="font-mono text-xs mt-0.5"
               style={{ color: "var(--text-tertiary)" }}
             >
               {profile.title}
-            </p>
+            </p> */}
           </div>
 
           {/* Right: socials */}

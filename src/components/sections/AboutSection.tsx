@@ -5,11 +5,11 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { profile } from "@/data/profile";
 
-const STATS = [
-  { value: "4.0", label: "GPA" },
-  { value: "Top 1%", label: "Batch rank" },
-  // { value: "2", label: "Tech stacks" },
-];
+// const STATS = [
+//   { value: "4.0", label: "GPA" },
+//   { value: "Top 1%", label: "Batch rank" },
+//   { value: "2", label: "Tech stacks" },
+// ];
 
 export function AboutSection() {
   return (
@@ -71,7 +71,7 @@ export function AboutSection() {
           {/* Stats + decorative column */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             {/* Stat cards */}
-            {STATS.map(({ value, label }, i) => (
+            {/* {STATS.map(({ value, label }, i) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, x: 16 }}
@@ -105,7 +105,7 @@ export function AboutSection() {
                   </CardHeader>
                 </Card>
               </motion.div>
-            ))}
+            ))} */}
 
             {/* Decorative terminal block */}
             <motion.div
@@ -125,8 +125,12 @@ export function AboutSection() {
                 <CardContent className="font-mono text-xs leading-6">
                   <div className="pt-4">
                     <p style={{ color: "var(--accent-bright)" }}>$ whoami</p>
-                    <p style={{ color: "var(--text-secondary)" }}>{profile.name}</p>
-                    <p style={{ color: "var(--accent-bright)" }}>$ cat focus.txt</p>
+                    <p style={{ color: "var(--text-secondary)" }}>
+                      {profile.name}
+                    </p>
+                    <p style={{ color: "var(--accent-bright)" }}>
+                      $ cat focus.txt
+                    </p>
                     <p>AI-enabled software development</p>
                     <p>DevOps and delivery</p>
                     <p>leadership in live teams</p>

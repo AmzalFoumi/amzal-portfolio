@@ -4,7 +4,13 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { motion } from "framer-motion";
-import { Card, CardAction, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { TagBadge } from "@/components/shared/TagBadge";
 import type { Project } from "@/types";
 
@@ -33,7 +39,12 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           {/* Header */}
           <CardHeader
             className="px-6 pt-6 pb-3"
-            style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingTop: "1.5rem", paddingBottom: "0.75rem" }}
+            style={{
+              paddingLeft: "1.5rem",
+              paddingRight: "1.5rem",
+              paddingTop: "1.5rem",
+              paddingBottom: "0.75rem",
+            }}
           >
             <h3
               className="font-display text-lg font-semibold leading-tight tracking-tight group-hover:text-accent-bright transition-colors"
@@ -50,7 +61,11 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.open(project.repoUrl, "_blank", "noopener,noreferrer");
+                    window.open(
+                      project.repoUrl,
+                      "_blank",
+                      "noopener,noreferrer",
+                    );
                   }}
                   className="p-1.5 rounded-md transition-colors hover:bg-bg-elevated"
                   style={{ color: "var(--text-tertiary)" }}
@@ -64,7 +79,11 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+                    window.open(
+                      project.liveUrl,
+                      "_blank",
+                      "noopener,noreferrer",
+                    );
                   }}
                   className="p-1.5 rounded-md transition-colors hover:bg-bg-elevated"
                   style={{ color: "var(--text-tertiary)" }}
@@ -79,7 +98,11 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           {/* Description */}
           <CardContent
             className="px-6 pb-4"
-            style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingBottom: "1rem" }}
+            style={{
+              paddingLeft: "1.5rem",
+              paddingRight: "1.5rem",
+              paddingBottom: "1rem",
+            }}
           >
             <p
               className="font-mono text-sm leading-relaxed"

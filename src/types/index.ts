@@ -24,12 +24,24 @@ export interface EducationEntry {
   skills?: string[];
 }
 
-export interface VoluntaryEntry {
-  organisation: string;
+export interface ExperienceRole {
   role: string;
   startYear: string;
   endYear: string;
   location?: string;
+  workMode?: string;
+  engagementType?: string;
   description: string;
   tags?: string[];
 }
+
+export interface ExperienceGroup {
+  organisation: string;
+  location?: string;
+  workMode?: string;
+  engagementType?: string;
+  roles: ExperienceRole[];
+}
+
+export type VoluntaryGroup = ExperienceGroup;
+export type WorkExperienceGroup = ExperienceGroup;

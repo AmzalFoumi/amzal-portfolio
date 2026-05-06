@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { profile } from "@/data/profile";
+import { Analytics } from "@vercel/analytics/next";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -44,7 +45,10 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          {children}
+          <Analytics />
+        </main>
         <Footer />
       </body>
     </html>

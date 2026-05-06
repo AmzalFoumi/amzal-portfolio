@@ -142,7 +142,7 @@ function ExperienceCards({ entries }: { entries: ExperienceGroup[] }) {
                         key={`${entry.organisation}-${role.role}-${roleIndex}`}
                         value={`${entry.organisation}-${roleIndex}`}
                       >
-                        <AccordionTrigger className="gap-4 px-0 pt-3 pb-10">
+                        <AccordionTrigger className="gap-4 px-0 !pt-3 !pb-6">
                           <div className="flex flex-col">
                             <span className="font-mono text-sm text-[var(--accent-bright)] group-hover/accordion-trigger:text-[var(--text-primary)]">
                               {role.role}

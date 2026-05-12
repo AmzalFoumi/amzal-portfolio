@@ -10,13 +10,14 @@ export const projects: Project[] = [
     fullDescription:
       "Distributed Health is a cloud-native healthcare platform built with a microservices architecture.\n\nIt includes AI-powered preliminary symptom checking, doctors' appointments, telemedicine services, and prescription/report management.\n\nI orchestrated the containerized services with Kubernetes (Minikube) and implemented a GitOps CD pipeline using GitHub Actions and ArgoCD for automated deployments.\n\nKey technologies include Next.js with Tailwind CSS and ShadCN, Node.js, Nest.js, MongoDB, Agora API for telemedicine, and the Gemini API.",
     tags: [
-      "Next.js",
+      "Microservices",
       "Gemini API",
       "Nest.js",
       "Kubernetes",
       "Docker",
       "Agora API",
       "MongoDB",
+      "Next.js",
       "Tailwind CSS",
       "ShadCN",
     ],

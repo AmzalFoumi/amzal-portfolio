@@ -21,7 +21,7 @@ export const voluntary: VoluntaryGroup[] = [
         endYear: "Feb 2026",
         description:
           "Built and maintained live applications for AIESEC in Sri Lanka as part of the National Dev Team.",
-        tags: ["Development", "Operations", "AIESEC"],
+        tags: ["Development", "Operations", "Web Development"],
       },
     ],
   },
@@ -37,7 +37,7 @@ export const voluntary: VoluntaryGroup[] = [
         startYear: "Jan 2026",
         endYear: "Present",
         description:
-          "Managing three teams dedicated to International Relations for the Incoming Global Talent product and representing AIESEC in SLIIT to the global plenary.",
+          "Managing three teams dedicated to International Relations for the Incoming Global Talent product. Representing as the primary representaive of the iGT product at AIESEC in SLIIT to the global plenary.",
         tags: ["Leadership", "International Relations", "iGT"],
       },
       {
@@ -61,7 +61,7 @@ export const voluntary: VoluntaryGroup[] = [
         startYear: "Sep 2024",
         endYear: "Dec 2024",
         description:
-          "Supported partnership development for Benchmark 3.0, the annual awards ceremony organized by AIESEC in SLIIT.",
+          "Supported partnership development for Benchmark 3.0, a UI/UX Bootcamp and Hackathon organized by AIESEC in SLIIT.",
         tags: ["Partnership Development", "Event Management", "AIESEC"],
       },
     ],

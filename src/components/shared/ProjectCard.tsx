@@ -12,6 +12,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { TagBadge } from "@/components/shared/TagBadge";
+import { PROJECT_CARD_TAG_LIMIT } from "@/data/projects";
 import type { Project } from "@/types";
 
 interface ProjectCardProps {
@@ -124,9 +125,12 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             }}
           >
             <div className="flex flex-wrap gap-1.5">
-              {project.tags.slice(0, 4).map((tag) => (
-                <TagBadge key={tag} label={tag} size="sm" />
-              ))}
+              {(() => {
+                const tagLimit = project.tagLimit ?? PROJECT_CARD_TAG_LIMIT;
+                return project.tags.slice(0, tagLimit).map((tag) => (
+                  <TagBadge key={tag} label={tag} size="sm" />
+                ));
+              })()}
             </div>
             <span
               className="font-mono text-xs shrink-0 ml-2"

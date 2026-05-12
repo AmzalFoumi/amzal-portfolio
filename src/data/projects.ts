@@ -1,5 +1,8 @@
 import type { Project } from "@/types";
 
+// Number of tags to show on project cards (homepage)
+export const PROJECT_CARD_TAG_LIMIT = 4;
+
 // [PLACEHOLDER] Replace all project entries with your real projects
 export const projects: Project[] = [
   {
@@ -24,6 +27,7 @@ export const projects: Project[] = [
     year: "2026",
     repoUrl: "https://github.com/Distributed-Health-System",
     featured: true,
+    tagLimit: 6,
   },
   {
     slug: "kidsfeed",

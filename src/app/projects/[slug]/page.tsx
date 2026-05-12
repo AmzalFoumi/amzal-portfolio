@@ -1,7 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import { TagBadge } from "@/components/shared/TagBadge";
@@ -45,10 +50,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <div className="min-h-screen pt-24 pb-24">
-      <article
-        className="mx-auto px-6"
-        style={{ maxWidth: "760px" }}
-      >
+      <article className="mx-auto px-6" style={{ maxWidth: "760px" }}>
         {/* Back button */}
         <div className="mb-10">
           <Link href="/#projects">
@@ -61,6 +63,30 @@ export default async function ProjectPage({ params }: Props) {
               Back to Projects
             </Button>
           </Link>
+        </div>
+
+        {/* Featured Image / Hero Section */}
+        <div
+          className="rounded-[var(--radius-lg)] border overflow-hidden mb-10 bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg-surface)] min-h-96 flex items-center justify-center"
+          style={{ borderColor: "var(--bg-border)" }}
+        >
+          <div className="text-center px-8">
+            <p
+              className="font-mono text-sm uppercase tracking-widest mb-4"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              Project Showcase
+            </p>
+            <h2
+              className="font-display text-3xl font-bold"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+              }}
+            >
+              {project.title}
+            </h2>
+          </div>
         </div>
 
         {/* Title */}
@@ -105,20 +131,14 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* Links */}
         {(project.liveUrl || project.repoUrl) && (
-          <div
-            className="rounded-[var(--radius-lg)] p-6 mb-12 border"
-            style={{
-              background: "var(--bg-surface)",
-              borderColor: "var(--bg-border)",
-            }}
-          >
+          <div className="mb-8">
             <p
-              className="font-mono text-xs uppercase tracking-widest mb-4"
+              className="font-mono text-xs uppercase tracking-widest mb-2"
               style={{ color: "var(--text-tertiary)" }}
             >
               Links
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
@@ -126,6 +146,7 @@ export default async function ProjectPage({ params }: Props) {
                   rel="noopener noreferrer"
                 >
                   <Button
+                    size="sm"
                     className="font-mono text-sm gap-2"
                     style={{
                       background: "var(--accent-bright)",
@@ -144,6 +165,7 @@ export default async function ProjectPage({ params }: Props) {
                 >
                   <Button
                     variant="outline"
+                    size="sm"
                     className="font-mono text-sm gap-2 border"
                     style={{
                       borderColor: "var(--bg-border)",
@@ -161,14 +183,14 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* Prev / Next navigation */}
         <div
-          className="pt-8 border-t grid grid-cols-2 gap-4"
+          className="pt-6 border-t grid grid-cols-2 gap-4"
           style={{ borderColor: "var(--bg-border)" }}
         >
           <div>
             {prevProject && (
               <Link
                 href={`/projects/${prevProject.slug}`}
-                className="group flex flex-col gap-1 p-4 rounded-[var(--radius-md)] border transition-colors"
+                className="group flex flex-col gap-0 px-4 py-2 rounded-[var(--radius-md)] border transition-colors"
                 style={{
                   borderColor: "var(--bg-border)",
                   background: "var(--bg-surface)",
@@ -196,7 +218,7 @@ export default async function ProjectPage({ params }: Props) {
             {nextProject && (
               <Link
                 href={`/projects/${nextProject.slug}`}
-                className="group flex flex-col gap-1 p-4 rounded-[var(--radius-md)] border text-right transition-colors"
+                className="group flex flex-col gap-0 px-4 py-2 rounded-[var(--radius-md)] border text-right transition-colors"
                 style={{
                   borderColor: "var(--bg-border)",
                   background: "var(--bg-surface)",

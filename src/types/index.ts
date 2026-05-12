@@ -4,6 +4,8 @@ export interface Project {
   shortDescription: string;
   fullDescription: string;
   tags: string[];
+  /** Optional per-project tag limit for homepage cards. Falls back to global default. */
+  tagLimit?: number;
   year: string;
   liveUrl?: string;
   repoUrl?: string;

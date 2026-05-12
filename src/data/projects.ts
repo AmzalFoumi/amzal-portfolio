@@ -1,5 +1,8 @@
 import type { Project } from "@/types";
 
+// Number of tags to show on project cards (homepage)
+export const PROJECT_CARD_TAG_LIMIT = 4;
+
 // [PLACEHOLDER] Replace all project entries with your real projects
 export const projects: Project[] = [
   {
@@ -10,19 +13,21 @@ export const projects: Project[] = [
     fullDescription:
       "Distributed Health is a cloud-native healthcare platform built with a microservices architecture.\n\nIt includes AI-powered preliminary symptom checking, doctors' appointments, telemedicine services, and prescription/report management.\n\nI orchestrated the containerized services with Kubernetes (Minikube) and implemented a GitOps CD pipeline using GitHub Actions and ArgoCD for automated deployments.\n\nKey technologies include Next.js with Tailwind CSS and ShadCN, Node.js, Nest.js, MongoDB, Agora API for telemedicine, and the Gemini API.",
     tags: [
-      "Next.js",
+      "Microservices",
       "Gemini API",
       "Nest.js",
       "Kubernetes",
       "Docker",
       "Agora API",
       "MongoDB",
+      "Next.js",
       "Tailwind CSS",
       "ShadCN",
     ],
     year: "2026",
     repoUrl: "https://github.com/Distributed-Health-System",
     featured: true,
+    tagLimit: 6,
   },
   {
     slug: "kidsfeed",

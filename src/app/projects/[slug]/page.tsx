@@ -44,13 +44,13 @@ export default async function ProjectPage({ params }: Props) {
     .filter(Boolean);
 
   return (
-    <div className="min-h-screen pt-24 pb-24">
+    <div className="min-h-screen pt-40 pb-24 flex flex-col items-center justify-center">
       <article
-        className="mx-auto px-6"
-        style={{ maxWidth: "760px" }}
+        className="px-6 w-full"
+        style={{ maxWidth: "900px" }}
       >
         {/* Back button */}
-        <div className="mb-10">
+        <div className="mb-12">
           <Link href="/#projects">
             <Button
               variant="ghost"
@@ -61,6 +61,30 @@ export default async function ProjectPage({ params }: Props) {
               Back to Projects
             </Button>
           </Link>
+        </div>
+
+        {/* Featured Image / Hero Section */}
+        <div
+          className="rounded-[var(--radius-lg)] border overflow-hidden mb-12 bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg-surface)] min-h-96 flex items-center justify-center"
+          style={{ borderColor: "var(--bg-border)" }}
+        >
+          <div className="text-center px-8">
+            <p
+              className="font-mono text-sm uppercase tracking-widest mb-4"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              Project Showcase
+            </p>
+            <h2
+              className="font-display text-3xl font-bold"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+              }}
+            >
+              {project.title}
+            </h2>
+          </div>
         </div>
 
         {/* Title */}
@@ -126,6 +150,7 @@ export default async function ProjectPage({ params }: Props) {
                   rel="noopener noreferrer"
                 >
                   <Button
+                    size="lg"
                     className="font-mono text-sm gap-2"
                     style={{
                       background: "var(--accent-bright)",
@@ -144,6 +169,7 @@ export default async function ProjectPage({ params }: Props) {
                 >
                   <Button
                     variant="outline"
+                    size="lg"
                     className="font-mono text-sm gap-2 border"
                     style={{
                       borderColor: "var(--bg-border)",

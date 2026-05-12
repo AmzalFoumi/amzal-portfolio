@@ -127,9 +127,9 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             <div className="flex flex-wrap gap-1.5">
               {(() => {
                 const tagLimit = project.tagLimit ?? PROJECT_CARD_TAG_LIMIT;
-                return project.tags.slice(0, tagLimit).map((tag) => (
-                  <TagBadge key={tag} label={tag} size="sm" />
-                ));
+                return project.tags
+                  .slice(0, tagLimit)
+                  .map((tag) => <TagBadge key={tag} label={tag} size="sm" />);
               })()}
             </div>
             <span

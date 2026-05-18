@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import {
   EnvelopeIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/data/profile";
+import { CvContent } from "@/components/shared/CvContent";
 
 const SOCIAL_LINKS = [
   { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
@@ -23,9 +25,31 @@ const fadeUp = (delay: number) => ({
 });
 
 export function HeroSection() {
+  const [isCvOpen, setIsCvOpen] = useState(false);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    if (!isCvOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsCvOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isCvOpen]);
 
   return (
     <section
@@ -117,6 +141,18 @@ export function HeroSection() {
               Get in Touch
             </Button>
           </a>
+          <Button
+            variant="outline"
+            className="font-mono text-sm px-6 border"
+            style={{
+              borderColor: "var(--bg-border)",
+              color: "var(--text-secondary)",
+              background: "transparent",
+            }}
+            onClick={() => setIsCvOpen(true)}
+          >
+            View CV
+          </Button>
         </motion.div>
 
         {/* Social icons */}
@@ -162,6 +198,43 @@ export function HeroSection() {
           </span>
         </motion.div>
       </div>
+
+      {isCvOpen && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center px-4 py-10">
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsCvOpen(false)}
+            aria-hidden="true"
+          />
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Curriculum Vitae"
+            className="relative z-10 w-full max-w-[980px] max-h-[90vh] overflow-y-auto rounded-2xl border p-4 shadow-2xl"
+            style={{
+              borderColor: "var(--bg-border)",
+              background: "var(--bg-base)",
+            }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex justify-end mb-4">
+              <Button
+                variant="outline"
+                className="font-mono text-xs px-3 py-1 h-auto border"
+                style={{
+                  borderColor: "var(--bg-border)",
+                  color: "var(--text-secondary)",
+                  background: "transparent",
+                }}
+                onClick={() => setIsCvOpen(false)}
+              >
+                Close
+              </Button>
+            </div>
+            <CvContent />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

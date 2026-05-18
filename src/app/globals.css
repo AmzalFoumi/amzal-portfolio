@@ -262,6 +262,126 @@ body {
 }
 
 /* =========================================================
+   CV MODAL (LIGHT THEME)
+   ========================================================= */
+.cv-root {
+  --accent-brand: #16a34a;
+  --accent-light: #dcfce7;
+  --bg-base: #f4f5f4;
+  --bg-surface: #ffffff;
+  --bg-border: #e2e8e2;
+  --text-primary: #020402;
+  --text-secondary: #4a6b4a;
+  --text-tertiary: #8aad8a;
+  --font-sans: var(--font-display), sans-serif;
+  --font-mono: var(--font-body), ui-monospace, monospace;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  line-height: 1.5;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cv-root .cv-page {
+  width: 210mm;
+  min-height: 297mm;
+  max-width: 100%;
+  background-color: var(--bg-surface);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-root .dot-grid {
+  background-image: radial-gradient(circle, var(--bg-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.cv-root .tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: 4px;
+  color: var(--accent-brand);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cv-root .section-title {
+  font-family: var(--font-mono);
+  color: var(--accent-brand);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bg-border);
+  padding-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.cv-root .text-muted {
+  color: var(--text-secondary);
+}
+
+.cv-root .grid-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  flex-grow: 1;
+}
+
+.cv-root a {
+  color: var(--accent-brand);
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .cv-root {
+    padding: 0;
+  }
+
+  .cv-root .cv-page {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .cv-root .grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-root .cv-page.p-10 {
+    padding: 1.5rem;
+  }
+}
+
+@media print {
+  .cv-root {
+    padding: 0;
+    background: none;
+  }
+
+  .cv-root .cv-page {
+    box-shadow: none;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .cv-root .dot-grid {
+    background-image: none !important;
+  }
+}
+
+/* =========================================================
    SHADCN LAYER RESET (ensures dark theme always)
    ========================================================= */
 @layer base {

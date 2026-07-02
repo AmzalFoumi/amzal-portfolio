@@ -2,6 +2,9 @@ export const profile = {
   name: "Amzal Foumi",
   title:
     "SWE Undergrad @ SLIIT | Full-Stack Engineer | AI & DevOps Enthusiast | AIESECer | Royalist",
+  // Site-only headline (Hero/Footer). Kept separate from `title` so CV/PDF exports are unaffected.
+  siteHeadline:
+    "Aspiring Software Engineer | DevOps and Cloud | Engineering scalable solutions, one commit at a time",
   location: "Colombo, Western Province, Sri Lanka",
   email: "mohamedamzal6@gmail.com",
   phone: "+94 70 158 8018",

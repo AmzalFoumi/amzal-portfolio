@@ -29,11 +29,13 @@ export default async function ProjectOpengraphImage({
           width: "100%",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
+          textAlign: "center",
           padding: "80px",
           background: "#080d08",
           backgroundImage:
-            "radial-gradient(circle at 25% 25%, #0f140f 0%, #080d08 55%)",
+            "radial-gradient(circle at 50% 50%, #0f140f 0%, #080d08 55%)",
         }}
       >
         <div
@@ -48,7 +50,7 @@ export default async function ProjectOpengraphImage({
         </div>
         <div
           style={{
-            fontSize: 96,
+            fontSize: 80,
             fontWeight: 800,
             color: "#e8f5e8",
             marginTop: 16,

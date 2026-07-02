@@ -150,7 +150,7 @@ export function HeroSection() {
           className="font-mono text-lg mb-6"
           style={{ color: "var(--text-secondary)" }}
         >
-          {profile.title}
+          {profile.siteHeadline}
         </motion.p>
 
         {/* Bio */}

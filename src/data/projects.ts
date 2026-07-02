@@ -9,15 +9,17 @@ export const projects: Project[] = [
     slug: "distributed-health",
     title: "Distributed Health",
     shortDescription:
-      "A cloud-native healthcare platform with AI symptom checking, telemedicine, appointments, and prescription management.",
+      "A cloud-native healthcare platform with AI symptom checking, telemedicine, appointments, and prescription & reports management.",
     fullDescription:
-      "Distributed Health is a cloud-native healthcare platform built with a microservices architecture.\n\nIt includes AI-powered preliminary symptom checking, doctors' appointments, telemedicine services, and prescription/report management.\n\nI orchestrated the containerized services with Kubernetes (Minikube) and implemented a GitOps CD pipeline using GitHub Actions and ArgoCD for automated deployments.\n\nKey technologies include Next.js with Tailwind CSS and ShadCN, Node.js, Nest.js, MongoDB, Agora API for telemedicine, and the Gemini API.",
+      "Distributed Health is a cloud-native healthcare platform built with a microservices architecture.\n\nIt includes AI-powered preliminary symptom checking, doctors' appointments, telemedicine services, and prescription/report management.\n\nI orchestrated the containerized services with Kubernetes on AWS EKS (provisioned using Terraform) and implemented a GitOps CD pipeline using GitHub Actions and ArgoCD for automated deployments.\n\nKey technologies include Next.js with Tailwind CSS and ShadCN, Node.js, Nest.js, MongoDB, Agora API for telemedicine, and the Gemini API.",
     tags: [
       "Microservices",
       "Gemini API",
       "Nest.js",
       "Kubernetes",
       "Docker",
+      "AWS EKS",
+      "Terraform",
       "Agora API",
       "MongoDB",
       "Next.js",
@@ -27,7 +29,7 @@ export const projects: Project[] = [
     year: "2026",
     repoUrl: "https://github.com/Distributed-Health-System",
     featured: true,
-    tagLimit: 6,
+    tagLimit: 7,
   },
   {
     slug: "asl-finance-hub",

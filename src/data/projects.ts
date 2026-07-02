@@ -30,6 +30,35 @@ export const projects: Project[] = [
     tagLimit: 6,
   },
   {
+    slug: "asl-finance-hub",
+    title: "ASL Finance Hub",
+    shortDescription:
+      "A financial management dashboard for AIESEC Sri Lanka tracking KPIs, budgets, and audit scores across 11 Local Committees.",
+    fullDescription:
+      "ASL Finance Hub is a financial management dashboard for AIESEC in Sri Lanka that tracks KPIs, budgets, audit scores, and monthly reviews across all 11 Local Committees.\n\nAs the team lead on the National Development Team, I directed the architecture and delivery — designing a role-based access control model (LC, MC, and EFB roles) enforced end-to-end with Supabase Row-Level Security.\n\nI built an automated financial data pipeline that syncs Google Sheets into Supabase through Google AppScript webhooks and Supabase Edge Functions, authenticating via a Google Service Account and consolidating data per entity and month.\n\nThe app is deployed as a Dockerized SPA behind Nginx on an Azure VM, with a GitHub Actions CI/CD pipeline that performs blue-green deployments with health-check rollback.\n\nBuilt with React 19 and TypeScript on TanStack Start, Supabase (PostgreSQL, Auth, Edge Functions), Radix UI with shadcn/ui, Recharts for visualizations, and TailwindCSS v4.",
+    tags: [
+      "React",
+      "TypeScript",
+      "TanStack Start",
+      "Supabase",
+      "PostgreSQL",
+      "Google Sheets API",
+      "Google AppScript",
+      "Recharts",
+      "Tailwind CSS",
+      "ShadCN",
+      "Docker",
+      "Azure",
+      "GitHub Actions",
+    ],
+    year: "2026",
+    featured: true,
+    tagLimit: 8,
+    liveUrl: "https://finance.aiesec.lk",
+    repoUrl: "https://github.com/AIESEC-LK/asl-finance-hub.git ",
+  },
+
+  {
     slug: "kidsfeed",
     title: "KidsFeed",
     shortDescription:

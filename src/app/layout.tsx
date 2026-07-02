@@ -20,16 +20,41 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
+const siteDescription =
+  "SWE Undergrad at SLIIT focused on AI-enabled software development, DevOps, and leadership in live teams.";
+const defaultTitle = `${profile.name} — SWE Undergrad @ SLIIT`;
+
 export const metadata: Metadata = {
-  title: `${profile.name} — SWE Undergrad @ SLIIT`,
-  description:
-    "SWE Undergrad at SLIIT focused on AI-enabled software development, DevOps, and leadership in live teams.",
+  metadataBase: new URL(profile.siteUrl),
+  title: {
+    default: defaultTitle,
+    template: `%s — ${profile.name}`,
+  },
+  description: siteDescription,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: `${profile.name} — SWE Undergrad @ SLIIT`,
-    description:
-      "SWE Undergrad at SLIIT focused on AI-enabled software development, DevOps, and leadership in live teams.",
+    title: defaultTitle,
+    description: siteDescription,
+    url: "/",
+    siteName: profile.name,
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: siteDescription,
+  },
+};
+
+// Person structured data (JSON-LD) — enables a richer Google presence / knowledge panel.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: profile.siteUrl,
+  jobTitle: "Software Engineering Undergraduate",
+  alumniOf: { "@type": "CollegeOrUniversity", name: "SLIIT" },
+  sameAs: [profile.githubUrl, profile.linkedinUrl],
 };
 
 export default function RootLayout({
@@ -44,6 +69,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Navbar />
         <main className="flex-1">
           {children}

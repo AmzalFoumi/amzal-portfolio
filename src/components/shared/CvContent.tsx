@@ -182,8 +182,8 @@ export function CvContent() {
                   Cloud-native healthcare platform featuring microservices
                   architecture. Includes AI symptom checking, Doctor
                   appointments, Telemedicine via Agora, and report management.
-                  Orchestrated containerized services with Kubernetes on AWS
-                  EKS (provisioned via Terraform) and implemented a GitOps CD
+                  Orchestrated containerized services with Kubernetes on AWS EKS
+                  (provisioned via Terraform) and implemented a GitOps CD
                   pipeline (GitHub Actions, ArgoCD).
                 </p>
                 <div className="flex flex-wrap gap-1">
@@ -292,11 +292,12 @@ export function CvContent() {
 
               <div>
                 <h4 className="text-xs font-bold text-muted uppercase tracking-wider mb-2">
-                  Architecture &amp; Tools
+                  Architecture, Infrastructure &amp; other Tools
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
                   <span className="tag">Kubernetes</span>
                   <span className="tag">Docker</span>
+                  <span className="tag">Amazon Web Services</span>
                   <span className="tag">Microservices</span>
                   <span className="tag">Domain Driven Design</span>
                   <span className="tag">MVC</span>
@@ -312,8 +313,10 @@ export function CvContent() {
                 <p className="mb-2">
                   <strong>AIESEC SLIIT IR Manager</strong> (Jan 2025 - Present):
                   Managed 3 teams for Incoming Global Talent. Awarded
-                  <em>&ldquo;Best Performing iGT IR &amp; M Leader&rdquo;</em> at Legacy
-                  2025.
+                  <em>
+                    &ldquo;Best Performing iGT IR &amp; M Leader&rdquo;
+                  </em>{" "}
+                  at Legacy 2025.
                 </p>
                 <p>
                   <strong>Core Competencies:</strong> Cross-Cultural

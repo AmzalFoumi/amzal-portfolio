@@ -25,12 +25,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
+  // `title` is just the project name — the root layout's title template appends "— Amzal Foumi".
   return {
-    title: `${project.title} — ${profile.name}`,
+    title: project.title,
     description: project.shortDescription,
+    alternates: { canonical: `/projects/${slug}` },
     openGraph: {
-      title: project.title,
+      title: `${project.title} — ${profile.name}`,
       description: project.shortDescription,
+      url: `/projects/${slug}`,
+      type: "article",
     },
   };
 }

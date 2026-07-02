@@ -11,6 +11,7 @@ import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import { TagBadge } from "@/components/shared/TagBadge";
 import { projects } from "@/data/projects";
+import { profile } from "@/data/profile";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
-    title: `${project.title} — [YOUR NAME]`,
+    title: `${project.title} — ${profile.name}`,
     description: project.shortDescription,
     openGraph: {
       title: project.title,

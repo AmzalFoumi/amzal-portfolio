@@ -21,7 +21,10 @@ export function CvContent() {
 
           <div className="flex flex-col items-end gap-3 border-l border-[var(--bg-border)] pl-4 shrink-0">
             <div className="text-right text-xs font-mono flex flex-col gap-1.5">
-              <a href="mailto:mohamedamzal6@gmail.com" className="hover:underline">
+              <a
+                href="mailto:mohamedamzal6@gmail.com"
+                className="hover:underline"
+              >
                 mohamedamzal6@gmail.com
               </a>
               <span>+94 70 158 8018</span>
@@ -87,7 +90,9 @@ export function CvContent() {
         <div className="grid-layout">
           <div className="flex flex-col gap-6">
             <section>
-              <h3 className="section-title">Technical Volunteering Experience</h3>
+              <h3 className="section-title">
+                Technical Volunteering Experience
+              </h3>
 
               <div className="mb-4">
                 <div className="flex justify-between items-baseline mb-1">
@@ -205,9 +210,10 @@ export function CvContent() {
                   <h4 className="font-bold text-sm">KidsFeed</h4>
                 </div>
                 <p className="text-xs text-gray-700 leading-relaxed mb-2">
-                  School meals management platform with Meal Planning, Attendance
-                  Tracking, and FIFO Inventory. Built using Domain-Driven Design
-                  and layered architecture with robust RBAC (Clerk).
+                  School meals management platform with Meal Planning,
+                  Attendance Tracking, and FIFO Inventory. Built using
+                  Domain-Driven Design and layered architecture with robust RBAC
+                  (Clerk).
                 </p>
                 <div className="flex flex-wrap gap-1">
                   <span className="tag">React</span>
@@ -233,15 +239,22 @@ export function CvContent() {
 
                 <div className="bg-[var(--bg-base)] p-3 rounded-md border border-[var(--bg-border)]">
                   <div className="text-2xl font-bold text-[var(--accent-brand)] leading-none mb-1">
-                    4.0 <span className="text-sm text-gray-500 font-normal">GPA</span>
+                    4.0{" "}
+                    <span className="text-sm text-gray-500 font-normal">
+                      GPA
+                    </span>
                   </div>
                   <ul className="list-none text-xs space-y-1 text-gray-700">
                     <li className="flex items-start gap-1">
-                      <span className="text-[var(--accent-brand)]">&rsaquo;</span>
-                      Consistent Dean's List
+                      <span className="text-[var(--accent-brand)]">
+                        &rsaquo;
+                      </span>
+                      Consistent Dean&apos;s List
                     </li>
                     <li className="flex items-start gap-1">
-                      <span className="text-[var(--accent-brand)]">&rsaquo;</span>
+                      <span className="text-[var(--accent-brand)]">
+                        &rsaquo;
+                      </span>
                       Top 1% Merit Scholarship
                     </li>
                   </ul>
@@ -290,7 +303,8 @@ export function CvContent() {
                 <p className="mb-2">
                   <strong>AIESEC SLIIT IR Manager</strong> (Jan 2025 - Present):
                   Managed 3 teams for Incoming Global Talent. Awarded
-                  <em>"Best Performing iGT IR &amp; M Leader"</em> at Legacy 2025.
+                  <em>&ldquo;Best Performing iGT IR &amp; M Leader&rdquo;</em> at Legacy
+                  2025.
                 </p>
                 <p>
                   <strong>Core Competencies:</strong> Cross-Cultural

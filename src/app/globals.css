@@ -364,7 +364,17 @@ body {
   }
 }
 
+/* Print portal: hidden on screen, revealed only when printing */
+.cv-print-root {
+  display: none;
+}
+
 @media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
   .cv-root {
     padding: 0;
     background: none;
@@ -378,6 +388,48 @@ body {
 
   .cv-root .dot-grid {
     background-image: none !important;
+  }
+
+  /* Scope printing to the CV portal only */
+  body * {
+    visibility: hidden !important;
+  }
+
+  .cv-print-root,
+  .cv-print-root * {
+    visibility: visible !important;
+  }
+
+  .cv-print-root {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .cv-print-root .cv-root {
+    padding: 0;
+    display: block;
+  }
+
+  /* Pin the styled CV to its authored A4 page (210mm) with its own internal
+     padding as the printed margin. @page margin is 0 so 210mm fills A4 exactly.
+     Also restore the two-column grid, which the <900px mobile rule collapses. */
+  .cv-print-root .cv-page {
+    width: 210mm !important;
+    min-height: auto !important;
+    padding: 2.5rem !important; /* Tailwind p-10 */
+  }
+
+  .cv-print-root .grid-layout {
+    grid-template-columns: 2fr 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Avoid awkward breaks mid-entry */
+  .cv-print-root section {
+    break-inside: avoid;
   }
 }
 

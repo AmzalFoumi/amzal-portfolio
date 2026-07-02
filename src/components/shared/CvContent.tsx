@@ -1,3 +1,11 @@
+/**
+ * Styled (human-facing) CV — intentionally HARDCODED, not data-driven.
+ *
+ * NOTE: This component does NOT read `src/data/*`, so the `showInStyledCv` flag
+ * on projects/roles has no effect here. To add or remove an entry from the styled
+ * CV, edit the JSX below by hand. (The ATS PDF, `CvPdfDocument.tsx`, is the
+ * data-driven one and honors the `showInAtsCv` flag.)
+ */
 export function CvContent() {
   return (
     <div className="cv-root">
@@ -21,7 +29,10 @@ export function CvContent() {
 
           <div className="flex flex-col items-end gap-3 border-l border-[var(--bg-border)] pl-4 shrink-0">
             <div className="text-right text-xs font-mono flex flex-col gap-1.5">
-              <a href="mailto:mohamedamzal6@gmail.com" className="hover:underline">
+              <a
+                href="mailto:mohamedamzal6@gmail.com"
+                className="hover:underline"
+              >
                 mohamedamzal6@gmail.com
               </a>
               <span>+94 70 158 8018</span>
@@ -87,7 +98,9 @@ export function CvContent() {
         <div className="grid-layout">
           <div className="flex flex-col gap-6">
             <section>
-              <h3 className="section-title">Technical Volunteering Experience</h3>
+              <h3 className="section-title">
+                Technical Volunteering Experience
+              </h3>
 
               <div className="mb-4">
                 <div className="flex justify-between items-baseline mb-1">
@@ -109,18 +122,6 @@ export function CvContent() {
                     with Recharts.
                   </li>
                 </ul>
-              </div>
-
-              <div className="mb-4">
-                <div className="flex justify-between items-baseline mb-1">
-                  <h4 className="font-bold text-sm">
-                    Web Developer - Entity Support Team
-                  </h4>
-                  <span className="text-xs text-muted font-mono">
-                    Apr 2026 - Present
-                  </span>
-                </div>
-                <p className="text-xs text-muted mb-1">AIESEC in Malaysia</p>
               </div>
 
               <div>
@@ -158,26 +159,39 @@ export function CvContent() {
               <div className="mb-4">
                 <div className="flex justify-between items-baseline mb-1">
                   <h4 className="font-bold text-sm">Distributed Health</h4>
-                  <a
-                    href="https://github.com/Distributed-Health-System"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
-                  >
-                    GitHub &#8599;
-                  </a>
+                  <div className="flex gap-2">
+                    <a
+                      href="https://github.com/Distributed-Health-System"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
+                    >
+                      GitHub &#8599;
+                    </a>
+                    <a
+                      href="https://medium.com/@mohamedamzal6/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
+                    >
+                      Article &#8599;
+                    </a>
+                  </div>
                 </div>
                 <p className="text-xs text-gray-700 leading-relaxed mb-2">
                   Cloud-native healthcare platform featuring microservices
                   architecture. Includes AI symptom checking, Doctor
                   appointments, Telemedicine via Agora, and report management.
-                  Orchestrated containerized services via Kubernetes and
-                  implemented GitOps CD pipeline (GitHub Actions, ArgoCD).
+                  Orchestrated containerized services with Kubernetes on AWS
+                  EKS (provisioned via Terraform) and implemented a GitOps CD
+                  pipeline (GitHub Actions, ArgoCD).
                 </p>
                 <div className="flex flex-wrap gap-1">
                   <span className="tag">Next.js</span>
                   <span className="tag">Nest.js</span>
                   <span className="tag">Kubernetes</span>
+                  <span className="tag">AWS EKS</span>
+                  <span className="tag">Terraform</span>
                   <span className="tag">ArgoCD</span>
                   <span className="tag">Gemini API</span>
                 </div>
@@ -205,9 +219,10 @@ export function CvContent() {
                   <h4 className="font-bold text-sm">KidsFeed</h4>
                 </div>
                 <p className="text-xs text-gray-700 leading-relaxed mb-2">
-                  School meals management platform with Meal Planning, Attendance
-                  Tracking, and FIFO Inventory. Built using Domain-Driven Design
-                  and layered architecture with robust RBAC (Clerk).
+                  School meals management platform with Meal Planning,
+                  Attendance Tracking, and FIFO Inventory. Built using
+                  Domain-Driven Design and layered architecture with robust RBAC
+                  (Clerk).
                 </p>
                 <div className="flex flex-wrap gap-1">
                   <span className="tag">React</span>
@@ -233,15 +248,22 @@ export function CvContent() {
 
                 <div className="bg-[var(--bg-base)] p-3 rounded-md border border-[var(--bg-border)]">
                   <div className="text-2xl font-bold text-[var(--accent-brand)] leading-none mb-1">
-                    4.0 <span className="text-sm text-gray-500 font-normal">GPA</span>
+                    4.0{" "}
+                    <span className="text-sm text-gray-500 font-normal">
+                      GPA
+                    </span>
                   </div>
                   <ul className="list-none text-xs space-y-1 text-gray-700">
                     <li className="flex items-start gap-1">
-                      <span className="text-[var(--accent-brand)]">&rsaquo;</span>
-                      Consistent Dean's List
+                      <span className="text-[var(--accent-brand)]">
+                        &rsaquo;
+                      </span>
+                      Consistent Dean&apos;s List
                     </li>
                     <li className="flex items-start gap-1">
-                      <span className="text-[var(--accent-brand)]">&rsaquo;</span>
+                      <span className="text-[var(--accent-brand)]">
+                        &rsaquo;
+                      </span>
                       Top 1% Merit Scholarship
                     </li>
                   </ul>
@@ -290,7 +312,8 @@ export function CvContent() {
                 <p className="mb-2">
                   <strong>AIESEC SLIIT IR Manager</strong> (Jan 2025 - Present):
                   Managed 3 teams for Incoming Global Talent. Awarded
-                  <em>"Best Performing iGT IR &amp; M Leader"</em> at Legacy 2025.
+                  <em>&ldquo;Best Performing iGT IR &amp; M Leader&rdquo;</em> at Legacy
+                  2025.
                 </p>
                 <p>
                   <strong>Core Competencies:</strong> Cross-Cultural

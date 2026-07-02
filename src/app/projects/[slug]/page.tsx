@@ -11,6 +11,7 @@ import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import { TagBadge } from "@/components/shared/TagBadge";
 import { projects } from "@/data/projects";
+import { profile } from "@/data/profile";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
-    title: `${project.title} — [YOUR NAME]`,
+    title: `${project.title} — ${profile.name}`,
     description: project.shortDescription,
     openGraph: {
       title: project.title,
@@ -130,7 +131,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
 
         {/* Links */}
-        {(project.liveUrl || project.repoUrl) && (
+        {(project.liveUrl || project.repoUrl || project.links?.length) && (
           <div className="mb-8">
             <p
               className="font-mono text-xs uppercase tracking-widest mb-2"
@@ -177,6 +178,27 @@ export default async function ProjectPage({ params }: Props) {
                   </Button>
                 </a>
               )}
+              {project.links?.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="font-mono text-sm gap-2 border"
+                    style={{
+                      borderColor: "var(--bg-border)",
+                      color: "var(--text-secondary)",
+                      background: "transparent",
+                    }}
+                  >
+                    {link.label} <ArrowUpRight size={14} />
+                  </Button>
+                </a>
+              ))}
             </div>
           </div>
         )}

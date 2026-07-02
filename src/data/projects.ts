@@ -3,21 +3,28 @@ import type { Project } from "@/types";
 // Number of tags to show on project cards (homepage)
 export const PROJECT_CARD_TAG_LIMIT = 4;
 
+// CV visibility flags (per project): `showInAtsCv: false` hides a project from the
+// generated ATS PDF (CvPdfDocument.tsx). `showInStyledCv: false` is honored only
+// once the styled CV becomes data-driven — CvContent.tsx is currently hardcoded
+// and ignores it. Omitting a flag means the project is shown.
+
 // [PLACEHOLDER] Replace all project entries with your real projects
 export const projects: Project[] = [
   {
     slug: "distributed-health",
     title: "Distributed Health",
     shortDescription:
-      "A cloud-native healthcare platform with AI symptom checking, telemedicine, appointments, and prescription management.",
+      "A cloud-native healthcare platform with AI symptom checking, telemedicine, appointments, and prescription & reports management.",
     fullDescription:
-      "Distributed Health is a cloud-native healthcare platform built with a microservices architecture.\n\nIt includes AI-powered preliminary symptom checking, doctors' appointments, telemedicine services, and prescription/report management.\n\nI orchestrated the containerized services with Kubernetes (Minikube) and implemented a GitOps CD pipeline using GitHub Actions and ArgoCD for automated deployments.\n\nKey technologies include Next.js with Tailwind CSS and ShadCN, Node.js, Nest.js, MongoDB, Agora API for telemedicine, and the Gemini API.",
+      "Distributed Health is a cloud-native healthcare platform built with a microservices architecture.\n\nIt includes AI-powered preliminary symptom checking, doctors' appointments, telemedicine services, and prescription/report management.\n\nI orchestrated the containerized services with Kubernetes on AWS EKS (provisioned using Terraform) and implemented a GitOps CD pipeline using GitHub Actions and ArgoCD for automated deployments.\n\nKey technologies include Next.js with Tailwind CSS and ShadCN, Node.js, Nest.js, MongoDB, Agora API for telemedicine, and the Gemini API.",
     tags: [
       "Microservices",
       "Gemini API",
       "Nest.js",
       "Kubernetes",
       "Docker",
+      "AWS EKS",
+      "Terraform",
       "Agora API",
       "MongoDB",
       "Next.js",
@@ -26,9 +33,44 @@ export const projects: Project[] = [
     ],
     year: "2026",
     repoUrl: "https://github.com/Distributed-Health-System",
+    links: [
+      {
+        label: "System Design Writeup",
+        url: "https://medium.com/@mohamedamzal6/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a",
+      },
+    ],
     featured: true,
-    tagLimit: 6,
+    tagLimit: 7,
   },
+  {
+    slug: "asl-finance-hub",
+    title: "ASL Finance Hub",
+    shortDescription:
+      "A financial management dashboard for AIESEC Sri Lanka tracking KPIs, budgets, and audit scores across 11 Local Committees.",
+    fullDescription:
+      "ASL Finance Hub is a financial management dashboard for AIESEC in Sri Lanka that tracks KPIs, budgets, audit scores, and monthly reviews across all 11 Local Committees.\n\nAs the team lead on the National Development Team, I directed the architecture and delivery — designing a role-based access control model (LC, MC, and EFB roles) enforced end-to-end with Supabase Row-Level Security.\n\nI built an automated financial data pipeline that syncs Google Sheets into Supabase through Google AppScript webhooks and Supabase Edge Functions, authenticating via a Google Service Account and consolidating data per entity and month.\n\nThe app is deployed as a Dockerized SPA behind Nginx on an Azure VM, with a GitHub Actions CI/CD pipeline that performs blue-green deployments with health-check rollback.\n\nBuilt with React 19 and TypeScript on TanStack Start, Supabase (PostgreSQL, Auth, Edge Functions), Radix UI with shadcn/ui, Recharts for visualizations, and TailwindCSS v4.",
+    tags: [
+      "React",
+      "TypeScript",
+      "TanStack Start",
+      "Supabase",
+      "PostgreSQL",
+      "Google Sheets API",
+      "Google AppScript",
+      "Recharts",
+      "Tailwind CSS",
+      "ShadCN",
+      "Docker",
+      "Azure",
+      "GitHub Actions",
+    ],
+    year: "2026",
+    featured: true,
+    tagLimit: 8,
+    liveUrl: "https://finance.aiesec.lk",
+    repoUrl: "https://github.com/AIESEC-LK/asl-finance-hub.git ",
+  },
+
   {
     slug: "kidsfeed",
     title: "KidsFeed",
@@ -81,6 +123,8 @@ export const projects: Project[] = [
     year: "2025",
     liveUrl: "https://www.aiesec.lk/",
     featured: false,
+    showInAtsCv: false,
+    showInStyledCv: false,
   },
   // {
   //   slug: "datasync-api",

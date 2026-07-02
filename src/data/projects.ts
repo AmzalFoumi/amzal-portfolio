@@ -3,6 +3,11 @@ import type { Project } from "@/types";
 // Number of tags to show on project cards (homepage)
 export const PROJECT_CARD_TAG_LIMIT = 4;
 
+// CV visibility flags (per project): `showInAtsCv: false` hides a project from the
+// generated ATS PDF (CvPdfDocument.tsx). `showInStyledCv: false` is honored only
+// once the styled CV becomes data-driven — CvContent.tsx is currently hardcoded
+// and ignores it. Omitting a flag means the project is shown.
+
 // [PLACEHOLDER] Replace all project entries with your real projects
 export const projects: Project[] = [
   {
@@ -28,6 +33,12 @@ export const projects: Project[] = [
     ],
     year: "2026",
     repoUrl: "https://github.com/Distributed-Health-System",
+    links: [
+      {
+        label: "System Design Writeup",
+        url: "https://medium.com/@mohamedamzal6/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a",
+      },
+    ],
     featured: true,
     tagLimit: 7,
   },
@@ -112,6 +123,8 @@ export const projects: Project[] = [
     year: "2025",
     liveUrl: "https://www.aiesec.lk/",
     featured: false,
+    showInAtsCv: false,
+    showInStyledCv: false,
   },
   // {
   //   slug: "datasync-api",

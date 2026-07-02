@@ -11,7 +11,6 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/data/profile";
 import { CvContent } from "@/components/shared/CvContent";
-import { AtsCvContent } from "@/components/shared/AtsCvContent";
 
 const SOCIAL_LINKS = [
   { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
@@ -27,20 +26,21 @@ const fadeUp = (delay: number) => ({
 
 export function HeroSection() {
   const [isCvOpen, setIsCvOpen] = useState(false);
-  const [printKind, setPrintKind] = useState<null | "ats" | "styled">(null);
+  const [isPrinting, setIsPrinting] = useState(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Render the chosen CV into a hidden print portal, then trigger the browser
+  // Render the styled CV into a hidden print portal, then trigger the browser
   // print dialog ("Save as PDF"). Print CSS scopes output to `.cv-print-root`.
   useEffect(() => {
-    if (!printKind) {
+    if (!isPrinting) {
       return;
     }
 
-    const handleAfterPrint = () => setPrintKind(null);
+    const handleAfterPrint = () => setIsPrinting(false);
     window.addEventListener("afterprint", handleAfterPrint);
     const timer = window.setTimeout(() => window.print(), 100);
 
@@ -48,7 +48,34 @@ export function HeroSection() {
       window.clearTimeout(timer);
       window.removeEventListener("afterprint", handleAfterPrint);
     };
-  }, [printKind]);
+  }, [isPrinting]);
+
+  // Generate a real, selectable-text ATS PDF in-browser and download it. The
+  // heavy @react-pdf/renderer lib is imported on demand so it stays out of the
+  // initial hero bundle and never runs during SSR.
+  const downloadAtsPdf = async () => {
+    if (isGeneratingPdf) {
+      return;
+    }
+    setIsGeneratingPdf(true);
+    try {
+      const [{ pdf }, { CvPdfDocument }] = await Promise.all([
+        import("@react-pdf/renderer"),
+        import("@/components/shared/CvPdfDocument"),
+      ]);
+      const blob = await pdf(<CvPdfDocument />).toBlob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Amzal-Foumi-CV.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
 
   useEffect(() => {
     if (!isCvOpen) {
@@ -245,9 +272,10 @@ export function HeroSection() {
                   color: "var(--accent-bright)",
                   background: "transparent",
                 }}
-                onClick={() => setPrintKind("ats")}
+                onClick={downloadAtsPdf}
+                disabled={isGeneratingPdf}
               >
-                Download ATS CV
+                {isGeneratingPdf ? "Generating..." : "Download ATS CV"}
               </Button>
               <Button
                 variant="outline"
@@ -257,7 +285,7 @@ export function HeroSection() {
                   color: "var(--text-secondary)",
                   background: "transparent",
                 }}
-                onClick={() => setPrintKind("styled")}
+                onClick={() => setIsPrinting(true)}
               >
                 Download Styled CV
               </Button>
@@ -280,9 +308,9 @@ export function HeroSection() {
       )}
 
       {/* Hidden print portal — only its contents reach the printer / PDF */}
-      {printKind && (
+      {isPrinting && (
         <div className="cv-print-root" aria-hidden="true">
-          {printKind === "ats" ? <AtsCvContent /> : <CvContent />}
+          <CvContent />
         </div>
       )}
     </section>

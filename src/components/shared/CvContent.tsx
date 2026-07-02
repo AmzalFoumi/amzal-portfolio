@@ -1,3 +1,11 @@
+/**
+ * Styled (human-facing) CV — intentionally HARDCODED, not data-driven.
+ *
+ * NOTE: This component does NOT read `src/data/*`, so the `showInStyledCv` flag
+ * on projects/roles has no effect here. To add or remove an entry from the styled
+ * CV, edit the JSX below by hand. (The ATS PDF, `CvPdfDocument.tsx`, is the
+ * data-driven one and honors the `showInAtsCv` flag.)
+ */
 export function CvContent() {
   return (
     <div className="cv-root">
@@ -116,18 +124,6 @@ export function CvContent() {
                 </ul>
               </div>
 
-              <div className="mb-4">
-                <div className="flex justify-between items-baseline mb-1">
-                  <h4 className="font-bold text-sm">
-                    Web Developer - Entity Support Team
-                  </h4>
-                  <span className="text-xs text-muted font-mono">
-                    Apr 2026 - Present
-                  </span>
-                </div>
-                <p className="text-xs text-muted mb-1">AIESEC in Malaysia</p>
-              </div>
-
               <div>
                 <div className="flex justify-between items-baseline mb-1">
                   <h4 className="font-bold text-sm">
@@ -163,14 +159,24 @@ export function CvContent() {
               <div className="mb-4">
                 <div className="flex justify-between items-baseline mb-1">
                   <h4 className="font-bold text-sm">Distributed Health</h4>
-                  <a
-                    href="https://github.com/Distributed-Health-System"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
-                  >
-                    GitHub &#8599;
-                  </a>
+                  <div className="flex gap-2">
+                    <a
+                      href="https://github.com/Distributed-Health-System"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
+                    >
+                      GitHub &#8599;
+                    </a>
+                    <a
+                      href="https://medium.com/@mohamedamzal6/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
+                    >
+                      Article &#8599;
+                    </a>
+                  </div>
                 </div>
                 <p className="text-xs text-gray-700 leading-relaxed mb-2">
                   Cloud-native healthcare platform featuring microservices

@@ -1,3 +1,8 @@
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -9,8 +14,14 @@ export interface Project {
   year: string;
   liveUrl?: string;
   repoUrl?: string;
+  /** Extra external links (articles, videos, slides) beyond live/repo. */
+  links?: ProjectLink[];
   imageUrl?: string;
   featured?: boolean;
+  /** Set false to hide this project from the generated ATS PDF. Defaults to shown. */
+  showInAtsCv?: boolean;
+  /** Set false to hide this project from the styled CV. Defaults to shown. */
+  showInStyledCv?: boolean;
 }
 
 export interface EducationEntry {
@@ -35,6 +46,10 @@ export interface ExperienceRole {
   engagementType?: string;
   description: string;
   tags?: string[];
+  /** Set false to hide this role from the generated ATS PDF. Defaults to shown. */
+  showInAtsCv?: boolean;
+  /** Set false to hide this role from the styled CV. Defaults to shown. */
+  showInStyledCv?: boolean;
 }
 
 export interface ExperienceGroup {

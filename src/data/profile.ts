@@ -4,6 +4,8 @@ export const profile = {
     "SWE Undergrad @ SLIIT | Full-Stack Engineer | AI & DevOps Enthusiast | AIESECer | Royalist",
   location: "Colombo, Western Province, Sri Lanka",
   email: "mohamedamzal6@gmail.com",
+  phone: "+94 70 158 8018",
+  portfolioUrl: "https://amzal-portfolio.vercel.app/",
   githubUrl: "https://github.com/AmzalFoumi",
   linkedinUrl: "https://www.linkedin.com/in/amzalfoumi",
   techStacks: [

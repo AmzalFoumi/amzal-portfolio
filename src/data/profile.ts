@@ -6,14 +6,18 @@ export const profile = {
   email: "mohamedamzal6@gmail.com",
   phone: "+94 70 158 8018",
   portfolioUrl: "https://amzal-portfolio.vercel.app/",
+  // Canonical base URL for SEO (metadata, sitemap, robots, JSON-LD). No trailing slash.
+  // Single source of truth — change this one line when moving to a custom domain (amzalfoumi.com).
+  siteUrl: "https://amzal-portfolio.vercel.app",
   githubUrl: "https://github.com/AmzalFoumi",
   linkedinUrl: "https://www.linkedin.com/in/amzalfoumi",
   techStacks: [
     {
-      label: "Architecture & Practices",
+      label: "Architectures, Infrastructure & Tools",
       items: [
         "Kubernetes",
         "Docker",
+        "Amazon Web Services",
         "Domain Driven Design",
         "MVC Architecture",
         "Microservices",

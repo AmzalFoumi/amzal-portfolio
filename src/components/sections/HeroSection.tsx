@@ -11,6 +11,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/data/profile";
 import { CvContent } from "@/components/shared/CvContent";
+import { AtsCvContent } from "@/components/shared/AtsCvContent";
 
 const SOCIAL_LINKS = [
   { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
@@ -26,10 +27,28 @@ const fadeUp = (delay: number) => ({
 
 export function HeroSection() {
   const [isCvOpen, setIsCvOpen] = useState(false);
+  const [printKind, setPrintKind] = useState<null | "ats" | "styled">(null);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Render the chosen CV into a hidden print portal, then trigger the browser
+  // print dialog ("Save as PDF"). Print CSS scopes output to `.cv-print-root`.
+  useEffect(() => {
+    if (!printKind) {
+      return;
+    }
+
+    const handleAfterPrint = () => setPrintKind(null);
+    window.addEventListener("afterprint", handleAfterPrint);
+    const timer = window.setTimeout(() => window.print(), 100);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("afterprint", handleAfterPrint);
+    };
+  }, [printKind]);
 
   useEffect(() => {
     if (!isCvOpen) {
@@ -217,7 +236,31 @@ export function HeroSection() {
             }}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex justify-end mb-4">
+            <div className="flex flex-wrap justify-end gap-2 mb-4">
+              <Button
+                variant="outline"
+                className="font-mono text-xs px-3 py-1 h-auto border"
+                style={{
+                  borderColor: "var(--accent-bright)",
+                  color: "var(--accent-bright)",
+                  background: "transparent",
+                }}
+                onClick={() => setPrintKind("ats")}
+              >
+                Download ATS CV
+              </Button>
+              <Button
+                variant="outline"
+                className="font-mono text-xs px-3 py-1 h-auto border"
+                style={{
+                  borderColor: "var(--bg-border)",
+                  color: "var(--text-secondary)",
+                  background: "transparent",
+                }}
+                onClick={() => setPrintKind("styled")}
+              >
+                Download Styled CV
+              </Button>
               <Button
                 variant="outline"
                 className="font-mono text-xs px-3 py-1 h-auto border"
@@ -233,6 +276,13 @@ export function HeroSection() {
             </div>
             <CvContent />
           </div>
+        </div>
+      )}
+
+      {/* Hidden print portal — only its contents reach the printer / PDF */}
+      {printKind && (
+        <div className="cv-print-root" aria-hidden="true">
+          {printKind === "ats" ? <AtsCvContent /> : <CvContent />}
         </div>
       )}
     </section>

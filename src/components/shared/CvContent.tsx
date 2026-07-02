@@ -176,13 +176,16 @@ export function CvContent() {
                   Cloud-native healthcare platform featuring microservices
                   architecture. Includes AI symptom checking, Doctor
                   appointments, Telemedicine via Agora, and report management.
-                  Orchestrated containerized services via Kubernetes and
-                  implemented GitOps CD pipeline (GitHub Actions, ArgoCD).
+                  Orchestrated containerized services with Kubernetes on AWS
+                  EKS (provisioned via Terraform) and implemented a GitOps CD
+                  pipeline (GitHub Actions, ArgoCD).
                 </p>
                 <div className="flex flex-wrap gap-1">
                   <span className="tag">Next.js</span>
                   <span className="tag">Nest.js</span>
                   <span className="tag">Kubernetes</span>
+                  <span className="tag">AWS EKS</span>
+                  <span className="tag">Terraform</span>
                   <span className="tag">ArgoCD</span>
                   <span className="tag">Gemini API</span>
                 </div>

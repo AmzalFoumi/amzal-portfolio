@@ -15,11 +15,13 @@ export default function OpengraphImage() {
           width: "100%",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
+          textAlign: "center",
           padding: "80px",
           background: "#080d08",
           backgroundImage:
-            "radial-gradient(circle at 25% 25%, #0f140f 0%, #080d08 55%)",
+            "radial-gradient(circle at 50% 50%, #0f140f 0%, #080d08 55%)",
         }}
       >
         <div
@@ -34,7 +36,7 @@ export default function OpengraphImage() {
         </div>
         <div
           style={{
-            fontSize: 110,
+            fontSize: 96,
             fontWeight: 800,
             color: "#e8f5e8",
             marginTop: 12,
@@ -45,7 +47,7 @@ export default function OpengraphImage() {
         </div>
         <div
           style={{
-            fontSize: 40,
+            fontSize: 34,
             color: "#8aad8a",
             marginTop: 24,
           }}

@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     title: defaultTitle,
     description: siteDescription,
   },
+  verification: {
+    google: "smQkI3qpjv_hI9_4h16Jj56g1PT_3OljNGxsI4hGr_c",
+  },
 };
 
 // Person structured data (JSON-LD) — enables a richer Google presence / knowledge panel.

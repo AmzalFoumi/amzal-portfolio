@@ -11,6 +11,29 @@ export const PROJECT_CARD_TAG_LIMIT = 4;
 // [PLACEHOLDER] Replace all project entries with your real projects
 export const projects: Project[] = [
   {
+    slug: "aesth-ai",
+    title: "Aesth-ai",
+    shortDescription:
+      "A proof-of-concept AI chatbot for an aesthetic-clinic site that answers product questions via dual retrieval — deterministic DB queries and semantic RAG search.",
+    fullDescription:
+      'Aesth-ai is a proof-of-concept AI chatbot built to validate a retrieval approach before porting it into a production codebase, running on Payload 3 and MongoDB over a beauty-product dataset.\n\nThe model chooses between two tools per question: a DB-filter tool for deterministic queries (e.g. "list face creams with a rating over 4") that grounds answers directly in database rows, and a RAG tool that embeds the query and runs nearest-neighbour search over a MongoDB Atlas vector store for semantic questions (e.g. "what can I use for dry skin?").\n\nI designed two seams to make the engine easy to evaluate and re-target: an A/B retrieval switch (db / rag / both) implemented purely through the tool registry with no orchestrator branching, and provider-agnostic chat/embedding models swappable via a one-line env change with no vendor SDK imported in business code. The model also self-selects a typed answer shape (plain, timeline, product-list, comparison), always degrading gracefully to plain text on failure.\n\nBuilt with Next.js 16 (App Router), Payload 3.85 with MongoDB, the Vercel AI SDK, Gemini Flash for chat, and gemini-embedding-001 for embeddings, with vectors stored in a dedicated collection behind a swappable VectorStore interface.',
+    tags: [
+      "Next.js",
+      "Payload CMS",
+      "MongoDB",
+      "Vercel AI SDK",
+      "RAG",
+      "Vector Search",
+      "Gemini API",
+      "TypeScript",
+    ],
+    year: "2026",
+    liveUrl: "https://aesth-ai-hazel.vercel.app",
+    repoUrl: "https://github.com/AmzalFoumi/aesth-ai",
+    featured: true,
+  },
+
+  {
     slug: "distributed-health",
     title: "Distributed Health",
     shortDescription:
@@ -46,10 +69,11 @@ export const projects: Project[] = [
     slug: "asl-finance-hub",
     title: "ASL Finance Hub",
     shortDescription:
-      "A financial management dashboard for AIESEC Sri Lanka tracking KPIs, budgets, and audit scores across 11 Local Committees.",
+      "A financial intelligence dashboard for AIESEC Sri Lanka tracking KPIs, budgets, and audit scores across 11 Local Committees.",
     fullDescription:
-      "ASL Finance Hub is a financial management dashboard for AIESEC in Sri Lanka that tracks KPIs, budgets, audit scores, and monthly reviews across all 11 Local Committees.\n\nAs the team lead on the National Development Team, I directed the architecture and delivery — designing a role-based access control model (LC, MC, and EFB roles) enforced end-to-end with Supabase Row-Level Security.\n\nI built an automated financial data pipeline that syncs Google Sheets into Supabase through Google AppScript webhooks and Supabase Edge Functions, authenticating via a Google Service Account and consolidating data per entity and month.\n\nThe app is deployed as a Dockerized SPA behind Nginx on an Azure VM, with a GitHub Actions CI/CD pipeline that performs blue-green deployments with health-check rollback.\n\nBuilt with React 19 and TypeScript on TanStack Start, Supabase (PostgreSQL, Auth, Edge Functions), Radix UI with shadcn/ui, Recharts for visualizations, and TailwindCSS v4.",
+      "ASL Finance Hub is a financial intelligence dashboard for AIESEC in Sri Lanka that tracks KPIs, budgets, audit scores, and monthly reviews across all 11 Local Committees.\n\nAs the team lead on the National Development Team, I directed the architecture and delivery — designing a role-based access control model (LC, MC, and EFB roles) enforced end-to-end with Supabase Row-Level Security.\n\nI built an automated financial data pipeline that syncs Google Sheets into Supabase through Google AppScript webhooks and Supabase Edge Functions, authenticating via a Google Service Account and consolidating data per entity and month.\n\nThe app is deployed as a Dockerized SPA behind Nginx on an Azure VM, with a GitHub Actions CI/CD pipeline that performs blue-green deployments with health-check rollback.\n\nBuilt with React 19 and TypeScript on TanStack Start, Supabase (PostgreSQL, Auth, Edge Functions), Radix UI with shadcn/ui, Recharts for visualizations, and TailwindCSS v4.",
     tags: [
+      "ETL Pipeline",
       "React",
       "TypeScript",
       "TanStack Start",

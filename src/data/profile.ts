@@ -40,10 +40,10 @@ export const profile = {
     },
   ],
   summary: [
-    "I am a third-year Software Engineering student at SLIIT, maintaining a 4.0 GPA and ranking in the top 1% of my batch. I focus on practical AI-enabled software development and DevOps, and I leverage AI tools to accelerate my workflow while expanding my skill set through leadership roles, university projects, and live delivery work. I am actively seeking a Software Engineering internship where I can contribute my technical and leadership experience to a challenging role.",
+    "I am a third-year Software Engineering student at SLIIT, maintaining a 4.0 GPA and ranking in the top 1% of my batch. I focus on Software Engineering, Cloud, DevOps and AI applications. I also leverage AI tools to accelerate my workflows while expanding my skill set through leadership roles, university projects, and live delivery work. I am actively seeking a Software Engineering internship where I can contribute my technical and leadership experience to a challenging role.",
   ],
   honors: [
-    "Most Outstanding Event of the Year",
+    "Most Outstanding Event of the Year - Benchmark 3.0",
     "Dean's List",
     "Best International Relations and Matching Leader - iGT",
   ],

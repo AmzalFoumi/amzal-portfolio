@@ -5,6 +5,9 @@
  * on projects/roles has no effect here. To add or remove an entry from the styled
  * CV, edit the JSX below by hand. (The ATS PDF, `CvPdfDocument.tsx`, is the
  * data-driven one and honors the `showInAtsCv` flag.)
+ *
+ * A parallel data-driven version lives at `CvContentDynamic.tsx` for future
+ * evaluation — this file is kept as-is as the known-good rollback.
  */
 export function CvContent() {
   return (

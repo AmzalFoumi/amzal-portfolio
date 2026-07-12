@@ -309,8 +309,8 @@ export function CvContent() {
 
             <section>
               <h3 className="section-title">Certifications</h3>
-              <div className="text-xs text-gray-700 leading-relaxed">
-                <p className="mb-1">
+              <div className="flex justify-between items-center gap-3">
+                <p className="text-xs text-gray-700 leading-relaxed">
                   <strong>AWS Certified AI Practitioner</strong> — Amazon Web
                   Services (Jul 2026)
                 </p>
@@ -318,32 +318,39 @@ export function CvContent() {
                   href="https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
+                  title="Verify credential"
+                  className="flex flex-col items-center gap-1 group hover:-translate-y-0.5 transition-transform shrink-0"
                 >
-                  Verify credential &#8599;
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url"
+                    alt="Certification verification QR"
+                    className="w-[42px] h-[42px] border border-[var(--bg-border)] rounded-[4px] p-0.5 mix-blend-multiply bg-white shadow-sm group-hover:border-[var(--accent-brand)]"
+                    loading="lazy"
+                  />
+                  <span className="text-[0.5rem] font-mono text-muted uppercase group-hover:text-[var(--accent-brand)]">
+                    Verify
+                  </span>
                 </a>
-              </div>
-            </section>
-
-            <section>
-              <h3 className="section-title">Leadership &amp; Comm.</h3>
-              <div className="text-xs text-gray-700 leading-relaxed">
-                <p className="mb-2">
-                  <strong>AIESEC SLIIT IR Manager</strong> (Jan 2025 - Present):
-                  Managed 3 teams for Incoming Global Talent. Awarded
-                  <em>
-                    &ldquo;Best Performing iGT IR &amp; M Leader&rdquo;
-                  </em>{" "}
-                  at Legacy 2025.
-                </p>
-                <p>
-                  <strong>Core Competencies:</strong> Cross-Cultural
-                  Collaboration, Stakeholder Management, Agile Team Leadership.
-                </p>
               </div>
             </section>
           </div>
         </div>
+
+        <section className="mt-6">
+          <h3 className="section-title">Leadership &amp; Comm.</h3>
+          <div className="text-xs text-gray-700 leading-relaxed">
+            <p className="mb-2">
+              <strong>AIESEC SLIIT IR Manager</strong> (Jan 2025 - Present):
+              Managed 3 teams for Incoming Global Talent. Awarded
+              <em>&ldquo;Best Performing iGT IR &amp; M Leader&rdquo;</em> at
+              Legacy 2025.
+            </p>
+            <p>
+              <strong>Core Competencies:</strong> Cross-Cultural
+              Collaboration, Stakeholder Management, Agile Team Leadership.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );

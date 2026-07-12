@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
 
 function Bullet({ children }: { children: React.ReactNode }) {
   return (
-    <View style={styles.bulletRow}>
+    <View style={styles.bulletRow} wrap={false}>
       <Text style={styles.bulletDot}>{"•"}</Text>
       <Text style={styles.bulletText}>{children}</Text>
     </View>
@@ -142,7 +142,11 @@ export function CvPdfDocument() {
             return null;
           }
           return roles.map((role) => (
-            <View key={`${group.organisation}-${role.role}`} style={styles.entry}>
+            <View
+              key={`${group.organisation}-${role.role}`}
+              style={styles.entry}
+              wrap={false}
+            >
               <Text style={styles.entryHead}>
                 {role.role}, {group.organisation}
               </Text>
@@ -171,7 +175,7 @@ export function CvPdfDocument() {
               : project.tags;
           const url = project.repoUrl?.trim() || project.liveUrl?.trim();
           return (
-            <View key={project.slug} style={styles.entry}>
+            <View key={project.slug} style={styles.entry} wrap={false}>
               <Text style={styles.entryHead}>
                 {project.title}
                 {url ? " - " : ""}
@@ -190,7 +194,11 @@ export function CvPdfDocument() {
         {/* Education */}
         <Text style={styles.sectionTitle}>Education</Text>
         {education.map((edu) => (
-          <View key={`${edu.institution}-${edu.field}`} style={styles.entry}>
+          <View
+            key={`${edu.institution}-${edu.field}`}
+            style={styles.entry}
+            wrap={false}
+          >
             <Text style={styles.entryHead}>
               {edu.degree} {edu.field}, {edu.institution}
             </Text>
@@ -215,7 +223,11 @@ export function CvPdfDocument() {
             {certifications
               .filter((cert) => cert.showInAtsCv !== false)
               .map((cert) => (
-                <View key={cert.credentialId} style={styles.entry}>
+                <View
+                  key={cert.credentialId}
+                  style={styles.entry}
+                  wrap={false}
+                >
                   <Text style={styles.entryHead}>{cert.name}</Text>
                   <Text style={styles.entryMeta}>
                     {cert.issuer} | Issued {cert.issueDate}
@@ -230,15 +242,6 @@ export function CvPdfDocument() {
           </>
         )}
 
-        {/* Honors */}
-        {profile.honors.length > 0 && (
-          <>
-            <Text style={styles.sectionTitle}>Honors &amp; Awards</Text>
-            {profile.honors.map((h, i) => (
-              <Bullet key={i}>{h}</Bullet>
-            ))}
-          </>
-        )}
       </Page>
     </Document>
   );

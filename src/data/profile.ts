@@ -16,27 +16,35 @@ export const profile = {
   linkedinUrl: "https://www.linkedin.com/in/amzalfoumi",
   techStacks: [
     {
-      label: "Architectures, Infrastructure & Tools",
+      label: "Cloud & Infrastructure",
       items: [
-        "Kubernetes",
-        "Docker",
         "Amazon Web Services",
-        "Domain Driven Design",
-        "MVC Architecture",
-        "Microservices",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "Azure",
       ],
     },
     {
-      label: "Languages & Frameworks",
+      label: "AI & ML",
       items: [
-        "React",
-        "Next.js",
-        "Node.js",
-        "Express.js",
-        "Nest.js",
-        "Java",
-        "Kotlin",
+        "Prompt Engineering",
+        "Gemini API",
+        "Vercel AI SDK",
+        "RAG / Vector Search",
       ],
+    },
+    {
+      label: "Languages",
+      items: ["Java", "Kotlin", "TypeScript", "Javascript"],
+    },
+    {
+      label: "Frameworks",
+      items: ["React", "Next.js", "Node.js", "Express.js", "Nest.js"],
+    },
+    {
+      label: "Architectures",
+      items: ["Domain Driven Design", "MVC Architecture", "Microservices"],
     },
   ],
   summary: [

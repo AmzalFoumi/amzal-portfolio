@@ -67,53 +67,6 @@ export function AboutSection() {
                 ))}
               </div>
             </motion.div>
-
-            {/* Certifications */}
-            {certifications.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.32 }}
-                className="pt-2 space-y-4"
-              >
-                <p
-                  className="font-mono text-xs uppercase tracking-widest text-center lg:text-left"
-                  style={{ color: "var(--text-tertiary)" }}
-                >
-                  CERTIFICATIONS
-                </p>
-                <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                  {certifications.map((cert) => (
-                    <a
-                      key={cert.credentialId}
-                      href={cert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={`${cert.name} — ${cert.issuer}`}
-                      className="rounded-lg transition-transform hover:-translate-y-0.5"
-                      style={
-                        cert.showLogoFrame
-                          ? {
-                              background: "var(--bg-elevated)",
-                              border: "1px solid var(--bg-border)",
-                            }
-                          : undefined
-                      }
-                    >
-                      <img
-                        src={cert.logoUrl}
-                        alt={cert.name}
-                        width={84}
-                        height={84}
-                        loading="lazy"
-                        className="w-21 h-21 rounded-lg"
-                      />
-                    </a>
-                  ))}
-                </div>
-              </motion.div>
-            )}
           </div>
 
           {/* Stats + decorative column */}
@@ -187,6 +140,63 @@ export function AboutSection() {
                 </CardContent>
               </Card>
             </motion.div>
+
+            {/* Certifications */}
+            {certifications.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.42 }}
+                className="space-y-4"
+              >
+                <p
+                  className="font-mono text-xs uppercase tracking-widest"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
+                  CERTIFICATIONS
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {certifications.map((cert) => (
+                    <a
+                      key={cert.credentialId}
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${cert.name} — ${cert.issuer}`}
+                      className="flex flex-col items-center gap-1.5 w-21 transition-transform hover:-translate-y-0.5"
+                    >
+                      <span
+                        className="rounded-lg"
+                        style={
+                          cert.showLogoFrame
+                            ? {
+                                background: "var(--bg-elevated)",
+                                border: "1px solid var(--bg-border)",
+                              }
+                            : undefined
+                        }
+                      >
+                        <img
+                          src={cert.logoUrl}
+                          alt={cert.name}
+                          width={84}
+                          height={84}
+                          loading="lazy"
+                          className="w-21 h-21 rounded-lg"
+                        />
+                      </span>
+                      <span
+                        className="font-mono text-[0.6rem] leading-tight text-center"
+                        style={{ color: "var(--text-tertiary)" }}
+                      >
+                        {cert.name}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </div>
         </div>
       </div>

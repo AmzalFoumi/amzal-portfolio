@@ -14,6 +14,8 @@ export interface Project {
   year: string;
   liveUrl?: string;
   repoUrl?: string;
+  /** Set true to show the GitHub repo link on the generated CVs. Defaults to hidden. */
+  showRepoUrlInCv?: boolean;
   /** Extra external links (articles, videos, slides) beyond live/repo. */
   links?: ProjectLink[];
   imageUrl?: string;

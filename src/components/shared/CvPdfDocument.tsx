@@ -173,7 +173,9 @@ export function CvPdfDocument() {
             typeof project.tagLimit === "number"
               ? project.tags.slice(0, project.tagLimit)
               : project.tags;
-          const url = project.repoUrl?.trim() || project.liveUrl?.trim();
+          const url =
+            (project.showRepoUrlInCv ? project.repoUrl?.trim() : undefined) ||
+            project.liveUrl?.trim();
           return (
             <View key={project.slug} style={styles.entry} wrap={false}>
               <Text style={styles.entryHead}>

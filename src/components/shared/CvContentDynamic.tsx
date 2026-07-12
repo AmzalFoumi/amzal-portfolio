@@ -156,7 +156,10 @@ export function CvContentDynamic() {
               <h3 className="section-title">Notable Projects</h3>
 
               {notableProjects.map((project, i) => {
-                const url = project.repoUrl?.trim() || project.liveUrl?.trim();
+                const url =
+                  (project.showRepoUrlInCv
+                    ? project.repoUrl?.trim()
+                    : undefined) || project.liveUrl?.trim();
                 return (
                   <div
                     key={project.slug}

@@ -11,6 +11,8 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/data/profile";
 import { CvContent } from "@/components/shared/CvContent";
+import type { PDFViewer as PDFViewerType } from "@react-pdf/renderer";
+import type { CvPdfDocument as CvPdfDocumentType } from "@/components/shared/CvPdfDocument";
 
 const SOCIAL_LINKS = [
   { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
@@ -28,6 +30,31 @@ export function HeroSection() {
   const [isCvOpen, setIsCvOpen] = useState(false);
   const [isPrinting, setIsPrinting] = useState(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [cvView, setCvView] = useState<"styled" | "ats">("styled");
+  const [atsViewerModules, setAtsViewerModules] = useState<{
+    PDFViewer: typeof PDFViewerType;
+    CvPdfDocument: typeof CvPdfDocumentType;
+  } | null>(null);
+
+  // Lazily load the PDF viewer + document only when the ATS tab is first
+  // opened, so @react-pdf/renderer stays out of the initial hero bundle.
+  useEffect(() => {
+    if (cvView !== "ats" || atsViewerModules) {
+      return;
+    }
+    let cancelled = false;
+    Promise.all([
+      import("@react-pdf/renderer"),
+      import("@/components/shared/CvPdfDocument"),
+    ]).then(([{ PDFViewer }, { CvPdfDocument }]) => {
+      if (!cancelled) {
+        setAtsViewerModules({ PDFViewer, CvPdfDocument });
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [cvView, atsViewerModules]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -263,46 +290,98 @@ export function HeroSection() {
             }}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex flex-wrap justify-end gap-2 mb-4">
-              <Button
-                variant="outline"
-                className="font-mono text-xs px-3 py-1 h-auto border"
-                style={{
-                  borderColor: "var(--accent-bright)",
-                  color: "var(--accent-bright)",
-                  background: "transparent",
-                }}
-                onClick={downloadAtsPdf}
-                disabled={isGeneratingPdf}
-              >
-                {isGeneratingPdf ? "Generating..." : "Download ATS CV"}
-              </Button>
-              <Button
-                variant="outline"
-                className="font-mono text-xs px-3 py-1 h-auto border"
-                style={{
-                  borderColor: "var(--bg-border)",
-                  color: "var(--text-secondary)",
-                  background: "transparent",
-                }}
-                onClick={() => setIsPrinting(true)}
-              >
-                Download Styled CV
-              </Button>
-              <Button
-                variant="outline"
-                className="font-mono text-xs px-3 py-1 h-auto border"
-                style={{
-                  borderColor: "var(--bg-border)",
-                  color: "var(--text-secondary)",
-                  background: "transparent",
-                }}
-                onClick={() => setIsCvOpen(false)}
-              >
-                Close
-              </Button>
+            <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  className="font-mono text-xs px-3 py-1 h-auto border"
+                  style={{
+                    borderColor:
+                      cvView === "styled"
+                        ? "var(--accent-bright)"
+                        : "var(--bg-border)",
+                    color:
+                      cvView === "styled"
+                        ? "var(--accent-bright)"
+                        : "var(--text-secondary)",
+                    background: "transparent",
+                  }}
+                  onClick={() => setCvView("styled")}
+                >
+                  Styled CV
+                </Button>
+                <Button
+                  variant="outline"
+                  className="font-mono text-xs px-3 py-1 h-auto border"
+                  style={{
+                    borderColor:
+                      cvView === "ats"
+                        ? "var(--accent-bright)"
+                        : "var(--bg-border)",
+                    color:
+                      cvView === "ats"
+                        ? "var(--accent-bright)"
+                        : "var(--text-secondary)",
+                    background: "transparent",
+                  }}
+                  onClick={() => setCvView("ats")}
+                >
+                  ATS CV
+                </Button>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  variant="outline"
+                  className="font-mono text-xs px-3 py-1 h-auto border"
+                  style={{
+                    borderColor: "var(--accent-bright)",
+                    color: "var(--accent-bright)",
+                    background: "transparent",
+                  }}
+                  onClick={downloadAtsPdf}
+                  disabled={isGeneratingPdf}
+                >
+                  {isGeneratingPdf ? "Generating..." : "Download ATS CV"}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="font-mono text-xs px-3 py-1 h-auto border"
+                  style={{
+                    borderColor: "var(--bg-border)",
+                    color: "var(--text-secondary)",
+                    background: "transparent",
+                  }}
+                  onClick={() => setIsPrinting(true)}
+                >
+                  Download Styled CV
+                </Button>
+                <Button
+                  variant="outline"
+                  className="font-mono text-xs px-3 py-1 h-auto border"
+                  style={{
+                    borderColor: "var(--bg-border)",
+                    color: "var(--text-secondary)",
+                    background: "transparent",
+                  }}
+                  onClick={() => setIsCvOpen(false)}
+                >
+                  Close
+                </Button>
+              </div>
             </div>
-            <CvContent />
+
+            {cvView === "styled" ? (
+              <CvContent />
+            ) : atsViewerModules ? (
+              <atsViewerModules.PDFViewer width="100%" height={700} showToolbar>
+                <atsViewerModules.CvPdfDocument />
+              </atsViewerModules.PDFViewer>
+            ) : (
+              <p className="font-mono text-xs text-center py-16 text-muted">
+                Loading ATS CV preview...
+              </p>
+            )}
           </div>
         </div>
       )}

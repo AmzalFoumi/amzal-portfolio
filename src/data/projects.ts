@@ -89,7 +89,7 @@ export const projects: Project[] = [
       "GitHub Actions",
     ],
     year: "2026",
-    featured: true,
+    featured: false,
     tagLimit: 8,
     liveUrl: "https://finance.aiesec.lk",
     repoUrl: "https://github.com/AIESEC-LK/asl-finance-hub.git ",

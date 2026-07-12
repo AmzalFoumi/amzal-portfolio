@@ -62,3 +62,19 @@ export interface ExperienceGroup {
 
 export type VoluntaryGroup = ExperienceGroup;
 export type WorkExperienceGroup = ExperienceGroup;
+
+export interface Certification {
+  name: string;
+  issuer: string;
+  issueDate: string;
+  credentialId: string;
+  credentialUrl: string;
+  /** Logo shown only on the portfolio site (public/ path). */
+  logoUrl: string;
+  /** Set false to hide this certification from the generated ATS PDF. Defaults to shown. */
+  showInAtsCv?: boolean;
+  /** Set false to hide this role from the styled CV. Defaults to shown. */
+  showInStyledCv?: boolean;
+  /** Set true to wrap the logo in a card frame (background/border) on the portfolio site. Defaults to no frame — use when the badge image has no frame of its own. */
+  showLogoFrame?: boolean;
+}

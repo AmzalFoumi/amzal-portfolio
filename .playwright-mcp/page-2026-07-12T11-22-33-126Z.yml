@@ -1,0 +1,253 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "> Amzal Foumi" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e5]:
+        - button "About" [ref=e6]
+        - button "Projects" [ref=e7]
+        - button "Education" [ref=e8]
+        - button "Experience" [ref=e9]
+        - link [ref=e10] [cursor=pointer]:
+          - /url: mailto:mohamedamzal6@gmail.com
+          - button "Contact" [ref=e11]
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - paragraph [ref=e15]: "> hello, world"
+      - heading "Amzal Foumi" [level=1] [ref=e16]
+      - paragraph [ref=e17]: Aspiring Software Engineer | DevOps and Cloud | Engineering scalable solutions, one commit at a time
+      - generic [ref=e18]:
+        - button "View My Work" [ref=e19]
+        - link [ref=e20] [cursor=pointer]:
+          - /url: mailto:mohamedamzal6@gmail.com
+          - button "Get in Touch" [ref=e21]
+        - button "View CV" [ref=e22]
+      - generic [ref=e23]:
+        - link "GitHub" [ref=e24] [cursor=pointer]:
+          - /url: https://github.com/AmzalFoumi
+        - link "LinkedIn" [ref=e27] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/amzalfoumi
+        - link "Email" [ref=e30] [cursor=pointer]:
+          - /url: mailto:mohamedamzal6@gmail.com
+        - generic [ref=e34]: amzalfoumi
+    - generic [ref=e36]:
+      - generic [ref=e38]:
+        - generic [ref=e39]: "01."
+        - heading "About Me" [level=2] [ref=e40]
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - paragraph [ref=e44]: I am a third-year Software Engineering student at SLIIT, maintaining a 4.0 GPA and ranking in the top 1% of my batch. I focus on Software Engineering, Cloud, DevOps and AI applications. I also leverage AI tools to accelerate my workflows while expanding my skill set through leadership roles, university projects, and live delivery work. I am actively seeking a Software Engineering internship where I can contribute my technical and leadership experience to a challenging role.
+          - generic [ref=e45]:
+            - paragraph [ref=e46]: TECHNICAL SKILLS & EXPERIENCE
+            - generic [ref=e47]:
+              - paragraph [ref=e48]:
+                - generic [ref=e49]: "Architectures, Infrastructure & Tools:"
+                - text: Kubernetes, Docker, Amazon Web Services, Domain Driven Design, MVC Architecture, Microservices
+              - paragraph [ref=e50]:
+                - generic [ref=e51]: "Languages & Frameworks:"
+                - text: React, Next.js, Node.js, Express.js, Nest.js, Java, Kotlin
+          - generic [ref=e52]:
+            - paragraph [ref=e53]: CERTIFICATIONS
+            - link [ref=e55] [cursor=pointer]:
+              - /url: https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url
+              - img "AWS Certified AI Practitioner" [ref=e56]
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: $ whoami
+          - paragraph [ref=e63]: Amzal Foumi
+          - paragraph [ref=e64]: $ cat focus.txt
+          - paragraph [ref=e65]: AI-enabled software development
+          - paragraph [ref=e66]: DevOps and delivery
+          - paragraph [ref=e67]: leadership in live teams
+          - paragraph [ref=e68]: $ _
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e73]: "02."
+          - heading "Notable Projects" [level=2] [ref=e74]
+        - paragraph [ref=e76]: A selection of things I've built
+      - generic [ref=e77]:
+        - link "Aesth-ai View source Live site A proof-of-concept AI chatbot for an aesthetic-clinic site that answers product questions via dual retrieval — deterministic DB queries and semantic RAG search. Next.js Payload CMS MongoDB Vercel AI SDK 2026" [ref=e79] [cursor=pointer]:
+          - /url: /projects/aesth-ai
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - heading "Aesth-ai" [level=3] [ref=e82]
+              - generic [ref=e83]:
+                - button "View source" [ref=e84]
+                - button "Live site" [ref=e87]
+            - paragraph [ref=e92]: A proof-of-concept AI chatbot for an aesthetic-clinic site that answers product questions via dual retrieval — deterministic DB queries and semantic RAG search.
+            - generic [ref=e93]:
+              - generic [ref=e94]:
+                - generic [ref=e95]: Next.js
+                - generic [ref=e96]: Payload CMS
+                - generic [ref=e97]: MongoDB
+                - generic [ref=e98]: Vercel AI SDK
+              - generic [ref=e99]: "2026"
+        - link "Distributed Health View source A cloud-native healthcare platform with AI symptom checking, telemedicine, appointments, and prescription & reports management. Microservices Gemini API Nest.js Kubernetes Docker AWS EKS Terraform 2026" [ref=e101] [cursor=pointer]:
+          - /url: /projects/distributed-health
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "Distributed Health" [level=3] [ref=e104]
+              - button "View source" [ref=e106]
+            - paragraph [ref=e110]: A cloud-native healthcare platform with AI symptom checking, telemedicine, appointments, and prescription & reports management.
+            - generic [ref=e111]:
+              - generic [ref=e112]:
+                - generic [ref=e113]: Microservices
+                - generic [ref=e114]: Gemini API
+                - generic [ref=e115]: Nest.js
+                - generic [ref=e116]: Kubernetes
+                - generic [ref=e117]: Docker
+                - generic [ref=e118]: AWS EKS
+                - generic [ref=e119]: Terraform
+              - generic [ref=e120]: "2026"
+        - link "ASL Finance Hub View source Live site A financial intelligence dashboard for AIESEC Sri Lanka tracking KPIs, budgets, and audit scores across 11 Local Committees. ETL Pipeline React TypeScript TanStack Start Supabase PostgreSQL Google Sheets API Google AppScript 2026" [ref=e122] [cursor=pointer]:
+          - /url: /projects/asl-finance-hub
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - heading "ASL Finance Hub" [level=3] [ref=e125]
+              - generic [ref=e126]:
+                - button "View source" [ref=e127]
+                - button "Live site" [ref=e130]
+            - paragraph [ref=e135]: A financial intelligence dashboard for AIESEC Sri Lanka tracking KPIs, budgets, and audit scores across 11 Local Committees.
+            - generic [ref=e136]:
+              - generic [ref=e137]:
+                - generic [ref=e138]: ETL Pipeline
+                - generic [ref=e139]: React
+                - generic [ref=e140]: TypeScript
+                - generic [ref=e141]: TanStack Start
+                - generic [ref=e142]: Supabase
+                - generic [ref=e143]: PostgreSQL
+                - generic [ref=e144]: Google Sheets API
+                - generic [ref=e145]: Google AppScript
+              - generic [ref=e146]: "2026"
+        - link "Itinerary.ai View source AI-powered travel planner for generating itineraries, sharing posts, and booking hotels/events. Next.js Tailwind CSS Node.js Nest.js 2025" [ref=e148] [cursor=pointer]:
+          - /url: /projects/itinerary-ai
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - heading "Itinerary.ai" [level=3] [ref=e151]
+              - button "View source" [ref=e153]
+            - paragraph [ref=e157]: AI-powered travel planner for generating itineraries, sharing posts, and booking hotels/events.
+            - generic [ref=e158]:
+              - generic [ref=e159]:
+                - generic [ref=e160]: Next.js
+                - generic [ref=e161]: Tailwind CSS
+                - generic [ref=e162]: Node.js
+                - generic [ref=e163]: Nest.js
+              - generic [ref=e164]: "2025"
+        - link "KidsFeed View source Live site School meals program management with planning, distribution, attendance tracking, and FIFO inventory. React Tailwind CSS ShadCN Express 2026" [ref=e166] [cursor=pointer]:
+          - /url: /projects/kidsfeed
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - heading "KidsFeed" [level=3] [ref=e169]
+              - generic [ref=e170]:
+                - button "View source" [ref=e171]
+                - button "Live site" [ref=e174]
+            - paragraph [ref=e179]: School meals program management with planning, distribution, attendance tracking, and FIFO inventory.
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - generic [ref=e182]: React
+                - generic [ref=e183]: Tailwind CSS
+                - generic [ref=e184]: ShadCN
+                - generic [ref=e185]: Express
+              - generic [ref=e186]: "2026"
+        - link "aiesec.lk Live site Revamped the national AIESEC Sri Lanka website for a smoother, more colorful, fully responsive experience. Next.js TypeScript React ReactBits 2025" [ref=e188] [cursor=pointer]:
+          - /url: /projects/aiesec-lk
+          - generic [ref=e189]:
+            - generic [ref=e190]:
+              - heading "aiesec.lk" [level=3] [ref=e191]
+              - button "Live site" [ref=e193]
+            - paragraph [ref=e198]: Revamped the national AIESEC Sri Lanka website for a smoother, more colorful, fully responsive experience.
+            - generic [ref=e199]:
+              - generic [ref=e200]:
+                - generic [ref=e201]: Next.js
+                - generic [ref=e202]: TypeScript
+                - generic [ref=e203]: React
+                - generic [ref=e204]: ReactBits
+              - generic [ref=e205]: "2025"
+    - generic [ref=e207]:
+      - generic [ref=e209]:
+        - generic [ref=e210]: "03."
+        - heading "Education" [level=2] [ref=e211]
+      - generic [ref=e213]:
+        - generic [ref=e215]:
+          - paragraph [ref=e217]: Oct 2023 — Nov 2027
+          - heading "BSc Hons in Information Technology specializing in Software Engineering" [level=3] [ref=e218]
+          - paragraph [ref=e219]: SLIIT
+          - generic [ref=e220]:
+            - paragraph [ref=e221]: "Grade: CGPA 4.0"
+            - paragraph [ref=e222]: "Activities and societies: AIESEC in SLIIT"
+          - list [ref=e223]:
+            - listitem [ref=e224]:
+              - generic [ref=e225]: ▸
+              - generic [ref=e226]: Dean's List
+            - listitem [ref=e227]:
+              - generic [ref=e228]: ▸
+              - generic [ref=e229]: Best International Relations and Matching Leader - iGT
+            - listitem [ref=e230]:
+              - generic [ref=e231]: ▸
+              - generic [ref=e232]: Most Outstanding Event of the Year
+        - generic [ref=e233]:
+          - paragraph [ref=e235]: Mar 2008 — Feb 2022
+          - heading "GCE A/L in Physical Sciences" [level=3] [ref=e236]
+          - paragraph [ref=e237]: Royal College Colombo
+          - paragraph [ref=e238]: Group of 2021
+    - generic [ref=e240]:
+      - generic [ref=e242]:
+        - generic [ref=e243]: "04."
+        - heading "Experience" [level=2] [ref=e244]
+      - generic [ref=e247]:
+        - paragraph [ref=e248]: Volunteering Experience
+        - generic [ref=e249]:
+          - generic [ref=e251]:
+            - generic [ref=e252]:
+              - generic [ref=e253]:
+                - heading "AIESEC in Sri Lanka" [level=3] [ref=e254]
+                - paragraph [ref=e255]: Software Engineering Team Lead
+                - paragraph [ref=e256]: Colombo, Western Province, Sri Lanka · Part-time · Volunteer
+              - generic [ref=e257]: Mar 2025 – Present
+            - generic [ref=e259]:
+              - heading [level=3] [ref=e261]:
+                - button "Software Engineering Team Lead Feb 2026 – Present" [ref=e262]:
+                  - generic [ref=e263]: Software Engineering Team Lead
+                  - generic [ref=e265]: Feb 2026 – Present
+              - heading [level=3] [ref=e267]:
+                - button "Software Engineer | National Dev Team Mar 2025 – Feb 2026" [ref=e268]:
+                  - generic [ref=e269]: Software Engineer | National Dev Team
+                  - generic [ref=e271]: Mar 2025 – Feb 2026
+          - generic [ref=e273]:
+            - generic [ref=e274]:
+              - generic [ref=e275]:
+                - heading "AIESEC in SLIIT" [level=3] [ref=e276]
+                - paragraph [ref=e277]: International Relations Manager | Incoming Global Talent
+                - paragraph [ref=e278]: Colombo, Western Province, Sri Lanka · Part-time · Volunteer
+              - generic [ref=e279]: Sep 2024 – Present
+            - generic [ref=e281]:
+              - heading [level=3] [ref=e283]:
+                - button "International Relations Manager | Incoming Global Talent Jan 2026 – Present" [ref=e284]:
+                  - generic [ref=e285]: International Relations Manager | Incoming Global Talent
+                  - generic [ref=e287]: Jan 2026 – Present
+              - heading [level=3] [ref=e289]:
+                - button "Senior Team Leader - International Relations | Incoming Global Talent Jan 2025 – Jan 2026" [ref=e290]:
+                  - generic [ref=e291]: Senior Team Leader - International Relations | Incoming Global Talent
+                  - generic [ref=e293]: Jan 2025 – Jan 2026
+              - heading [level=3] [ref=e295]:
+                - button "Team Member - B2B Sales | Incoming Global Talent Aug 2024 – Jan 2025" [ref=e296]:
+                  - generic [ref=e297]: Team Member - B2B Sales | Incoming Global Talent
+                  - generic [ref=e299]: Aug 2024 – Jan 2025
+              - heading [level=3] [ref=e301]:
+                - button "Organizing Committee Vice President - Partnership Development | Benchmark 3.0 Sep 2024 – Dec 2024" [ref=e302]:
+                  - generic [ref=e303]: Organizing Committee Vice President - Partnership Development | Benchmark 3.0
+                  - generic [ref=e305]: Sep 2024 – Dec 2024
+  - contentinfo [ref=e306]:
+    - generic [ref=e307]:
+      - generic [ref=e308]:
+        - paragraph [ref=e310]: Amzal Foumi
+        - generic [ref=e311]:
+          - link "GitHub" [ref=e312] [cursor=pointer]:
+            - /url: https://github.com/AmzalFoumi
+          - link "LinkedIn" [ref=e315] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/amzalfoumi
+          - link "Email" [ref=e318] [cursor=pointer]:
+            - /url: mailto:mohamedamzal6@gmail.com
+      - paragraph [ref=e321]: © 2026 Amzal Foumi. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e327] [cursor=pointer]
+  - alert [ref=e331]

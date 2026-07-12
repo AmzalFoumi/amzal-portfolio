@@ -20,6 +20,7 @@ import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { education } from "@/data/education";
 import { voluntary } from "@/data/voluntary";
+import { certifications } from "@/data/certifications";
 
 const ACCENT = "#16a34a";
 const TEXT = "#111111";
@@ -205,6 +206,29 @@ export function CvPdfDocument() {
             ))}
           </View>
         ))}
+
+        {/* Certifications — honors `showInAtsCv` on each cert (undefined = shown). */}
+        {certifications.filter((cert) => cert.showInAtsCv !== false).length >
+          0 && (
+          <>
+            <Text style={styles.sectionTitle}>Certifications</Text>
+            {certifications
+              .filter((cert) => cert.showInAtsCv !== false)
+              .map((cert) => (
+                <View key={cert.credentialId} style={styles.entry}>
+                  <Text style={styles.entryHead}>{cert.name}</Text>
+                  <Text style={styles.entryMeta}>
+                    {cert.issuer} | Issued {cert.issueDate}
+                  </Text>
+                  <Text style={styles.paragraph}>
+                    <Link src={cert.credentialUrl} style={styles.link}>
+                      {cert.credentialUrl}
+                    </Link>
+                  </Text>
+                </View>
+              ))}
+          </>
+        )}
 
         {/* Honors */}
         {profile.honors.length > 0 && (

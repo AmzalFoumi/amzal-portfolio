@@ -308,6 +308,24 @@ export function CvContent() {
             </section>
 
             <section>
+              <h3 className="section-title">Certifications</h3>
+              <div className="text-xs text-gray-700 leading-relaxed">
+                <p className="mb-1">
+                  <strong>AWS Certified AI Practitioner</strong> — Amazon Web
+                  Services (Jul 2026)
+                </p>
+                <a
+                  href="https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
+                >
+                  Verify credential &#8599;
+                </a>
+              </div>
+            </section>
+
+            <section>
               <h3 className="section-title">Leadership &amp; Comm.</h3>
               <div className="text-xs text-gray-700 leading-relaxed">
                 <p className="mb-2">

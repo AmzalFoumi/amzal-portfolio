@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { profile } from "@/data/profile";
+import { certifications } from "@/data/certifications";
 
 // const STATS = [
 //   { value: "4.0", label: "GPA" },
@@ -66,6 +67,53 @@ export function AboutSection() {
                 ))}
               </div>
             </motion.div>
+
+            {/* Certifications */}
+            {certifications.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.32 }}
+                className="pt-2 space-y-4"
+              >
+                <p
+                  className="font-mono text-xs uppercase tracking-widest text-center lg:text-left"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
+                  CERTIFICATIONS
+                </p>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+                  {certifications.map((cert) => (
+                    <a
+                      key={cert.credentialId}
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${cert.name} — ${cert.issuer}`}
+                      className="rounded-lg transition-transform hover:-translate-y-0.5"
+                      style={
+                        cert.showLogoFrame
+                          ? {
+                              background: "var(--bg-elevated)",
+                              border: "1px solid var(--bg-border)",
+                            }
+                          : undefined
+                      }
+                    >
+                      <img
+                        src={cert.logoUrl}
+                        alt={cert.name}
+                        width={84}
+                        height={84}
+                        loading="lazy"
+                        className="w-21 h-21 rounded-lg"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </div>
 
           {/* Stats + decorative column */}

@@ -7,6 +7,10 @@ export const PROJECT_CARD_TAG_LIMIT = 4;
 // generated ATS PDF (CvPdfDocument.tsx). `showInStyledCv: false` is honored only
 // once the styled CV becomes data-driven — CvContent.tsx is currently hardcoded
 // and ignores it. Omitting a flag means the project is shown.
+//
+// `atsCvUrlPreference` / `styledCvUrlPreference` (per project): "live" | "repo" | "none",
+// independently choosing which URL (if any) is shown next to the project on each CV.
+// Defaults to "live" when omitted.
 
 // [PLACEHOLDER] Replace all project entries with your real projects
 export const projects: Project[] = [
@@ -31,6 +35,8 @@ export const projects: Project[] = [
     liveUrl: "https://aesth-ai-hazel.vercel.app",
     repoUrl: "https://github.com/AmzalFoumi/aesth-ai",
     featured: true,
+    atsCvUrlPreference: "live",
+    styledCvUrlPreference: "live",
   },
 
   {
@@ -64,6 +70,8 @@ export const projects: Project[] = [
     ],
     featured: true,
     tagLimit: 7,
+    atsCvUrlPreference: "repo",
+    styledCvUrlPreference: "repo",
   },
   {
     slug: "asl-finance-hub",
@@ -93,6 +101,8 @@ export const projects: Project[] = [
     tagLimit: 8,
     liveUrl: "https://finance.aiesec.lk",
     repoUrl: "https://github.com/AIESEC-LK/asl-finance-hub.git ",
+    atsCvUrlPreference: "live",
+    styledCvUrlPreference: "live",
   },
 
   {
@@ -115,6 +125,8 @@ export const projects: Project[] = [
     liveUrl: "https://kidsfeed.vercel.app/",
     repoUrl: "https://github.com/lakindu62/kidsfeed",
     featured: false,
+    atsCvUrlPreference: "none",
+    styledCvUrlPreference: "none",
   },
   {
     slug: "itinerary-ai",
@@ -135,6 +147,8 @@ export const projects: Project[] = [
     year: "2025",
     repoUrl: "https://github.com/lakindu62/itinerary_ai",
     featured: true,
+    atsCvUrlPreference: "repo",
+    styledCvUrlPreference: "repo",
   },
   {
     slug: "aiesec-lk",
@@ -149,6 +163,8 @@ export const projects: Project[] = [
     featured: false,
     showInAtsCv: false,
     showInStyledCv: false,
+    atsCvUrlPreference: "live",
+    styledCvUrlPreference: "live",
   },
   // {
   //   slug: "datasync-api",

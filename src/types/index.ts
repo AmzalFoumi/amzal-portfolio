@@ -14,8 +14,10 @@ export interface Project {
   year: string;
   liveUrl?: string;
   repoUrl?: string;
-  /** Set true to show the GitHub repo link on the generated CVs. Defaults to hidden. */
-  showRepoUrlInCv?: boolean;
+  /** Which URL to show next to this project on the ATS PDF (only relevant if showInAtsCv is not false). Defaults to "live". */
+  atsCvUrlPreference?: "live" | "repo" | "none";
+  /** Which URL to show next to this project on the styled CV (only relevant if showInStyledCv is not false). Defaults to "live". */
+  styledCvUrlPreference?: "live" | "repo" | "none";
   /** Extra external links (articles, videos, slides) beyond live/repo. */
   links?: ProjectLink[];
   imageUrl?: string;

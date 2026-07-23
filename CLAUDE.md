@@ -24,7 +24,7 @@ This is a single-page personal portfolio. The whole site is **data-driven**: con
 - **Content layer** (`src/data/`): `profile.ts`, `projects.ts`, `education.ts`, `workExperience.ts`, `voluntary.ts`. All shapes are defined in `src/types/index.ts` (`Project`, `EducationEntry`, `ExperienceGroup` and its `WorkExperienceGroup`/`VoluntaryGroup` aliases). `ExperienceGroup` nests `roles[]` so one organisation can list multiple roles.
 - **Home page** (`src/app/page.tsx`): fixed vertical stack of section components (`HeroSection`, `AboutSection`, `ProjectsSection`, `EducationSection`, `ExperienceSection`) from `src/components/sections/`. Reorder/add sections here.
 - **Project detail pages** (`src/app/projects/[slug]/page.tsx`): statically generated per project via `generateStaticParams()` over the `projects` array. Slug order in `projects.ts` also drives prev/next navigation. `fullDescription` is split on `\n\n` into paragraphs — author multi-paragraph copy with double newlines.
-- **Component tiers** (`src/components/`): `sections/` (page sections) → `shared/` (reusable pieces like `ProjectCard`, `TagBadge`, `SectionHeading`, `CvContent`) → `ui/` (unmodified shadcn primitives). `layout/` holds `Navbar` and `Footer` (rendered by the root layout, not the page).
+- **Component tiers** (`src/components/`): `sections/` (page sections) → `shared/` (reusable pieces like `ProjectCard`, `TagBadge`, `SectionHeading`, `CvStyledStatic`) → `ui/` (unmodified shadcn primitives). `layout/` holds `Navbar` and `Footer` (rendered by the root layout, not the page).
 
 ## Theming / styling conventions
 
@@ -33,7 +33,7 @@ All design tokens are CSS custom properties in `src/app/globals.css` and are the
 - The site is **dark-theme only** by design (a `@layer base` reset forces it). Tokens live under `:root` as `--bg-*`, `--text-*`, `--accent-*`, `--radius-*`.
 - Components style with **inline `style={{ color: "var(--text-primary)" }}`** referencing these variables, rather than Tailwind color classes. Match this pattern when editing components — the existing code leans on `var(--…)` heavily.
 - Tailwind v4 is configured in CSS (`@theme inline` in `globals.css`), not a `tailwind.config.js`. Tokens are also forwarded to shadcn-style names (`--color-*`) there.
-- The CV modal (`CvContent`) is an intentional exception: `.cv-root` in `globals.css` overrides the tokens to a **light** theme and adds print styles (`@media print`) for A4 export. `CvPdfDocument` (`@react-pdf/renderer`) is a separate, parallel implementation of the same CV content for generating a downloadable PDF — keep both in sync when editing CV content.
+- The CV modal (`CvStyledStatic`) is an intentional exception: `.cv-root` in `globals.css` overrides the tokens to a **light** theme and adds print styles (`@media print`) for A4 export. `CvAtsDynamic` (`@react-pdf/renderer`) is a separate, parallel implementation of the same CV content for generating a downloadable PDF — keep both in sync when editing CV content. A data-driven styled variant, `CvStyledDynamic`, exists in parallel for future evaluation but is not yet wired into any page.
 - Reusable helpers in `globals.css`: `.section` / `.section-container` (layout), `.tag`, `.card-glow` (hover glow), `.dot-grid` (hero background).
 
 ## Fonts

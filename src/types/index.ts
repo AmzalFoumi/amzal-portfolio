@@ -73,6 +73,7 @@ export interface Reference {
   mobile?: string;
   role?: string;
   organization?: string;
+  linkedinUrl?: string;
   description?: string;
 }
 

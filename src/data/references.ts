@@ -2,19 +2,17 @@ import { Reference } from "@/types";
 
 export const references: Reference[] = [
   {
-    name: "[REFERENCE NAME]",
-    email: "[reference@example.com]",
-    mobile: "[+94 XX XXX XXXX]",
-    role: "[Role]",
-    organization: "[Organization]",
-    description: "[PLACEHOLDER: how this reference knows you]",
+    name: "Dinuka Avinash",
+    email: "dinuka.avinash@aiesec.net",
+    role: "President",
+    organization: "AIESEC in Sri Lanka",
+    linkedinUrl: "https://www.linkedin.com/in/dinuka-avinash/",
   },
   {
-    name: "[REFERENCE NAME]",
-    email: "[reference@example.com]",
-    mobile: "[+94 XX XXX XXXX]",
-    role: "[Role]",
-    organization: "[Organization]",
-    description: "[PLACEHOLDER: how this reference knows you]",
+    name: "Silmy Ahamed",
+    email: "Silmya@itx360.com",
+    role: "Director/CEO",
+    organization: "ITX360",
+    linkedinUrl: "https://www.linkedin.com/in/silmy-ahamed-0b99812/",
   },
 ];

@@ -321,6 +321,19 @@ export function CvContentDynamic() {
                       {ref.email}
                     </a>
                     {ref.mobile ? ` | ${ref.mobile}` : ""}
+                    {ref.linkedinUrl && (
+                      <>
+                        {" | "}
+                        <a
+                          href={ref.linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline text-[var(--accent-brand)]"
+                        >
+                          LinkedIn
+                        </a>
+                      </>
+                    )}
                   </p>
                   {ref.description && <p className="mt-1">{ref.description}</p>}
                 </div>

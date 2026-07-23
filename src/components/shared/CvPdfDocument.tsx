@@ -265,6 +265,16 @@ export function CvPdfDocument() {
                     {ref.email}
                   </Link>
                   {ref.mobile ? ` | ${ref.mobile}` : ""}
+                  {ref.linkedinUrl ? (
+                    <>
+                      {" | "}
+                      <Link src={ref.linkedinUrl} style={styles.link}>
+                        LinkedIn
+                      </Link>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </Text>
                 {ref.description && (
                   <Text style={styles.paragraph}>{ref.description}</Text>

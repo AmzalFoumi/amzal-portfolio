@@ -249,7 +249,9 @@ export function CvAtsDynamic() {
           </>
         )}
 
-        {/* References */}
+        {/* References — full contact details are somewhat old-school; modern
+            convention favors omitting this section or using "References
+            available upon request" instead. Revisit if that becomes preferred. */}
         {references.length > 0 && (
           <>
             <Text style={styles.sectionTitle}>References</Text>

@@ -304,6 +304,25 @@ export function CvStyledDynamic() {
           </div>
         </div>
 
+        <section className="mt-6">
+          <h3 className="section-title">Leadership &amp; Comm.</h3>
+          <div className="text-xs text-gray-700 leading-relaxed">
+            <p className="mb-2">
+              <strong>AIESEC SLIIT IR Manager</strong> (Jan 2025 - Present):
+              Managed 3 teams for Incoming Global Talent. Awarded
+              <em>&ldquo;Best Performing iGT IR &amp; M Leader&rdquo;</em> at
+              Legacy 2025.
+            </p>
+            <p>
+              <strong>Core Competencies:</strong> Cross-Cultural
+              Collaboration, Stakeholder Management, Agile Team Leadership.
+            </p>
+          </div>
+        </section>
+
+        {/* References — full contact details are somewhat old-school; modern
+            convention favors omitting this section or using "References
+            available upon request" instead. Revisit if that becomes preferred. */}
         {references.length > 0 && (
           <section className="mt-6">
             <h3 className="section-title">References</h3>
@@ -341,22 +360,6 @@ export function CvStyledDynamic() {
             </div>
           </section>
         )}
-
-        <section className="mt-6">
-          <h3 className="section-title">Leadership &amp; Comm.</h3>
-          <div className="text-xs text-gray-700 leading-relaxed">
-            <p className="mb-2">
-              <strong>AIESEC SLIIT IR Manager</strong> (Jan 2025 - Present):
-              Managed 3 teams for Incoming Global Talent. Awarded
-              <em>&ldquo;Best Performing iGT IR &amp; M Leader&rdquo;</em> at
-              Legacy 2025.
-            </p>
-            <p>
-              <strong>Core Competencies:</strong> Cross-Cultural
-              Collaboration, Stakeholder Management, Agile Team Leadership.
-            </p>
-          </div>
-        </section>
       </div>
     </div>
   );

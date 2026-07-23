@@ -15,6 +15,7 @@ import { education } from "@/data/education";
 import { voluntary } from "@/data/voluntary";
 import { projects } from "@/data/projects";
 import { certifications } from "@/data/certifications";
+import { references } from "@/data/references";
 
 export function CvContentDynamic() {
   const volunteering = voluntary
@@ -302,6 +303,31 @@ export function CvContentDynamic() {
             )}
           </div>
         </div>
+
+        {references.length > 0 && (
+          <section className="mt-6">
+            <h3 className="section-title">References</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {references.map((ref) => (
+                <div key={ref.email} className="text-xs text-gray-700 leading-relaxed">
+                  <p className="font-bold text-sm mb-0.5">{ref.name}</p>
+                  {(ref.role || ref.organization) && (
+                    <p className="text-muted mb-1">
+                      {[ref.role, ref.organization].filter(Boolean).join(" - ")}
+                    </p>
+                  )}
+                  <p className="font-mono">
+                    <a href={`mailto:${ref.email}`} className="hover:underline">
+                      {ref.email}
+                    </a>
+                    {ref.mobile ? ` | ${ref.mobile}` : ""}
+                  </p>
+                  {ref.description && <p className="mt-1">{ref.description}</p>}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-6">
           <h3 className="section-title">Leadership &amp; Comm.</h3>

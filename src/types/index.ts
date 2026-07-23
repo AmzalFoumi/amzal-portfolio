@@ -67,6 +67,15 @@ export interface ExperienceGroup {
 export type VoluntaryGroup = ExperienceGroup;
 export type WorkExperienceGroup = ExperienceGroup;
 
+export interface Reference {
+  name: string;
+  email: string;
+  mobile?: string;
+  role?: string;
+  organization?: string;
+  description?: string;
+}
+
 export interface Certification {
   name: string;
   issuer: string;

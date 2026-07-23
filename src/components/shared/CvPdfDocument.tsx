@@ -21,6 +21,7 @@ import { projects } from "@/data/projects";
 import { education } from "@/data/education";
 import { voluntary } from "@/data/voluntary";
 import { certifications } from "@/data/certifications";
+import { references } from "@/data/references";
 
 const ACCENT = "#16a34a";
 const TEXT = "#111111";
@@ -245,6 +246,31 @@ export function CvPdfDocument() {
                   </Text>
                 </View>
               ))}
+          </>
+        )}
+
+        {/* References */}
+        {references.length > 0 && (
+          <>
+            <Text style={styles.sectionTitle}>References</Text>
+            {references.map((ref) => (
+              <View key={ref.email} style={styles.entry} wrap={false}>
+                <Text style={styles.entryHead}>
+                  {ref.name}
+                  {ref.role ? `, ${ref.role}` : ""}
+                  {ref.organization ? ` - ${ref.organization}` : ""}
+                </Text>
+                <Text style={styles.entryMeta}>
+                  <Link src={`mailto:${ref.email}`} style={styles.link}>
+                    {ref.email}
+                  </Link>
+                  {ref.mobile ? ` | ${ref.mobile}` : ""}
+                </Text>
+                {ref.description && (
+                  <Text style={styles.paragraph}>{ref.description}</Text>
+                )}
+              </View>
+            ))}
           </>
         )}
 

@@ -312,28 +312,53 @@ export function CvStyledStatic() {
 
             <section>
               <h3 className="section-title">Certifications</h3>
-              <div className="flex justify-between items-center gap-3">
-                <p className="text-xs text-gray-700 leading-relaxed">
-                  <strong>AWS Certified AI Practitioner</strong> — Amazon Web
-                  Services (Jul 2026)
-                </p>
-                <a
-                  href="https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Verify credential"
-                  className="flex flex-col items-center gap-1 group hover:-translate-y-0.5 transition-transform shrink-0"
-                >
-                  <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url"
-                    alt="Certification verification QR"
-                    className="w-[42px] h-[42px] border border-[var(--bg-border)] rounded-[4px] p-0.5 mix-blend-multiply bg-white shadow-sm group-hover:border-[var(--accent-brand)]"
-                    loading="lazy"
-                  />
-                  <span className="text-[0.5rem] font-mono text-muted uppercase group-hover:text-[var(--accent-brand)]">
-                    Verify
-                  </span>
-                </a>
+              <div className="flex flex-col gap-3">
+                <div className="flex justify-between items-center gap-3">
+                  <p className="text-xs text-gray-700 leading-relaxed">
+                    <strong>AWS Certified AI Practitioner</strong> — Amazon Web
+                    Services (Jul 2026)
+                  </p>
+                  <a
+                    href="https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Verify credential"
+                    className="flex flex-col items-center gap-1 group hover:-translate-y-0.5 transition-transform shrink-0"
+                  >
+                    <img
+                      src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url"
+                      alt="Certification verification QR"
+                      className="w-[42px] h-[42px] border border-[var(--bg-border)] rounded-[4px] p-0.5 mix-blend-multiply bg-white shadow-sm group-hover:border-[var(--accent-brand)]"
+                      loading="lazy"
+                    />
+                    <span className="text-[0.5rem] font-mono text-muted uppercase group-hover:text-[var(--accent-brand)]">
+                      Verify
+                    </span>
+                  </a>
+                </div>
+                <div className="flex justify-between items-center gap-3">
+                  <p className="text-xs text-gray-700 leading-relaxed">
+                    <strong>AWS Certified Cloud Practitioner</strong> — Amazon
+                    Web Services (Jul 2026)
+                  </p>
+                  <a
+                    href="https://www.credly.com/badges/79ff4dec-c5ee-4cde-878f-08401d8325a4/public_url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Verify credential"
+                    className="flex flex-col items-center gap-1 group hover:-translate-y-0.5 transition-transform shrink-0"
+                  >
+                    <img
+                      src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.credly.com/badges/79ff4dec-c5ee-4cde-878f-08401d8325a4/public_url"
+                      alt="Certification verification QR"
+                      className="w-[42px] h-[42px] border border-[var(--bg-border)] rounded-[4px] p-0.5 mix-blend-multiply bg-white shadow-sm group-hover:border-[var(--accent-brand)]"
+                      loading="lazy"
+                    />
+                    <span className="text-[0.5rem] font-mono text-muted uppercase group-hover:text-[var(--accent-brand)]">
+                      Verify
+                    </span>
+                  </a>
+                </div>
               </div>
             </section>
           </div>

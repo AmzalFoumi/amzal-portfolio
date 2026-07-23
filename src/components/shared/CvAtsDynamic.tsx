@@ -83,7 +83,7 @@ function Bullet({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function CvPdfDocument() {
+export function CvAtsDynamic() {
   return (
     <Document
       title={`${profile.name} - CV`}

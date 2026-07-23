@@ -4,8 +4,8 @@ import type { Project } from "@/types";
 export const PROJECT_CARD_TAG_LIMIT = 4;
 
 // CV visibility flags (per project): `showInAtsCv: false` hides a project from the
-// generated ATS PDF (CvPdfDocument.tsx). `showInStyledCv: false` is honored only
-// once the styled CV becomes data-driven — CvContent.tsx is currently hardcoded
+// generated ATS PDF (CvAtsDynamic.tsx). `showInStyledCv: false` is honored only
+// once the styled CV becomes data-driven — CvStyledStatic.tsx is currently hardcoded
 // and ignores it. Omitting a flag means the project is shown.
 //
 // `atsCvUrlPreference` / `styledCvUrlPreference` (per project): "live" | "repo" | "none",

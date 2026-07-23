@@ -1,14 +1,14 @@
 /**
  * Styled (human-facing) CV — data-driven variant.
  *
- * Same JSX structure/classes/print CSS hooks as `CvContent.tsx`, but every
+ * Same JSX structure/classes/print CSS hooks as `CvStyledStatic.tsx`, but every
  * entry is pulled from `src/data/*` and honors each entry's `showInStyledCv`
- * flag. Not wired into any page yet — `CvContent.tsx` remains the active,
+ * flag. Not wired into any page yet — `CvStyledStatic.tsx` remains the active,
  * hand-maintained component and this file is not yet imported anywhere.
  *
  * The "Leadership & Comm." section has no corresponding data model in
  * `src/data/*` (narrative AIESEC content, not structured), so it stays
- * hardcoded here too, matching `CvContent.tsx`.
+ * hardcoded here too, matching `CvStyledStatic.tsx`.
  */
 import { profile } from "@/data/profile";
 import { education } from "@/data/education";
@@ -17,7 +17,7 @@ import { projects } from "@/data/projects";
 import { certifications } from "@/data/certifications";
 import { references } from "@/data/references";
 
-export function CvContentDynamic() {
+export function CvStyledDynamic() {
   const volunteering = voluntary
     .map((group) => ({
       ...group,

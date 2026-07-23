@@ -10,9 +10,9 @@ import {
   EnvelopeIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/data/profile";
-import { CvContent } from "@/components/shared/CvContent";
+import { CvStyledStatic } from "@/components/shared/CvStyledStatic";
 import type { PDFViewer as PDFViewerType } from "@react-pdf/renderer";
-import type { CvPdfDocument as CvPdfDocumentType } from "@/components/shared/CvPdfDocument";
+import type { CvAtsDynamic as CvAtsDynamicType } from "@/components/shared/CvAtsDynamic";
 
 const SOCIAL_LINKS = [
   { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
@@ -33,7 +33,7 @@ export function HeroSection() {
   const [cvView, setCvView] = useState<"styled" | "ats">("styled");
   const [atsViewerModules, setAtsViewerModules] = useState<{
     PDFViewer: typeof PDFViewerType;
-    CvPdfDocument: typeof CvPdfDocumentType;
+    CvAtsDynamic: typeof CvAtsDynamicType;
   } | null>(null);
 
   // Lazily load the PDF viewer + document only when the ATS tab is first
@@ -45,10 +45,10 @@ export function HeroSection() {
     let cancelled = false;
     Promise.all([
       import("@react-pdf/renderer"),
-      import("@/components/shared/CvPdfDocument"),
-    ]).then(([{ PDFViewer }, { CvPdfDocument }]) => {
+      import("@/components/shared/CvAtsDynamic"),
+    ]).then(([{ PDFViewer }, { CvAtsDynamic }]) => {
       if (!cancelled) {
-        setAtsViewerModules({ PDFViewer, CvPdfDocument });
+        setAtsViewerModules({ PDFViewer, CvAtsDynamic });
       }
     });
     return () => {
@@ -86,11 +86,11 @@ export function HeroSection() {
     }
     setIsGeneratingPdf(true);
     try {
-      const [{ pdf }, { CvPdfDocument }] = await Promise.all([
+      const [{ pdf }, { CvAtsDynamic }] = await Promise.all([
         import("@react-pdf/renderer"),
-        import("@/components/shared/CvPdfDocument"),
+        import("@/components/shared/CvAtsDynamic"),
       ]);
-      const blob = await pdf(<CvPdfDocument />).toBlob();
+      const blob = await pdf(<CvAtsDynamic />).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
@@ -372,10 +372,10 @@ export function HeroSection() {
             </div>
 
             {cvView === "styled" ? (
-              <CvContent />
+              <CvStyledStatic />
             ) : atsViewerModules ? (
               <atsViewerModules.PDFViewer width="100%" height={700} showToolbar>
-                <atsViewerModules.CvPdfDocument />
+                <atsViewerModules.CvAtsDynamic />
               </atsViewerModules.PDFViewer>
             ) : (
               <p className="font-mono text-xs text-center py-16 text-muted">
@@ -389,7 +389,7 @@ export function HeroSection() {
       {/* Hidden print portal — only its contents reach the printer / PDF */}
       {isPrinting && (
         <div className="cv-print-root" aria-hidden="true">
-          <CvContent />
+          <CvStyledStatic />
         </div>
       )}
     </section>

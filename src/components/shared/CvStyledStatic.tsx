@@ -3,13 +3,13 @@
  *
  * NOTE: This component does NOT read `src/data/*`, so the `showInStyledCv` flag
  * on projects/roles has no effect here. To add or remove an entry from the styled
- * CV, edit the JSX below by hand. (The ATS PDF, `CvPdfDocument.tsx`, is the
+ * CV, edit the JSX below by hand. (The ATS PDF, `CvAtsDynamic.tsx`, is the
  * data-driven one and honors the `showInAtsCv` flag.)
  *
- * A parallel data-driven version lives at `CvContentDynamic.tsx` for future
+ * A parallel data-driven version lives at `CvStyledDynamic.tsx` for future
  * evaluation — this file is kept as-is as the known-good rollback.
  */
-export function CvContent() {
+export function CvStyledStatic() {
   return (
     <div className="cv-root">
       <div className="cv-page dot-grid p-10">

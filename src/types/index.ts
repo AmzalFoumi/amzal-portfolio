@@ -69,8 +69,6 @@ export type WorkExperienceGroup = ExperienceGroup;
 
 export interface Reference {
   name: string;
-  email: string;
-  mobile?: string;
   role?: string;
   organization?: string;
   linkedinUrl?: string;

@@ -320,44 +320,39 @@ export function CvStyledDynamic() {
           </div>
         </section>
 
-        {/* References — full contact details are somewhat old-school; modern
-            convention favors omitting this section or using "References
-            available upon request" instead. Revisit if that becomes preferred. */}
+        {/* Contact details intentionally omitted — "available upon request" is
+            noted once below rather than repeated per referee. */}
         {references.length > 0 && (
           <section className="mt-6">
             <h3 className="section-title">References</h3>
             <div className="grid grid-cols-2 gap-4">
               {references.map((ref) => (
-                <div key={ref.email} className="text-xs text-gray-700 leading-relaxed">
+                <div key={ref.name} className="text-xs text-gray-700 leading-relaxed">
                   <p className="font-bold text-sm mb-0.5">{ref.name}</p>
                   {(ref.role || ref.organization) && (
                     <p className="text-muted mb-1">
                       {[ref.role, ref.organization].filter(Boolean).join(" - ")}
                     </p>
                   )}
-                  <p className="font-mono">
-                    <a href={`mailto:${ref.email}`} className="hover:underline">
-                      {ref.email}
-                    </a>
-                    {ref.mobile ? ` | ${ref.mobile}` : ""}
-                    {ref.linkedinUrl && (
-                      <>
-                        {" | "}
-                        <a
-                          href={ref.linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:underline text-[var(--accent-brand)]"
-                        >
-                          LinkedIn
-                        </a>
-                      </>
-                    )}
-                  </p>
+                  {ref.linkedinUrl && (
+                    <p className="font-mono">
+                      <a
+                        href={ref.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-[var(--accent-brand)]"
+                      >
+                        LinkedIn
+                      </a>
+                    </p>
+                  )}
                   {ref.description && <p className="mt-1">{ref.description}</p>}
                 </div>
               ))}
             </div>
+            <p className="text-xs text-muted mt-2">
+              Contact details available upon request.
+            </p>
           </section>
         )}
       </div>

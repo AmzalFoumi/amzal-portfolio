@@ -249,40 +249,33 @@ export function CvAtsDynamic() {
           </>
         )}
 
-        {/* References — full contact details are somewhat old-school; modern
-            convention favors omitting this section or using "References
-            available upon request" instead. Revisit if that becomes preferred. */}
+        {/* Contact details intentionally omitted — "available upon request" is
+            noted once below rather than repeated per referee. */}
         {references.length > 0 && (
           <>
             <Text style={styles.sectionTitle}>References</Text>
             {references.map((ref) => (
-              <View key={ref.email} style={styles.entry} wrap={false}>
+              <View key={ref.name} style={styles.entry} wrap={false}>
                 <Text style={styles.entryHead}>
                   {ref.name}
                   {ref.role ? `, ${ref.role}` : ""}
                   {ref.organization ? ` - ${ref.organization}` : ""}
                 </Text>
-                <Text style={styles.entryMeta}>
-                  <Link src={`mailto:${ref.email}`} style={styles.link}>
-                    {ref.email}
-                  </Link>
-                  {ref.mobile ? ` | ${ref.mobile}` : ""}
-                  {ref.linkedinUrl ? (
-                    <>
-                      {" | "}
-                      <Link src={ref.linkedinUrl} style={styles.link}>
-                        LinkedIn
-                      </Link>
-                    </>
-                  ) : (
-                    ""
-                  )}
-                </Text>
+                {ref.linkedinUrl && (
+                  <Text style={styles.entryMeta}>
+                    <Link src={ref.linkedinUrl} style={styles.link}>
+                      LinkedIn
+                    </Link>
+                  </Text>
+                )}
                 {ref.description && (
                   <Text style={styles.paragraph}>{ref.description}</Text>
                 )}
               </View>
             ))}
+            <Text style={styles.paragraph}>
+              Contact details available upon request.
+            </Text>
           </>
         )}
 

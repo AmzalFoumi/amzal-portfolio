@@ -134,7 +134,7 @@ export function CvAtsDynamic() {
 
         {/* Experience — honors `showInAtsCv` on each role (undefined = shown).
             A group whose roles are all hidden is skipped entirely. */}
-        <Text style={styles.sectionTitle}>Experience</Text>
+        <Text style={styles.sectionTitle}>Technical Experience</Text>
         {voluntary.map((group) => {
           const roles = group.roles.filter(
             (role) => role.showInAtsCv !== false,
@@ -170,32 +170,32 @@ export function CvAtsDynamic() {
         {projects
           .filter((project) => project.showInAtsCv !== false)
           .map((project) => {
-          const tags =
-            typeof project.tagLimit === "number"
-              ? project.tags.slice(0, project.tagLimit)
-              : project.tags;
-          const urlPref = project.atsCvUrlPreference ?? "live";
-          const url =
-            urlPref === "none"
-              ? undefined
-              : urlPref === "repo"
-                ? project.repoUrl?.trim()
-                : project.liveUrl?.trim();
-          return (
-            <View key={project.slug} style={styles.entry} wrap={false}>
-              <Text style={styles.entryHead}>
-                {project.title}
-                {url ? " - " : ""}
-                {url ? (
-                  <Link src={url} style={styles.link}>
-                    {url}
-                  </Link>
-                ) : null}
-              </Text>
-              <Text style={styles.paragraph}>{project.shortDescription}</Text>
-              <Text style={styles.entryMeta}>Tech: {tags.join(", ")}</Text>
-            </View>
-          );
+            const tags =
+              typeof project.tagLimit === "number"
+                ? project.tags.slice(0, project.tagLimit)
+                : project.tags;
+            const urlPref = project.atsCvUrlPreference ?? "live";
+            const url =
+              urlPref === "none"
+                ? undefined
+                : urlPref === "repo"
+                  ? project.repoUrl?.trim()
+                  : project.liveUrl?.trim();
+            return (
+              <View key={project.slug} style={styles.entry} wrap={false}>
+                <Text style={styles.entryHead}>
+                  {project.title}
+                  {url ? " - " : ""}
+                  {url ? (
+                    <Link src={url} style={styles.link}>
+                      {url}
+                    </Link>
+                  ) : null}
+                </Text>
+                <Text style={styles.paragraph}>{project.shortDescription}</Text>
+                <Text style={styles.entryMeta}>Tech: {tags.join(", ")}</Text>
+              </View>
+            );
           })}
 
         {/* Education */}
@@ -230,11 +230,7 @@ export function CvAtsDynamic() {
             {certifications
               .filter((cert) => cert.showInAtsCv !== false)
               .map((cert) => (
-                <View
-                  key={cert.credentialId}
-                  style={styles.entry}
-                  wrap={false}
-                >
+                <View key={cert.credentialId} style={styles.entry} wrap={false}>
                   <Text style={styles.entryHead}>{cert.name}</Text>
                   <Text style={styles.entryMeta}>
                     {cert.issuer} | Issued {cert.issueDate}
@@ -278,7 +274,6 @@ export function CvAtsDynamic() {
             </Text>
           </>
         )}
-
       </Page>
     </Document>
   );

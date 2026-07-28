@@ -101,9 +101,7 @@ export function CvStyledStatic() {
         <div className="grid-layout">
           <div className="flex flex-col gap-6">
             <section>
-              <h3 className="section-title">
-                Technical Volunteering Experience
-              </h3>
+              <h3 className="section-title">Technical Experience</h3>
 
               <div className="mb-4">
                 <div className="flex justify-between items-baseline mb-1">
@@ -374,8 +372,8 @@ export function CvStyledStatic() {
               Legacy 2025.
             </p>
             <p>
-              <strong>Core Competencies:</strong> Cross-Cultural
-              Collaboration, Stakeholder Management, Agile Team Leadership.
+              <strong>Core Competencies:</strong> Cross-Cultural Collaboration,
+              Stakeholder Management, Agile Team Leadership.
             </p>
           </div>
         </section>

@@ -117,9 +117,7 @@ export function CvStyledDynamic() {
         <div className="grid-layout">
           <div className="flex flex-col gap-6">
             <section>
-              <h3 className="section-title">
-                Technical Volunteering Experience
-              </h3>
+              <h3 className="section-title">Technical Experience</h3>
 
               {volunteering.map((group) =>
                 group.roles.map((role, i) => (
@@ -211,14 +209,13 @@ export function CvStyledDynamic() {
                   <h4 className="font-bold text-sm">
                     {edu.degree} {edu.field}
                   </h4>
-                  <p className="text-xs font-medium mt-1">
-                    {edu.institution}
-                  </p>
+                  <p className="text-xs font-medium mt-1">{edu.institution}</p>
                   <p className="text-xs text-muted font-mono mb-2">
                     {edu.startYear} - {edu.endYear}
                   </p>
 
-                  {(edu.grade || (edu.achievements && edu.achievements.length > 0)) && (
+                  {(edu.grade ||
+                    (edu.achievements && edu.achievements.length > 0)) && (
                     <div className="bg-[var(--bg-base)] p-3 rounded-md border border-[var(--bg-border)]">
                       {edu.grade && (
                         <div className="text-2xl font-bold text-[var(--accent-brand)] leading-none mb-1">
@@ -314,8 +311,8 @@ export function CvStyledDynamic() {
               Legacy 2025.
             </p>
             <p>
-              <strong>Core Competencies:</strong> Cross-Cultural
-              Collaboration, Stakeholder Management, Agile Team Leadership.
+              <strong>Core Competencies:</strong> Cross-Cultural Collaboration,
+              Stakeholder Management, Agile Team Leadership.
             </p>
           </div>
         </section>
@@ -327,7 +324,10 @@ export function CvStyledDynamic() {
             <h3 className="section-title">References</h3>
             <div className="grid grid-cols-2 gap-4">
               {references.map((ref) => (
-                <div key={ref.name} className="text-xs text-gray-700 leading-relaxed">
+                <div
+                  key={ref.name}
+                  className="text-xs text-gray-700 leading-relaxed"
+                >
                   <p className="font-bold text-sm mb-0.5">{ref.name}</p>
                   {(ref.role || ref.organization) && (
                     <p className="text-muted mb-1">

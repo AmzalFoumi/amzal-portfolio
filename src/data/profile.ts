@@ -29,6 +29,8 @@ export const profile = {
       label: "AI & ML",
       items: [
         "Prompt Engineering",
+        "AI Agents / MCP",
+        "Pydantic AI",
         "Gemini API",
         "Vercel AI SDK",
         "RAG / Vector Search",
@@ -36,15 +38,27 @@ export const profile = {
     },
     {
       label: "Languages",
-      items: ["Java", "Kotlin", "TypeScript", "Javascript"],
+      items: ["Java", "Kotlin", "TypeScript", "Javascript", "Python"],
     },
     {
       label: "Frameworks",
-      items: ["React", "Next.js", "Node.js", "Express.js", "Nest.js"],
+      items: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "Express.js",
+        "Nest.js",
+        "FastAPI",
+      ],
     },
     {
       label: "Architectures",
-      items: ["Domain Driven Design", "MVC Architecture", "Microservices"],
+      items: [
+        "Domain Driven Design",
+        "Ports & Adapters",
+        "MVC Architecture",
+        "Microservices",
+      ],
     },
   ],
   summary: [

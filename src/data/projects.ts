@@ -15,6 +15,36 @@ export const PROJECT_CARD_TAG_LIMIT = 4;
 // [PLACEHOLDER] Replace all project entries with your real projects
 export const projects: Project[] = [
   {
+    slug: "agentic-erp",
+    title: "Agentic ERP",
+    shortDescription:
+      "A supermarket inventory ERP where the business logic is written once and reused by three consumers — a FastAPI HTTP API, an MCP server, and a Pydantic AI agent that drives the system through those same tools.",
+    fullDescription:
+      "Agentic ERP is a supermarket inventory and purchasing system built around a single thesis: the business logic should be written exactly once and reused by every consumer that needs it. It is served through two independent front doors — a FastAPI HTTP API behind a Next.js inventory-manager UI, and an MCP server exposing the same operations as tools an AI agent can call.\n\nThe architecture holds because the boundary is mechanical rather than conventional. A service function is a plain Python function; FastAPI wraps it in a route and MCP wraps it in a tool, and neither framework owns the logic. `services/` may never import from `api/` or `mcp_server/` and never touches web concepts — no HTTPException, no status codes — with three import-linter contracts enforcing that across the codebase. Services raise plain exceptions from a shared vocabulary, and each adapter translates them into its own dialect: a NotFoundError becomes an HTTP 404 in the API and an error message in MCP.\n\nThe frontend gets the same treatment so it cannot drift. Two ESLint no-restricted-imports rules enforce that only the API module may call fetch, and that no Next.js route handlers may mirror FastAPI endpoints — a proxy layer would be a third adapter, the same category of mistake, forbidden for the same reason. Reads happen in Server Components and mutations go through Server Actions, so the API base URL never reaches the browser. The client itself is generated from the OpenAPI schema and committed, with a drift check that fails when the generated types no longer match the backend contract.\n\nThe agent itself is a Pydantic AI loop running as its own Python service, reached over HTTP rather than embedded in the web tier — the third consumer of the same service layer, calling it through the MCP tools instead of around them. Because those tools mutate real stock, the chat surface was specified as a full state machine before it was wired: idle, thinking, streaming a reply, tool-call-in-progress, success and refusal, so a user can always see whether the agent is answering a question or changing their inventory. Identity is a parameter obtained in exactly one place on each side, leaving a single seam for the OAuth token exchange that lets the agent act on a user's behalf without inheriting more privilege than that user has.\n\nBuilt with Python 3.12, FastAPI, SQLAlchemy and Alembic over Postgres on Supabase, Pydantic AI for the agent loop, and the MCP Python SDK; the client is Next.js 16 with React 19, Tailwind CSS v4 and shadcn/ui. 31 tests cover the service layer directly plus both adapters, including a real stdio MCP client. Products is taken end to end through every layer as the reference slice for the remaining entities.",
+    tags: [
+      "Python",
+      "FastAPI",
+      "MCP",
+      "Pydantic AI",
+      "AI Agents",
+      "SQLAlchemy",
+      "Alembic",
+      "PostgreSQL",
+      "Supabase",
+      "Next.js",
+      "TypeScript",
+      "OpenAPI",
+      "Tailwind CSS",
+      "ShadCN",
+    ],
+    year: "2026",
+    repoUrl: "https://github.com/AmzalFoumi/agentic-erp",
+    featured: true,
+    tagLimit: 7,
+    atsCvUrlPreference: "repo",
+    styledCvUrlPreference: "repo",
+  },
+  {
     slug: "aesth-ai",
     title: "Aesth-ai",
     shortDescription:
@@ -125,6 +155,8 @@ export const projects: Project[] = [
     liveUrl: "https://kidsfeed.vercel.app/",
     repoUrl: "https://github.com/lakindu62/kidsfeed",
     featured: false,
+    // Cut from the styled CV to make room for Agentic ERP on one A4 page.
+    showInStyledCv: false,
     atsCvUrlPreference: "none",
     styledCvUrlPreference: "none",
   },
@@ -166,74 +198,4 @@ export const projects: Project[] = [
     atsCvUrlPreference: "live",
     styledCvUrlPreference: "live",
   },
-  // {
-  //   slug: "datasync-api",
-  //   title: "DataSync API",
-  //   shortDescription:
-  //     "A high-performance REST API for real-time data synchronisation across distributed systems with conflict resolution.",
-  //   fullDescription:
-  //     "DataSync API is a production-grade REST API built to handle real-time data synchronisation across distributed systems.\n\nThe core challenge was implementing a robust conflict-resolution algorithm that merges divergent data states without data loss. The solution uses vector clocks and a CRDT-inspired merge strategy.\n\nThe API is fully documented with OpenAPI spec, supports webhook subscriptions for push notifications, and is deployed on AWS Lambda behind API Gateway for zero-cold-start performance.\n\nKey outcomes: 99.97% uptime, sub-50ms p95 latency, processing over 2M sync events per day.",
-  //   tags: ["Node.js", "TypeScript", "PostgreSQL", "Redis", "AWS Lambda"],
-  //   year: "2024",
-  //   liveUrl: "https://example.com",
-  //   repoUrl: "https://github.com/yourusername/datasync-api",
-  //   featured: true,
-  // },
-  // {
-  //   slug: "opencart-dashboard",
-  //   title: "OpenCart Dashboard",
-  //   shortDescription:
-  //     "A modern analytics dashboard for OpenCart stores with real-time sales tracking, inventory alerts, and revenue forecasting.",
-  //   fullDescription:
-  //     "OpenCart Dashboard replaces the stock admin interface with a data-rich, real-time analytics layer built entirely on top of the existing OpenCart database.\n\nThe dashboard streams live sales events via Server-Sent Events and renders charts using a lightweight custom D3.js wrapper. Inventory alerts are rule-based and configurable per SKU.\n\nRevenue forecasting uses a simple ARIMA model trained on historical order data, surfaced through a Python FastAPI microservice.\n\nBuilt for a client managing 3 stores with ~10k SKUs. Reduced their daily reporting overhead from 2 hours to under 10 minutes.",
-  //   tags: ["Next.js", "TypeScript", "D3.js", "Python", "FastAPI", "MySQL"],
-  //   year: "2024",
-  //   repoUrl: "https://github.com/yourusername/opencart-dashboard",
-  //   featured: true,
-  // },
-  // {
-  //   slug: "devnotes-app",
-  //   title: "DevNotes App",
-  //   shortDescription:
-  //     "A developer-native note-taking app with Markdown support, code blocks with syntax highlighting, and tag-based search.",
-  //   fullDescription:
-  //     "DevNotes is a minimalist note-taking application purpose-built for developers.\n\nNotes are written in Markdown and rendered with full GFM support including tables, task lists, and fenced code blocks with syntax highlighting via Shiki.\n\nThe app runs fully offline using IndexedDB for storage, with optional cloud sync via a self-hosted CouchDB instance. Notes are searchable by title, content, and tags with sub-100ms query response.\n\nBuilt as a Progressive Web App — installable on desktop and mobile, works offline.",
-  //   tags: ["React", "TypeScript", "IndexedDB", "Shiki", "PWA", "CouchDB"],
-  //   year: "2023",
-  //   repoUrl: "https://github.com/yourusername/devnotes-app",
-  // },
-  // {
-  //   slug: "infra-monitor",
-  //   title: "InfraMonitor",
-  //   shortDescription:
-  //     "A self-hosted infrastructure monitoring tool that tracks server health, uptime, and sends alerts via Slack and email.",
-  //   fullDescription:
-  //     "InfraMonitor is a lightweight, self-hosted alternative to expensive monitoring SaaS products.\n\nIt runs as a single Docker container and polls configured endpoints on a schedule, storing time-series metrics in a local SQLite database. The dashboard visualises uptime history, response time trends, and alert history.\n\nAlerts are dispatched via Slack webhooks and SMTP email. Alert rules are configurable via a YAML file — thresholds for response time, status codes, and certificate expiry.\n\nCurrently monitoring 40+ services across 3 clients. Docker image is under 80MB.",
-  //   tags: ["Go", "SQLite", "Docker", "Prometheus", "Grafana"],
-  //   year: "2023",
-  //   repoUrl: "https://github.com/yourusername/infra-monitor",
-  // },
-  // {
-  //   slug: "formflow",
-  //   title: "FormFlow",
-  //   shortDescription:
-  //     "A drag-and-drop form builder with conditional logic, multi-step flows, and webhook integrations for submission delivery.",
-  //   fullDescription:
-  //     "FormFlow lets non-technical users build complex multi-step forms with conditional logic without writing code.\n\nThe form builder is built with @dnd-kit and supports drag-and-drop field reordering, branching logic (show/hide fields based on previous answers), and custom validation rules.\n\nForms are rendered as static JSON schemas, making them portable and easy to embed. Submissions are stored in Postgres and optionally forwarded to configured webhook endpoints.\n\nInternally used by a 50-person team to replace 4 different form tools they had been stitching together.",
-  //   tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "dnd-kit"],
-  //   year: "2023",
-  //   liveUrl: "https://example.com",
-  //   repoUrl: "https://github.com/yourusername/formflow",
-  // },
-  // {
-  //   slug: "clibuddy",
-  //   title: "CLIBuddy",
-  //   shortDescription:
-  //     "A terminal companion app that provides contextual documentation and command suggestions based on your shell history.",
-  //   fullDescription:
-  //     "CLIBuddy watches your shell history in real-time and provides a side-panel with contextual documentation, common flags, and usage examples for whatever command you just ran.\n\nIt uses a local fuzzy search index built from man pages, tldr pages, and community-curated command snippets. No data ever leaves your machine.\n\nThe UI is a small Electron window that docks to the side of your terminal. Supports macOS and Linux. Vim keybindings throughout.\n\nBuilt because I was tired of switching to a browser to look up flags mid-command.",
-  //   tags: ["Electron", "TypeScript", "React", "SQLite", "Shell"],
-  //   year: "2022",
-  //   repoUrl: "https://github.com/yourusername/clibuddy",
-  // },
 ];

@@ -159,6 +159,38 @@ export function CvStyledStatic() {
 
               <div className="mb-4">
                 <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="font-bold text-sm">Agentic ERP</h4>
+                  <div className="flex gap-2">
+                    <a
+                      href="https://github.com/AmzalFoumi/agentic-erp"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono hover:underline text-[var(--accent-brand)]"
+                    >
+                      GitHub &#8599;
+                    </a>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-700 leading-relaxed mb-2">
+                  Supermarket inventory ERP where the business logic is written
+                  once and served through three front doors: a FastAPI HTTP API,
+                  an MCP server, and a Pydantic AI agent calling the same
+                  operations as tools. The framework-free boundary is enforced
+                  mechanically by import-linter and ESLint rules, with a typed
+                  client generated from OpenAPI and a contract-drift gate.
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="tag">Python</span>
+                  <span className="tag">FastAPI</span>
+                  <span className="tag">MCP</span>
+                  <span className="tag">Pydantic AI</span>
+                  <span className="tag">PostgreSQL</span>
+                  <span className="tag">Next.js</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <div className="flex justify-between items-baseline mb-1">
                   <h4 className="font-bold text-sm">Distributed Health</h4>
                   <div className="flex gap-2">
                     <a
@@ -198,7 +230,7 @@ export function CvStyledStatic() {
                 </div>
               </div>
 
-              <div className="mb-4">
+              <div>
                 <div className="flex justify-between items-baseline mb-1">
                   <h4 className="font-bold text-sm">Itinerary.ai</h4>
                 </div>
@@ -212,24 +244,6 @@ export function CvStyledStatic() {
                   <span className="tag">Node.js</span>
                   <span className="tag">MongoDB</span>
                   <span className="tag">MinIO</span>
-                </div>
-              </div>
-
-              <div>
-                <div className="flex justify-between items-baseline mb-1">
-                  <h4 className="font-bold text-sm">KidsFeed</h4>
-                </div>
-                <p className="text-xs text-gray-700 leading-relaxed mb-2">
-                  School meals management platform with Meal Planning,
-                  Attendance Tracking, and FIFO Inventory. Built using
-                  Domain-Driven Design and layered architecture with robust RBAC
-                  (Clerk).
-                </p>
-                <div className="flex flex-wrap gap-1">
-                  <span className="tag">React</span>
-                  <span className="tag">Express.js</span>
-                  <span className="tag">Tailwind</span>
-                  <span className="tag">Clerk</span>
                 </div>
               </div>
             </section>

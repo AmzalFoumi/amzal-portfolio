@@ -173,17 +173,18 @@ export function CvStyledStatic() {
                 </div>
                 <p className="text-xs text-gray-700 leading-relaxed mb-2">
                   Supermarket inventory ERP where the business logic is written
-                  once and served through three front doors: a FastAPI HTTP API,
-                  an MCP server, and a Pydantic AI agent calling the same
-                  operations as tools. The framework-free boundary is enforced
-                  mechanically by import-linter and ESLint rules, with a typed
-                  client generated from OpenAPI and a contract-drift gate.
+                  once and served through two front doors: a FastAPI HTTP API
+                  for the Next.js manager UI, and an MCP server exposing the
+                  same operations as tools an AI agent can call. The
+                  framework-free boundary is enforced mechanically by
+                  import-linter and ESLint rules, with a typed client generated
+                  from OpenAPI and a contract-drift gate.
                 </p>
                 <div className="flex flex-wrap gap-1">
                   <span className="tag">Python</span>
                   <span className="tag">FastAPI</span>
                   <span className="tag">MCP</span>
-                  <span className="tag">Pydantic AI</span>
+                  <span className="tag">AI Agents</span>
                   <span className="tag">PostgreSQL</span>
                   <span className="tag">Next.js</span>
                 </div>

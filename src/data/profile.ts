@@ -16,31 +16,11 @@ export const profile = {
   linkedinUrl: "https://www.linkedin.com/in/amzalfoumi",
   techStacks: [
     {
-      label: "Cloud & Infrastructure",
-      items: [
-        "Amazon Web Services",
-        "Docker",
-        "Kubernetes",
-        "Terraform",
-        "Azure",
-      ],
-    },
-    {
-      label: "AI & ML",
-      items: [
-        "Prompt Engineering",
-        "AI Agents / MCP",
-        "Gemini API",
-        "Vercel AI SDK",
-        "RAG / Vector Search",
-      ],
-    },
-    {
       label: "Languages",
-      items: ["Java", "Kotlin", "TypeScript", "Javascript", "Python"],
+      items: ["Java", "Kotlin", "TypeScript", "JavaScript", "Python"],
     },
     {
-      label: "Frameworks",
+      label: "Frameworks & Libraries",
       items: [
         "React",
         "Next.js",
@@ -51,10 +31,54 @@ export const profile = {
       ],
     },
     {
-      label: "Architectures",
+      label: "AI & Agents",
       items: [
-        "Domain Driven Design",
-        "Ports & Adapters",
+        "Prompt Engineering",
+        "AI Agents",
+        "MCP",
+        "Gemini API",
+        "Vercel AI SDK",
+        "Retrieval Augmented Generation (RAG)",
+      ],
+    },
+    {
+      label: "Databases",
+      items: ["PostgreSQL", "MySQL", "MongoDB"],
+    },
+    {
+      label: "Platforms & Services",
+      items: ["Supabase", "Payload CMS", "Clerk"],
+    },
+    {
+      label: "Cloud & DevOps",
+      items: [
+        "Amazon Web Services",
+        "Azure",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "ArgoCD",
+        "GitHub Actions",
+        "Linux",
+      ],
+    },
+    {
+      label: "Architectures",
+      // "Ports & Adapters" was removed here deliberately — do NOT re-add it
+      // unless explicitly asked to.
+      //
+      // agentic-erp only implements the driving half of the pattern: services/
+      // is the inbound port and the FastAPI and MCP adapters call through it,
+      // with the boundary enforced by import-linter. There is no outbound port
+      // — services/ imports SQLAlchemy and the ORM models directly, and the
+      // import-linter `forbidden_modules` list covers web frameworks but not
+      // sqlalchemy, so the coupling is a deliberate choice rather than an
+      // oversight. Claiming the full pattern would overstate it.
+      //
+      // Re-add once a driven-side port exists (e.g. a repository protocol in
+      // core/ that the persistence layer implements).
+      items: [
+        "Domain Driven Design (Modular Monoliths)",
         "MVC Architecture",
         "Microservices",
       ],

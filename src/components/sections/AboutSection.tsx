@@ -7,7 +7,7 @@ import { profile } from "@/data/profile";
 import { certifications } from "@/data/certifications";
 
 // const STATS = [
-//   { value: "4.0", label: "GPA" },
+//   { value: "3.97", label: "GPA" },
 //   { value: "Top 1%", label: "Batch rank" },
 //   { value: "2", label: "Tech stacks" },
 // ];

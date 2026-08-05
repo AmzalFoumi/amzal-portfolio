@@ -22,7 +22,7 @@ export function CvStyledStatic() {
               Software Engineering Intern Candidate
             </h2>
             <p className="text-sm text-muted max-w-2xl leading-relaxed">
-              3rd-year SWE undergraduate at SLIIT (4.0 GPA) with a passion for
+              3rd-year SWE undergraduate at SLIIT (3.97 GPA) with a passion for
               full-stack, scalable infrastructure, and AI-enabled development.
               Proven experience building production applications, orchestrating
               microservices, and leading technical teams. Actively seeking an
@@ -264,7 +264,7 @@ export function CvStyledStatic() {
 
                 <div className="bg-[var(--bg-base)] p-3 rounded-md border border-[var(--bg-border)]">
                   <div className="text-2xl font-bold text-[var(--accent-brand)] leading-none mb-1">
-                    4.0{" "}
+                    3.97{" "}
                     <span className="text-sm text-gray-500 font-normal">
                       GPA
                     </span>
@@ -303,6 +303,8 @@ export function CvStyledStatic() {
                   <span className="tag">TypeScript</span>
                   <span className="tag">Java</span>
                   <span className="tag">Kotlin</span>
+                  <span className="tag">Python</span>
+                  <span className="tag">FastAPI</span>
                 </div>
               </div>
 
@@ -319,6 +321,11 @@ export function CvStyledStatic() {
                   <span className="tag">MVC</span>
                   <span className="tag">GitOps</span>
                   <span className="tag">ArgoCD</span>
+                  <span className="tag">Terraform</span>
+                  <span className="tag">GitHub Actions</span>
+                  <span className="tag">PostgreSQL</span>
+                  <span className="tag">MongoDB</span>
+                  <span className="tag">Supabase</span>
                 </div>
               </div>
             </section>

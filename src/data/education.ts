@@ -7,7 +7,7 @@ export const education: EducationEntry[] = [
     field: "Information Technology specializing in Software Engineering",
     startYear: "Oct 2023",
     endYear: "Nov 2027",
-    grade: "CGPA 4.0",
+    grade: "CGPA 3.97",
     activities: "AIESEC in SLIIT",
     achievements: [
       "Dean's List",

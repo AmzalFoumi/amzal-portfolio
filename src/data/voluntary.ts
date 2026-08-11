@@ -17,7 +17,7 @@ export const voluntary: VoluntaryGroup[] = [
         endYear: "Present",
         description:
           "Leading a technical team to build bigger and better platforms for AIESEC in Sri Lanka.",
-        tags: ["Leadership", "Software Delivery", "AIESEC"],
+        tags: ["Leadership", "Software Delivery", "ASL Finance Dashboard"],
       },
       {
         role: "Software Engineer | National Dev Team",
@@ -25,7 +25,7 @@ export const voluntary: VoluntaryGroup[] = [
         endYear: "Feb 2026",
         description:
           "Built and maintained live applications for AIESEC in Sri Lanka as part of the National Dev Team.",
-        tags: ["Development", "Operations", "Web Development"],
+        tags: ["Full-Stack Web Development"],
       },
     ],
   },

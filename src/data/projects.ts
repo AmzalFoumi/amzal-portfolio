@@ -26,13 +26,13 @@ export const projects: Project[] = [
       "FastAPI",
       "MCP",
       "AI Agents",
-      "SQLAlchemy",
-      "Alembic",
+      // "SQLAlchemy",
+      // "Alembic",
       "PostgreSQL",
       "Supabase",
       "Next.js",
       "TypeScript",
-      "OpenAPI",
+      // "OpenAPI",
       "Tailwind CSS",
       "ShadCN",
     ],
@@ -94,7 +94,8 @@ export const projects: Project[] = [
     links: [
       {
         label: "System Design Writeup",
-        url: "https://medium.com/@mohamedamzal6/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a",
+        // url: "https://medium.com/@mohamedamzal6/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a",
+        url: "https://medium.com/aws-in-plain-english/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a",
       },
     ],
     featured: true,
@@ -156,8 +157,9 @@ export const projects: Project[] = [
     featured: false,
     // Cut from the styled CV to make room for Agentic ERP on one A4 page.
     showInStyledCv: false,
-    atsCvUrlPreference: "none",
-    styledCvUrlPreference: "none",
+    showInAtsCv: false,
+    atsCvUrlPreference: "repo",
+    styledCvUrlPreference: "repo",
   },
   {
     slug: "itinerary-ai",

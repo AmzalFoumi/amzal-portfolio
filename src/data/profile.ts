@@ -87,7 +87,7 @@ export const profile = {
     },
   ],
   summary: [
-    "I am a third-year Software Engineering student at SLIIT, maintaining a GPA of 3.97 and ranking in the top 1% of my batch while also being 2X AWS Certified. I focus on Software Engineering, Cloud, DevOps and AI applications. I also leverage AI tools to accelerate my workflows while expanding my skill set through leadership roles, university projects, and live delivery work. I am actively seeking a Software Engineering internship where I can contribute my technical and leadership experience to a challenging role.",
+    "I am a third-year Software Engineering student at SLIIT, maintaining a GPA of 3.97 and ranking in the top 1% of my batch while also being 2X AWS Certified. I focus on Software Engineering, Cloud, DevOps and Agentic AI applications. I also leverage AI tools to accelerate my learning and workflows while expanding my skill set through leadership roles, personal projects, and live delivery work. I am actively seeking a Software Engineering roles where I can contribute my technical and leadership experience to challenging problems.",
   ],
   honors: [
     "Most Outstanding Event of the Year - Benchmark 3.0",

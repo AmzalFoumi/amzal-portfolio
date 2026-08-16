@@ -1,0 +1,622 @@
+{
+  "generatedAt": "2026-08-16T18:47:42.965Z",
+  "source": "files",
+  "siteContent": {
+    "profile": {
+      "name": "Amzal Foumi",
+      "title": "Aspiring Software Engineer | Cloud, DevOps and AI | 2x AWS Certified | Engineering scalable solutions, one commit at a time",
+      "siteHeadline": "Aspiring Software Engineer | Cloud, DevOps and AI | 2x AWS Certified | Engineering scalable solutions, one commit at a time",
+      "location": "Colombo, Western Province, Sri Lanka",
+      "email": "mohamedamzal6@gmail.com",
+      "phone": "+94 70 158 8018",
+      "portfolioUrl": "https://amzal-portfolio.vercel.app/",
+      "siteUrl": "https://amzal-portfolio.vercel.app",
+      "githubUrl": "https://github.com/AmzalFoumi",
+      "linkedinUrl": "https://www.linkedin.com/in/amzalfoumi",
+      "techStacks": [
+        {
+          "label": "Languages",
+          "items": [
+            "Java",
+            "Kotlin",
+            "TypeScript",
+            "JavaScript",
+            "Python"
+          ]
+        },
+        {
+          "label": "Frameworks & Libraries",
+          "items": [
+            "React",
+            "Next.js",
+            "Node.js",
+            "Express.js",
+            "Nest.js",
+            "FastAPI"
+          ]
+        },
+        {
+          "label": "AI & Agents",
+          "items": [
+            "Prompt Engineering",
+            "AI Agents",
+            "MCP",
+            "Gemini API",
+            "Vercel AI SDK",
+            "Retrieval Augmented Generation (RAG)"
+          ]
+        },
+        {
+          "label": "Databases",
+          "items": [
+            "PostgreSQL",
+            "MySQL",
+            "MongoDB"
+          ]
+        },
+        {
+          "label": "Platforms & Services",
+          "items": [
+            "Supabase",
+            "Payload CMS",
+            "Clerk"
+          ]
+        },
+        {
+          "label": "Cloud & DevOps",
+          "items": [
+            "Amazon Web Services",
+            "Azure",
+            "Docker",
+            "Kubernetes",
+            "Terraform",
+            "ArgoCD",
+            "GitHub Actions",
+            "Linux"
+          ]
+        },
+        {
+          "label": "Architectures",
+          "items": [
+            "Domain Driven Design (Modular Monoliths)",
+            "MVC Architecture",
+            "Microservices"
+          ]
+        }
+      ],
+      "summary": [
+        "I am a third-year Software Engineering student at SLIIT, maintaining a GPA of 3.97 and ranking in the top 1% of my batch while also being 2X AWS Certified. I focus on Software Engineering, Cloud, DevOps and Agentic AI applications. I also leverage AI tools to accelerate my learning and workflows while expanding my skill set through leadership roles, personal projects, and live delivery work. I am actively seeking a Software Engineering roles where I can contribute my technical and leadership experience to challenging problems."
+      ],
+      "honors": [
+        "Most Outstanding Event of the Year - Benchmark 3.0",
+        "Dean's List",
+        "Best International Relations and Matching Leader - iGT"
+      ]
+    },
+    "projects": [
+      {
+        "key": "agentic-erp",
+        "slug": "agentic-erp",
+        "title": "Agentic ERP",
+        "shortDescription": "A supermarket inventory ERP where the business logic is written once and served through two front doors — a FastAPI HTTP API for the Next.js manager UI, and an MCP server exposing the same operations as tools an AI agent can call.",
+        "fullDescription": "Agentic ERP is a supermarket inventory and purchasing system built around a single thesis: the business logic should be written exactly once and reused by every consumer that needs it. It is served through two independent front doors — a FastAPI HTTP API behind a Next.js inventory-manager UI, and an MCP server exposing the same operations as tools an AI agent can call.\n\nThe architecture holds because the boundary is mechanical rather than conventional. A service function is a plain Python function; FastAPI wraps it in a route and MCP wraps it in a tool, and neither framework owns the logic. `services/` may never import from `api/` or `mcp_server/` and never touches web concepts — no HTTPException, no status codes — with three import-linter contracts enforcing that across the codebase. Services raise plain exceptions from a shared vocabulary, and each adapter translates them into its own dialect: a NotFoundError becomes an HTTP 404 in the API and an error message in MCP.\n\nThe frontend gets the same treatment so it cannot drift. Two ESLint no-restricted-imports rules enforce that only the API module may call fetch, and that no Next.js route handlers may mirror FastAPI endpoints — a proxy layer would be a third adapter, the same category of mistake, forbidden for the same reason. Reads happen in Server Components and mutations go through Server Actions, so the API base URL never reaches the browser. The client itself is generated from the OpenAPI schema and committed, with a drift check that fails when the generated types no longer match the backend contract.\n\nThe agent behind the MCP door runs as its own Python service reached over HTTP, rather than as a loop embedded in the web tier — so it reaches the business logic through the MCP tools instead of around them, and the UI never becomes its host. Because those tools mutate real stock, the chat surface was specified as a full state machine before it was wired: idle, thinking, streaming a reply, tool-call-in-progress, success and refusal, so a user can always see whether the agent is answering a question or changing their inventory. Identity is a parameter obtained in exactly one place on each side, leaving a single seam for the OAuth token exchange that lets the agent act on a user's behalf without inheriting more privilege than that user has.\n\nBuilt with Python 3.12, FastAPI, SQLAlchemy and Alembic over Postgres on Supabase, and the MCP Python SDK; the client is Next.js 16 with React 19, Tailwind CSS v4 and shadcn/ui. 31 tests cover the service layer directly plus both adapters, including a real stdio MCP client. Products is taken end to end through every layer as the reference slice for the remaining entities.",
+        "tags": [
+          "Python",
+          "FastAPI",
+          "MCP",
+          "AI Agents",
+          "PostgreSQL",
+          "Supabase",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "ShadCN"
+        ],
+        "year": "2026",
+        "repoUrl": "https://github.com/AmzalFoumi/agentic-erp",
+        "featured": true,
+        "tagLimit": 7,
+        "atsCvUrls": [
+          "repo"
+        ],
+        "styledCvUrls": [
+          "repo"
+        ]
+      },
+      {
+        "key": "aesth-ai",
+        "slug": "aesth-ai",
+        "title": "Aesth-ai",
+        "shortDescription": "A proof-of-concept AI chatbot for an aesthetic-clinic site that answers product questions via dual retrieval — deterministic DB queries and semantic RAG search.",
+        "fullDescription": "Aesth-ai is a proof-of-concept AI chatbot built to validate a retrieval approach before porting it into a production codebase, running on Payload 3 and MongoDB over a beauty-product dataset.\n\nThe model chooses between two tools per question: a DB-filter tool for deterministic queries (e.g. \"list face creams with a rating over 4\") that grounds answers directly in database rows, and a RAG tool that embeds the query and runs nearest-neighbour search over a MongoDB Atlas vector store for semantic questions (e.g. \"what can I use for dry skin?\").\n\nI designed two seams to make the engine easy to evaluate and re-target: an A/B retrieval switch (db / rag / both) implemented purely through the tool registry with no orchestrator branching, and provider-agnostic chat/embedding models swappable via a one-line env change with no vendor SDK imported in business code. The model also self-selects a typed answer shape (plain, timeline, product-list, comparison), always degrading gracefully to plain text on failure.\n\nBuilt with Next.js 16 (App Router), Payload 3.85 with MongoDB, the Vercel AI SDK, Gemini Flash for chat, and gemini-embedding-001 for embeddings, with vectors stored in a dedicated collection behind a swappable VectorStore interface.",
+        "tags": [
+          "Next.js",
+          "Payload CMS",
+          "MongoDB",
+          "Vercel AI SDK",
+          "RAG",
+          "Vector Search",
+          "Gemini API",
+          "TypeScript"
+        ],
+        "year": "2026",
+        "liveUrl": "https://aesth-ai-hazel.vercel.app",
+        "repoUrl": "https://github.com/AmzalFoumi/aesth-ai",
+        "featured": true,
+        "atsCvUrls": [
+          "live"
+        ],
+        "styledCvUrls": [
+          "live"
+        ]
+      },
+      {
+        "key": "distributed-health",
+        "slug": "distributed-health",
+        "title": "Distributed Health",
+        "shortDescription": "A cloud-native healthcare platform with AI symptom checking, telemedicine, appointments, and prescription & reports management.",
+        "fullDescription": "Distributed Health is a cloud-native healthcare platform built with a microservices architecture.\n\nIt includes AI-powered preliminary symptom checking, doctors' appointments, telemedicine services, and prescription/report management.\n\nI orchestrated the containerized services with Kubernetes on AWS EKS (provisioned using Terraform) and implemented a GitOps CD pipeline using GitHub Actions and ArgoCD for automated deployments.\n\nKey technologies include Next.js with Tailwind CSS and ShadCN, Node.js, Nest.js, MongoDB, Agora API for telemedicine, and the Gemini API.",
+        "tags": [
+          "Microservices",
+          "Gemini API",
+          "Nest.js",
+          "Kubernetes",
+          "Docker",
+          "AWS EKS",
+          "Terraform",
+          "Agora API",
+          "MongoDB",
+          "Next.js",
+          "Tailwind CSS",
+          "ShadCN"
+        ],
+        "year": "2026",
+        "repoUrl": "https://github.com/Distributed-Health-System",
+        "links": [
+          {
+            "key": "system-design-writeup",
+            "label": "System Design Writeup",
+            "url": "https://medium.com/aws-in-plain-english/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a"
+          }
+        ],
+        "featured": true,
+        "tagLimit": 7,
+        "atsCvUrls": [
+          "repo"
+        ],
+        "styledCvUrls": [
+          "repo"
+        ]
+      },
+      {
+        "key": "asl-finance-hub",
+        "slug": "asl-finance-hub",
+        "title": "ASL Finance Hub",
+        "shortDescription": "A financial intelligence dashboard for AIESEC Sri Lanka tracking KPIs, budgets, and audit scores across 11 Local Committees.",
+        "fullDescription": "ASL Finance Hub is a financial intelligence dashboard for AIESEC in Sri Lanka that tracks KPIs, budgets, audit scores, and monthly reviews across all 11 Local Committees.\n\nAs the team lead on the National Development Team, I directed the architecture and delivery — designing a role-based access control model (LC, MC, and EFB roles) enforced end-to-end with Supabase Row-Level Security.\n\nI built an automated financial data pipeline that syncs Google Sheets into Supabase through Google AppScript webhooks and Supabase Edge Functions, authenticating via a Google Service Account and consolidating data per entity and month.\n\nThe app is deployed as a Dockerized SPA behind Nginx on an Azure VM, with a GitHub Actions CI/CD pipeline that performs blue-green deployments with health-check rollback.\n\nBuilt with React 19 and TypeScript on TanStack Start, Supabase (PostgreSQL, Auth, Edge Functions), Radix UI with shadcn/ui, Recharts for visualizations, and TailwindCSS v4.",
+        "tags": [
+          "ETL Pipeline",
+          "React",
+          "TypeScript",
+          "TanStack Start",
+          "Supabase",
+          "PostgreSQL",
+          "Google Sheets API",
+          "Google AppScript",
+          "Recharts",
+          "Tailwind CSS",
+          "ShadCN",
+          "Docker",
+          "Azure",
+          "GitHub Actions"
+        ],
+        "year": "2026",
+        "featured": false,
+        "tagLimit": 8,
+        "liveUrl": "https://finance.aiesec.lk",
+        "repoUrl": "https://github.com/AIESEC-LK/asl-finance-hub.git",
+        "atsCvUrls": [
+          "live"
+        ],
+        "styledCvUrls": [
+          "live"
+        ]
+      },
+      {
+        "key": "kidsfeed",
+        "slug": "kidsfeed",
+        "title": "KidsFeed",
+        "shortDescription": "School meals program management with planning, distribution, attendance tracking, and FIFO inventory.",
+        "fullDescription": "KidsFeed is a platform for school meals program management with meal/menu planning, distribution and attendance tracking, and inventory management using FIFO batches ordered by expiry dates.\n\nA robust RBAC and user administration system combines Clerk with a custom backend module. The codebase follows a domain-driven, layered architecture to keep it clean and maintainable.\n\nBuilt with a back-to-basics stack: React with Tailwind CSS and ShadCN on the client, Express on the server, MongoDB for storage, and OpenFoodFacts API integration.",
+        "tags": [
+          "React",
+          "Tailwind CSS",
+          "ShadCN",
+          "Express",
+          "Clerk",
+          "MongoDB",
+          "OpenFoodFacts API"
+        ],
+        "year": "2026",
+        "liveUrl": "https://kidsfeed.vercel.app/",
+        "repoUrl": "https://github.com/lakindu62/kidsfeed",
+        "featured": false,
+        "showInStyledCv": false,
+        "showInAtsCv": false,
+        "atsCvUrls": [
+          "repo"
+        ],
+        "styledCvUrls": [
+          "repo"
+        ]
+      },
+      {
+        "key": "itinerary-ai",
+        "slug": "itinerary-ai",
+        "title": "Itinerary.ai",
+        "shortDescription": "AI-powered travel planner for generating itineraries, sharing posts, and booking hotels/events.",
+        "fullDescription": "Itinerary.ai is a web app for tourists to generate custom travel itineraries using AI.\n\nUsers can share itineraries and travel media as rich social posts, and book hotels and events directly from the generated plans.\n\nBuilt with Next.js and Tailwind CSS on the frontend, and a Node.js/Nest.js backend with MongoDB, MinIO object storage, and Gemini API integration.",
+        "tags": [
+          "Next.js",
+          "Tailwind CSS",
+          "Node.js",
+          "Nest.js",
+          "MongoDB",
+          "MinIO",
+          "Gemini API"
+        ],
+        "year": "2025",
+        "repoUrl": "https://github.com/lakindu62/itinerary_ai",
+        "featured": true,
+        "atsCvUrls": [
+          "repo"
+        ],
+        "styledCvUrls": [
+          "repo"
+        ]
+      },
+      {
+        "key": "aiesec-lk",
+        "slug": "aiesec-lk",
+        "title": "aiesec.lk",
+        "shortDescription": "Revamped the national AIESEC Sri Lanka website for a smoother, more colorful, fully responsive experience.",
+        "fullDescription": "As part of the National Development Team of AIESEC in Sri Lanka, I contributed to revamping aiesec.lk.\n\nThe goal was a site that felt more vibrant, smoother to use, and easier to navigate, while remaining fast and fully responsive.\n\nWe delivered the new platform at a rapid pace using a modern stack centered on Next.js and TypeScript, and the hands-on experience with the team and tooling was invaluable.",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "React",
+          "ReactBits"
+        ],
+        "year": "2025",
+        "liveUrl": "https://www.aiesec.lk/",
+        "featured": false,
+        "showInAtsCv": false,
+        "showInStyledCv": false,
+        "atsCvUrls": [
+          "live"
+        ],
+        "styledCvUrls": [
+          "live"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "key": "asl-se-team-lead",
+        "role": "Software Engineering Team Lead",
+        "startYear": "Feb 2026",
+        "endYear": "Present",
+        "description": "Leading a technical team to build bigger and better platforms for AIESEC in Sri Lanka.",
+        "tags": [
+          "Leadership",
+          "Software Delivery",
+          "ASL Finance Dashboard"
+        ],
+        "organisation": "AIESEC in Sri Lanka",
+        "location": "Colombo, Western Province, Sri Lanka",
+        "workMode": "Part-time",
+        "engagementType": "Volunteer"
+      },
+      {
+        "key": "asl-software-engineer",
+        "role": "Software Engineer | National Dev Team",
+        "startYear": "Mar 2025",
+        "endYear": "Feb 2026",
+        "description": "Built and maintained live applications for AIESEC in Sri Lanka as part of the National Dev Team.",
+        "tags": [
+          "Full-Stack Web Development"
+        ],
+        "organisation": "AIESEC in Sri Lanka",
+        "location": "Colombo, Western Province, Sri Lanka",
+        "workMode": "Part-time",
+        "engagementType": "Volunteer"
+      },
+      {
+        "key": "sliit-ir-manager",
+        "role": "International Relations Manager | Incoming Global Talent",
+        "startYear": "Jan 2026",
+        "endYear": "Present",
+        "description": "Managing three teams dedicated to International Relations for the Incoming Global Talent product. Representing as the primary representaive of the iGT product at AIESEC in SLIIT to the global plenary.",
+        "tags": [
+          "Leadership",
+          "International Relations",
+          "iGT"
+        ],
+        "showInAtsCv": false,
+        "showInStyledCv": false,
+        "organisation": "AIESEC in SLIIT",
+        "location": "Colombo, Western Province, Sri Lanka",
+        "workMode": "Part-time",
+        "engagementType": "Volunteer"
+      },
+      {
+        "key": "sliit-senior-tl-ir",
+        "role": "Senior Team Leader - International Relations | Incoming Global Talent",
+        "startYear": "Jan 2025",
+        "endYear": "Jan 2026",
+        "description": "Led international relations work for the Incoming Global Talent product at AIESEC in SLIIT.",
+        "tags": [
+          "Leadership",
+          "International Relations",
+          "iGT"
+        ],
+        "showInAtsCv": false,
+        "showInStyledCv": false,
+        "organisation": "AIESEC in SLIIT",
+        "location": "Colombo, Western Province, Sri Lanka",
+        "workMode": "Part-time",
+        "engagementType": "Volunteer"
+      },
+      {
+        "key": "sliit-b2b-sales",
+        "role": "Team Member - B2B Sales | Incoming Global Talent",
+        "startYear": "Aug 2024",
+        "endYear": "Jan 2025",
+        "description": "Supported B2B sales for the Incoming Global Talent product at AIESEC in SLIIT.",
+        "tags": [
+          "Sales",
+          "Partnerships",
+          "iGT"
+        ],
+        "showInAtsCv": false,
+        "showInStyledCv": false,
+        "organisation": "AIESEC in SLIIT",
+        "location": "Colombo, Western Province, Sri Lanka",
+        "workMode": "Part-time",
+        "engagementType": "Volunteer"
+      },
+      {
+        "key": "sliit-ocvp-benchmark",
+        "role": "Organizing Committee Vice President - Partnership Development | Benchmark 3.0",
+        "startYear": "Sep 2024",
+        "endYear": "Dec 2024",
+        "description": "Supported partnership development for Benchmark 3.0, a UI/UX Bootcamp and Hackathon organized by AIESEC in SLIIT.",
+        "tags": [
+          "Partnership Development",
+          "Event Management",
+          "AIESEC"
+        ],
+        "showInAtsCv": false,
+        "showInStyledCv": false,
+        "organisation": "AIESEC in SLIIT",
+        "location": "Colombo, Western Province, Sri Lanka",
+        "workMode": "Part-time",
+        "engagementType": "Volunteer"
+      }
+    ],
+    "education": [
+      {
+        "key": "sliit-bsc",
+        "institution": "SLIIT",
+        "degree": "BSc Hons",
+        "field": "Information Technology specializing in Software Engineering",
+        "startYear": "Oct 2023",
+        "endYear": "Nov 2027",
+        "grade": "CGPA 3.97",
+        "activities": "AIESEC in SLIIT",
+        "achievements": [
+          "Dean's List",
+          "Best International Relations and Matching Leader - iGT",
+          "Most Outstanding Event of the Year"
+        ]
+      },
+      {
+        "key": "royal-college-al",
+        "institution": "Royal College Colombo",
+        "degree": "GCE A/L",
+        "field": "Physical Sciences",
+        "startYear": "Mar 2008",
+        "endYear": "Feb 2022",
+        "description": "Group of 2021"
+      }
+    ],
+    "certifications": [
+      {
+        "key": "aws-ai-practitioner",
+        "name": "AWS Certified AI Practitioner",
+        "issuer": "Amazon Web Services Training and Certification",
+        "issueDate": "Jul 2026",
+        "credentialId": "55eb817e-6eb4-4405-a18b-465476128171",
+        "credentialUrl": "https://www.credly.com/badges/55eb817e-6eb4-4405-a18b-465476128171/public_url",
+        "logoUrl": "/certifications/aws-certified-ai-practitioner.png"
+      },
+      {
+        "key": "aws-cloud-practitioner",
+        "name": "AWS Certified Cloud Practitioner",
+        "issuer": "Amazon Web Services Training and Certification",
+        "issueDate": "Jul 2026",
+        "credentialId": "79ff4dec-c5ee-4cde-878f-08401d8325a4",
+        "credentialUrl": "https://www.credly.com/badges/79ff4dec-c5ee-4cde-878f-08401d8325a4/public_url",
+        "logoUrl": "/certifications/aws-certified-cloud-practitioner.png"
+      }
+    ],
+    "references": [
+      {
+        "key": "dinuka-avinash",
+        "name": "Dinuka Avinash",
+        "role": "President",
+        "organization": "AIESEC in Sri Lanka",
+        "linkedinUrl": "https://www.linkedin.com/in/dinuka-avinash/"
+      },
+      {
+        "key": "silmy-ahamed",
+        "name": "Silmy Ahamed",
+        "role": "Director/CEO",
+        "organization": "ITX360",
+        "linkedinUrl": "https://www.linkedin.com/in/silmy-ahamed-0b99812/"
+      }
+    ],
+    "leadership": {
+      "body": [
+        "AIESEC SLIIT IR Manager (Jan 2025 - Present): Managed 3 teams for Incoming Global Talent. Awarded \"Best Performing iGT IR & M Leader\" at Legacy 2025."
+      ],
+      "coreCompetencies": [
+        "Cross-Cultural Collaboration",
+        "Stakeholder Management",
+        "Agile Team Leadership"
+      ]
+    }
+  },
+  "experienceGroups": [
+    {
+      "organisation": "AIESEC in Sri Lanka",
+      "location": "Colombo, Western Province, Sri Lanka",
+      "engagementType": "Volunteer",
+      "workMode": "Part-time",
+      "roles": [
+        {
+          "key": "asl-se-team-lead",
+          "role": "Software Engineering Team Lead",
+          "startYear": "Feb 2026",
+          "endYear": "Present",
+          "description": "Leading a technical team to build bigger and better platforms for AIESEC in Sri Lanka.",
+          "tags": [
+            "Leadership",
+            "Software Delivery",
+            "ASL Finance Dashboard"
+          ]
+        },
+        {
+          "key": "asl-software-engineer",
+          "role": "Software Engineer | National Dev Team",
+          "startYear": "Mar 2025",
+          "endYear": "Feb 2026",
+          "description": "Built and maintained live applications for AIESEC in Sri Lanka as part of the National Dev Team.",
+          "tags": [
+            "Full-Stack Web Development"
+          ]
+        }
+      ]
+    },
+    {
+      "organisation": "AIESEC in SLIIT",
+      "location": "Colombo, Western Province, Sri Lanka",
+      "engagementType": "Volunteer",
+      "workMode": "Part-time",
+      "roles": [
+        {
+          "key": "sliit-ir-manager",
+          "role": "International Relations Manager | Incoming Global Talent",
+          "startYear": "Jan 2026",
+          "endYear": "Present",
+          "description": "Managing three teams dedicated to International Relations for the Incoming Global Talent product. Representing as the primary representaive of the iGT product at AIESEC in SLIIT to the global plenary.",
+          "tags": [
+            "Leadership",
+            "International Relations",
+            "iGT"
+          ],
+          "showInAtsCv": false,
+          "showInStyledCv": false
+        },
+        {
+          "key": "sliit-senior-tl-ir",
+          "role": "Senior Team Leader - International Relations | Incoming Global Talent",
+          "startYear": "Jan 2025",
+          "endYear": "Jan 2026",
+          "description": "Led international relations work for the Incoming Global Talent product at AIESEC in SLIIT.",
+          "tags": [
+            "Leadership",
+            "International Relations",
+            "iGT"
+          ],
+          "showInAtsCv": false,
+          "showInStyledCv": false
+        },
+        {
+          "key": "sliit-b2b-sales",
+          "role": "Team Member - B2B Sales | Incoming Global Talent",
+          "startYear": "Aug 2024",
+          "endYear": "Jan 2025",
+          "description": "Supported B2B sales for the Incoming Global Talent product at AIESEC in SLIIT.",
+          "tags": [
+            "Sales",
+            "Partnerships",
+            "iGT"
+          ],
+          "showInAtsCv": false,
+          "showInStyledCv": false
+        },
+        {
+          "key": "sliit-ocvp-benchmark",
+          "role": "Organizing Committee Vice President - Partnership Development | Benchmark 3.0",
+          "startYear": "Sep 2024",
+          "endYear": "Dec 2024",
+          "description": "Supported partnership development for Benchmark 3.0, a UI/UX Bootcamp and Hackathon organized by AIESEC in SLIIT.",
+          "tags": [
+            "Partnership Development",
+            "Event Management",
+            "AIESEC"
+          ],
+          "showInAtsCv": false,
+          "showInStyledCv": false
+        }
+      ]
+    }
+  ],
+  "cvVariants": [
+    {
+      "slug": "general-styled",
+      "label": "General (Styled)",
+      "format": "styled",
+      "published": true
+    },
+    {
+      "slug": "general-ats",
+      "label": "General (ATS)",
+      "format": "ats",
+      "published": true
+    },
+    {
+      "slug": "cloud-devops-7f3a91",
+      "label": "Cloud / DevOps (example)",
+      "format": "ats",
+      "published": false,
+      "notes": "Template. Duplicate per application, give it an unguessable slug, and set headline/summary before sending.",
+      "items": {
+        "projects": [
+          {
+            "key": "distributed-health",
+            "urls": [
+              "repo",
+              "link:system-design-writeup"
+            ]
+          },
+          {
+            "key": "asl-finance-hub"
+          },
+          {
+            "key": "agentic-erp"
+          },
+          {
+            "key": "itinerary-ai",
+            "include": false
+          },
+          {
+            "key": "aesth-ai",
+            "include": false
+          }
+        ]
+      }
+    }
+  ]
+}

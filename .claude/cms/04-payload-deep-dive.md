@@ -78,7 +78,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET!,
-  db: postgresAdapter({ pool: { connectionString: process.env.DATABASE_URI } }),
+  db: postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL } }),
   collections: [Projects, Experience, Education, Certifications, References, CvVariants],
   globals: [Profile],   // singletons — profile is a Global, not a Collection
 })
@@ -92,6 +92,8 @@ src/app/
 │   ├── admin/[[...segments]]/{page.tsx,not-found.tsx}
 │   ├── admin/importMap.js
 │   ├── api/[...slug]/route.ts
+│   ├── graphql/route.ts
+│   ├── graphql-playground/route.ts
 │   ├── custom.css
 │   └── layout.tsx
 └── (your existing routes, untouched)
@@ -103,7 +105,7 @@ New environment variables — note this project currently has **zero** `process.
 | Var | Purpose |
 |---|---|
 | `PAYLOAD_SECRET` | Signing key for auth tokens. Must differ per environment. |
-| `DATABASE_URI` | Postgres connection string. |
+| `DATABASE_URL` | Postgres connection string. (Payload's own examples use both `DATABASE_URI` and `DATABASE_URL` — it's just whatever you read in `payload.config.ts`. Neon/Vercel provision `DATABASE_URL`, so use that.) |
 | `BLOB_READ_WRITE_TOKEN` | Only if using Vercel Blob storage. |
 
 ## Mapping your data to collections

@@ -1,6 +1,11 @@
 # Content architecture & CMS evaluation
 
-_Written 2026-07-28. Status: proposal, nothing implemented._
+_Written 2026-08-16. Docs 01–05 are the original evaluation and remain as written._
+
+_Status as of 2026-08-17: **Phase 0 and Phase 1 are built** — see
+[06-implementation-plan.md](06-implementation-plan.md) for what shipped and what is
+outstanding. Phase 2 (Payload) has not started. Where 01–05 describe the pre-refactor
+codebase, read them as a snapshot of the state that motivated the work, not as current._
 
 This directory evaluates whether `amzal-portfolio` should adopt a CMS (Payload was the one named),
 and designs the content architecture needed to support **multiple tailored CVs**, **an archive of
@@ -60,6 +65,7 @@ Phase 2 becomes a swap rather than a rewrite. Do not skip it.
 | [03-options-comparison.md](03-options-comparison.md) | Every alternative to Payload: git-as-CMS, Sanity, Supabase, Notion, MDX — with a comparison matrix                        |
 | [04-payload-deep-dive.md](04-payload-deep-dive.md)   | Payload specifically: real install shape, **embedded vs separate backend app vs monorepo**, drafts/versions, honest costs |
 | [05-rollout.md](05-rollout.md)                       | Phased execution, the accessor boundary, seed script, archive design, risks, and available tooling                        |
+| [06-implementation-plan.md](06-implementation-plan.md) | **The approved plan that was actually built**, annotated with per-section status. Docs 01–05 evaluate; this one executes |
 
 ## If you only do one thing
 

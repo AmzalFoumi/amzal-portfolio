@@ -1,13 +1,23 @@
 /**
- * Styled (human-facing) CV — intentionally HARDCODED, not data-driven.
+ * FROZEN BREAK-GLASS CV — content is a snapshot as of 2026-08-17.
+ * ============================================================================
  *
- * NOTE: This component does NOT read `src/data/*`, so the `showInStyledCv` flag
- * on projects/roles has no effect here. To add or remove an entry from the styled
- * CV, edit the JSX below by hand. (The ATS PDF, `CvAtsDynamic.tsx`, is the
- * data-driven one and honors the `showInAtsCv` flag.)
+ * This is NOT the live styled CV. `CvStyledDynamic.tsx` is, and it renders from
+ * the content port like everything else. This file exists for exactly one
+ * reason: it is the only CV component that depends on nothing at all — no
+ * adapter, no snapshot, no `resolveCv`, no data files, no database. If every
+ * other layer is broken you can still serve a correct CV by setting:
  *
- * A parallel data-driven version lives at `CvStyledDynamic.tsx` for future
- * evaluation — this file is kept as-is as the known-good rollback.
+ *     CV_FALLBACK_STATIC=1
+ *
+ * DO NOT treat this as a second source of truth. It is deliberately frozen, and
+ * it WILL drift from `src/data/*` the moment content is edited elsewhere —
+ * reconciling it was a one-time exercise, not an ongoing obligation. Anyone
+ * tempted to "just also update this file" is re-creating the exact duplication
+ * this architecture removed. If the content here is stale enough to matter,
+ * regenerate it from the live CV rather than hand-editing.
+ *
+ * It reads no data and honours no `showInStyledCv` flags, by design.
  */
 export function CvStyledStatic() {
   return (

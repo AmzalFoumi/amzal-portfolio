@@ -2,10 +2,12 @@
  * ATS-friendly CV as a real, selectable-text PDF.
  *
  * Built with @react-pdf/renderer (not HTML/print) so Applicant Tracking Systems
- * parse embedded text in a single-column, linear reading order. Content is fully
- * data-driven from `src/data/*` — keep the site data accurate and this stays in
- * sync automatically. Uses the built-in Helvetica family (no font registration)
- * and ASCII punctuation to avoid glyph gaps.
+ * parse embedded text in a single-column, linear reading order. Uses the built-in
+ * Helvetica family (no font registration) and ASCII punctuation to avoid glyph gaps.
+ *
+ * Purely presentational: it takes one fully-resolved `ResolvedCv` and renders it.
+ * All filtering, ordering and per-variant overrides already happened in
+ * `resolveCv` — this file contains no content decisions and imports no data.
  */
 import {
   Document,
@@ -16,12 +18,7 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 
-import { profile } from "@/data/profile";
-import { projects } from "@/data/projects";
-import { education } from "@/data/education";
-import { voluntary } from "@/data/voluntary";
-import { certifications } from "@/data/certifications";
-import { references } from "@/data/references";
+import type { CvSectionKey, ResolvedCv } from "@/types/cv";
 
 const ACCENT = "#16a34a";
 const TEXT = "#111111";
@@ -83,7 +80,175 @@ function Bullet({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function CvAtsDynamic() {
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return <Text style={styles.sectionTitle}>{children}</Text>;
+}
+
+export function CvAtsDynamic({ cv }: { cv: ResolvedCv }) {
+  const { profile } = cv;
+  const title = (key: CvSectionKey) => cv.sectionTitles[key];
+
+  /**
+   * One renderer per section. `sectionOrder` drives which appear and in what
+   * order; a section with no content renders nothing. Keys absent from this map
+   * (e.g. "leadership") are simply not supported on the ATS CV.
+   */
+  const SECTIONS: Partial<Record<CvSectionKey, () => React.ReactNode>> = {
+    summary: () =>
+      profile.summary.length > 0 && (
+        <>
+          <SectionTitle>{title("summary")}</SectionTitle>
+          {profile.summary.map((para, i) => (
+            <Text key={i} style={styles.paragraph}>
+              {para}
+            </Text>
+          ))}
+        </>
+      ),
+
+    skills: () =>
+      profile.techStacks.length > 0 && (
+        <>
+          <SectionTitle>{title("skills")}</SectionTitle>
+          {profile.techStacks.map((group) => (
+            <Text key={group.label} style={styles.paragraph}>
+              <Text style={styles.label}>{group.label}: </Text>
+              {group.items.join(", ")}
+            </Text>
+          ))}
+        </>
+      ),
+
+    experience: () =>
+      cv.experience.length > 0 && (
+        <>
+          <SectionTitle>{title("experience")}</SectionTitle>
+          {cv.experience.map((role) => (
+            <View key={role.key} style={styles.entry} wrap={false}>
+              <Text style={styles.entryHead}>
+                {role.role}, {role.organisation}
+              </Text>
+              <Text style={styles.entryMeta}>
+                {role.startYear} - {role.endYear}
+                {role.engagementType ? ` | ${role.engagementType}` : ""}
+              </Text>
+              <Bullet>{role.description}</Bullet>
+              {role.tags && role.tags.length > 0 && (
+                <Text style={styles.entryMeta}>
+                  Focus: {role.tags.join(", ")}
+                </Text>
+              )}
+            </View>
+          ))}
+        </>
+      ),
+
+    projects: () =>
+      cv.projects.length > 0 && (
+        <>
+          <SectionTitle>{title("projects")}</SectionTitle>
+          {cv.projects.map((project) => {
+            const tags =
+              typeof project.tagLimit === "number"
+                ? project.tags.slice(0, project.tagLimit)
+                : project.tags;
+            return (
+              <View key={project.key} style={styles.entry} wrap={false}>
+                <Text style={styles.entryHead}>
+                  {project.title}
+                  {project.resolvedUrls.map((u) => (
+                    <Text key={u.key}>
+                      {" - "}
+                      <Link src={u.url} style={styles.link}>
+                        {u.url}
+                      </Link>
+                    </Text>
+                  ))}
+                </Text>
+                <Text style={styles.paragraph}>{project.shortDescription}</Text>
+                <Text style={styles.entryMeta}>Tech: {tags.join(", ")}</Text>
+              </View>
+            );
+          })}
+        </>
+      ),
+
+    education: () =>
+      cv.education.length > 0 && (
+        <>
+          <SectionTitle>{title("education")}</SectionTitle>
+          {cv.education.map((edu) => (
+            <View key={edu.key} style={styles.entry} wrap={false}>
+              <Text style={styles.entryHead}>
+                {edu.degree} {edu.field}, {edu.institution}
+              </Text>
+              <Text style={styles.entryMeta}>
+                {edu.startYear} - {edu.endYear}
+                {edu.grade ? ` | ${edu.grade}` : ""}
+              </Text>
+              {edu.description && (
+                <Text style={styles.paragraph}>{edu.description}</Text>
+              )}
+              {edu.achievements?.map((a, i) => (
+                <Bullet key={i}>{a}</Bullet>
+              ))}
+            </View>
+          ))}
+        </>
+      ),
+
+    certifications: () =>
+      cv.certifications.length > 0 && (
+        <>
+          <SectionTitle>{title("certifications")}</SectionTitle>
+          {cv.certifications.map((cert) => (
+            <View key={cert.key} style={styles.entry} wrap={false}>
+              <Text style={styles.entryHead}>{cert.name}</Text>
+              <Text style={styles.entryMeta}>
+                {cert.issuer} | Issued {cert.issueDate}
+              </Text>
+              <Text style={styles.paragraph}>
+                <Link src={cert.credentialUrl} style={styles.link}>
+                  {cert.credentialUrl}
+                </Link>
+              </Text>
+            </View>
+          ))}
+        </>
+      ),
+
+    /* Contact details intentionally omitted — "available upon request" is noted
+       once below rather than repeated per referee. */
+    references: () =>
+      cv.references.length > 0 && (
+        <>
+          <SectionTitle>{title("references")}</SectionTitle>
+          {cv.references.map((ref) => (
+            <View key={ref.key} style={styles.entry} wrap={false}>
+              <Text style={styles.entryHead}>
+                {ref.name}
+                {ref.role ? `, ${ref.role}` : ""}
+                {ref.organization ? ` - ${ref.organization}` : ""}
+              </Text>
+              {ref.linkedinUrl && (
+                <Text style={styles.entryMeta}>
+                  <Link src={ref.linkedinUrl} style={styles.link}>
+                    LinkedIn
+                  </Link>
+                </Text>
+              )}
+              {ref.description && (
+                <Text style={styles.paragraph}>{ref.description}</Text>
+              )}
+            </View>
+          ))}
+          <Text style={styles.paragraph}>
+            Contact details available upon request.
+          </Text>
+        </>
+      ),
+  };
+
   return (
     <Document
       title={`${profile.name} - CV`}
@@ -115,165 +280,9 @@ export function CvAtsDynamic() {
           </Link>
         </Text>
 
-        {/* Summary */}
-        <Text style={styles.sectionTitle}>Professional Summary</Text>
-        {profile.summary.map((para, i) => (
-          <Text key={i} style={styles.paragraph}>
-            {para}
-          </Text>
+        {cv.sectionOrder.map((key) => (
+          <View key={key}>{SECTIONS[key]?.()}</View>
         ))}
-
-        {/* Skills */}
-        <Text style={styles.sectionTitle}>Technical Skills</Text>
-        {profile.techStacks.map((group) => (
-          <Text key={group.label} style={styles.paragraph}>
-            <Text style={styles.label}>{group.label}: </Text>
-            {group.items.join(", ")}
-          </Text>
-        ))}
-
-        {/* Experience — honors `showInAtsCv` on each role (undefined = shown).
-            A group whose roles are all hidden is skipped entirely. */}
-        <Text style={styles.sectionTitle}>Technical Experience</Text>
-        {voluntary.map((group) => {
-          const roles = group.roles.filter(
-            (role) => role.showInAtsCv !== false,
-          );
-          if (roles.length === 0) {
-            return null;
-          }
-          return roles.map((role) => (
-            <View
-              key={`${group.organisation}-${role.role}`}
-              style={styles.entry}
-              wrap={false}
-            >
-              <Text style={styles.entryHead}>
-                {role.role}, {group.organisation}
-              </Text>
-              <Text style={styles.entryMeta}>
-                {role.startYear} - {role.endYear}
-                {group.engagementType ? ` | ${group.engagementType}` : ""}
-              </Text>
-              <Bullet>{role.description}</Bullet>
-              {role.tags && role.tags.length > 0 && (
-                <Text style={styles.entryMeta}>
-                  Focus: {role.tags.join(", ")}
-                </Text>
-              )}
-            </View>
-          ));
-        })}
-
-        {/* Projects — honors `showInAtsCv` on each project (undefined = shown). */}
-        <Text style={styles.sectionTitle}>Projects</Text>
-        {projects
-          .filter((project) => project.showInAtsCv !== false)
-          .map((project) => {
-            const tags =
-              typeof project.tagLimit === "number"
-                ? project.tags.slice(0, project.tagLimit)
-                : project.tags;
-            const urlPref = project.atsCvUrlPreference ?? "live";
-            const url =
-              urlPref === "none"
-                ? undefined
-                : urlPref === "repo"
-                  ? project.repoUrl?.trim()
-                  : project.liveUrl?.trim();
-            return (
-              <View key={project.slug} style={styles.entry} wrap={false}>
-                <Text style={styles.entryHead}>
-                  {project.title}
-                  {url ? " - " : ""}
-                  {url ? (
-                    <Link src={url} style={styles.link}>
-                      {url}
-                    </Link>
-                  ) : null}
-                </Text>
-                <Text style={styles.paragraph}>{project.shortDescription}</Text>
-                <Text style={styles.entryMeta}>Tech: {tags.join(", ")}</Text>
-              </View>
-            );
-          })}
-
-        {/* Education */}
-        <Text style={styles.sectionTitle}>Education</Text>
-        {education.map((edu) => (
-          <View
-            key={`${edu.institution}-${edu.field}`}
-            style={styles.entry}
-            wrap={false}
-          >
-            <Text style={styles.entryHead}>
-              {edu.degree} {edu.field}, {edu.institution}
-            </Text>
-            <Text style={styles.entryMeta}>
-              {edu.startYear} - {edu.endYear}
-              {edu.grade ? ` | ${edu.grade}` : ""}
-            </Text>
-            {edu.description && (
-              <Text style={styles.paragraph}>{edu.description}</Text>
-            )}
-            {edu.achievements?.map((a, i) => (
-              <Bullet key={i}>{a}</Bullet>
-            ))}
-          </View>
-        ))}
-
-        {/* Certifications — honors `showInAtsCv` on each cert (undefined = shown). */}
-        {certifications.filter((cert) => cert.showInAtsCv !== false).length >
-          0 && (
-          <>
-            <Text style={styles.sectionTitle}>Certifications</Text>
-            {certifications
-              .filter((cert) => cert.showInAtsCv !== false)
-              .map((cert) => (
-                <View key={cert.credentialId} style={styles.entry} wrap={false}>
-                  <Text style={styles.entryHead}>{cert.name}</Text>
-                  <Text style={styles.entryMeta}>
-                    {cert.issuer} | Issued {cert.issueDate}
-                  </Text>
-                  <Text style={styles.paragraph}>
-                    <Link src={cert.credentialUrl} style={styles.link}>
-                      {cert.credentialUrl}
-                    </Link>
-                  </Text>
-                </View>
-              ))}
-          </>
-        )}
-
-        {/* Contact details intentionally omitted — "available upon request" is
-            noted once below rather than repeated per referee. */}
-        {references.length > 0 && (
-          <>
-            <Text style={styles.sectionTitle}>References</Text>
-            {references.map((ref) => (
-              <View key={ref.name} style={styles.entry} wrap={false}>
-                <Text style={styles.entryHead}>
-                  {ref.name}
-                  {ref.role ? `, ${ref.role}` : ""}
-                  {ref.organization ? ` - ${ref.organization}` : ""}
-                </Text>
-                {ref.linkedinUrl && (
-                  <Text style={styles.entryMeta}>
-                    <Link src={ref.linkedinUrl} style={styles.link}>
-                      LinkedIn
-                    </Link>
-                  </Text>
-                )}
-                {ref.description && (
-                  <Text style={styles.paragraph}>{ref.description}</Text>
-                )}
-              </View>
-            ))}
-            <Text style={styles.paragraph}>
-              Contact details available upon request.
-            </Text>
-          </>
-        )}
       </Page>
     </Document>
   );

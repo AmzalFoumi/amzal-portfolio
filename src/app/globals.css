@@ -364,15 +364,21 @@ body {
   }
 }
 
-/* Print portal: hidden on screen, revealed only when printing */
+/* Print portal: hidden on screen, revealed only when printing.
+   Used when the CV is embedded in the site (the HeroSection modal), where the
+   rest of the page must be suppressed. */
 .cv-print-root {
   display: none;
 }
 
 @media print {
+  /* Vertical margin comes from @page so it repeats on *every* sheet; horizontal
+     margin stays as the .cv-page padding below. With `margin: 0` all round the
+     container's padding applied only once, so page 2 of a multi-page CV started
+     flush against the paper edge. 10.5mm ≈ the 2.5rem (40px) it replaces. */
   @page {
     size: A4;
-    margin: 0;
+    margin: 10.5mm 0;
   }
 
   .cv-root {
@@ -390,17 +396,25 @@ body {
     background-image: none !important;
   }
 
-  /* Scope printing to the CV portal only */
+  /* Scope printing to the CV only.
+     `.cv-print-scope` marks the subtree that should reach the printer. It is
+     applied in two places: the hidden portal in HeroSection (where the rest of
+     the site must be suppressed) and the standalone /cv/[variant] page (where
+     it is the whole page). Without it on the standalone page, `body *` below
+     would hide the CV and printing the shareable link would yield a blank
+     sheet — so keep the two in step. */
   body * {
     visibility: hidden !important;
   }
 
-  .cv-print-root,
-  .cv-print-root * {
+  .cv-print-scope,
+  .cv-print-scope * {
     visibility: visible !important;
   }
 
-  .cv-print-root {
+  /* Only the hidden portal needs un-hiding and repositioning; the standalone
+     page is already in flow. */
+  .cv-print-root.cv-print-scope {
     display: block !important;
     position: absolute;
     left: 0;
@@ -408,28 +422,65 @@ body {
     width: 100%;
   }
 
-  .cv-print-root .cv-root {
+  .cv-print-scope .cv-root {
     padding: 0;
     display: block;
   }
 
-  /* Pin the styled CV to its authored A4 page (210mm) with its own internal
-     padding as the printed margin. @page margin is 0 so 210mm fills A4 exactly.
+  /* Pin the styled CV to its authored A4 width (210mm); @page margin is 0
+     horizontally so 210mm fills A4 exactly, and this padding is the side margin.
+     Vertical padding is 0 — @page supplies it, once per sheet.
      Also restore the two-column grid, which the <900px mobile rule collapses. */
-  .cv-print-root .cv-page {
+  .cv-print-scope .cv-page {
     width: 210mm !important;
     min-height: auto !important;
-    padding: 2.5rem !important; /* Tailwind p-10 */
+    padding: 0 2.5rem !important; /* Tailwind p-10, horizontal only */
   }
 
-  .cv-print-root .grid-layout {
+  .cv-print-scope .grid-layout {
     grid-template-columns: 2fr 1fr !important;
     gap: 2rem !important;
   }
 
-  /* Avoid awkward breaks mid-entry */
-  .cv-print-root section {
+  /* Page breaks.
+     ------------------------------------------------------------------
+     Multi-page CVs are fine; *unsafe* breaks are not. The previous rule
+     (`section { break-inside: avoid }`) protected whole sections but nothing
+     inside them, so a single job entry could still be sliced in half — and on a
+     long experience section it forced a premature page break rather than
+     allowing a clean split between entries. Protect the atomic blocks instead
+     and let sections flow.
+
+     `.cv-entry` marks one indivisible block: a job, a project, an education
+     entry, a certification, a skill group, a referee. Applied in
+     CvStyledDynamic.tsx. */
+  .cv-print-scope .cv-entry {
     break-inside: avoid;
+    page-break-inside: avoid; /* legacy alias, still needed by some engines */
+  }
+
+  /* Never leave a heading stranded as the last thing on a page. */
+  .cv-print-scope .section-title,
+  .cv-print-scope h1,
+  .cv-print-scope h2,
+  .cv-print-scope h3,
+  .cv-print-scope h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+    break-inside: avoid;
+  }
+
+  /* The header block reads as one unit — name, headline and contact details
+     should not be split from each other. */
+  .cv-print-scope header {
+    break-inside: avoid;
+  }
+
+  /* No single dangling line of a paragraph at a page boundary. */
+  .cv-print-scope p,
+  .cv-print-scope li {
+    orphans: 3;
+    widows: 3;
   }
 }
 

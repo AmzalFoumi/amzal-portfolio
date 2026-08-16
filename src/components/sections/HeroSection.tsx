@@ -9,16 +9,12 @@ import {
   LinkedinLogoIcon,
   EnvelopeIcon,
 } from "@phosphor-icons/react/dist/ssr";
-import { profile } from "@/data/profile";
 import { CvStyledStatic } from "@/components/shared/CvStyledStatic";
+import { CvStyledDynamic } from "@/components/shared/CvStyledDynamic";
 import type { PDFViewer as PDFViewerType } from "@react-pdf/renderer";
 import type { CvAtsDynamic as CvAtsDynamicType } from "@/components/shared/CvAtsDynamic";
-
-const SOCIAL_LINKS = [
-  { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
-  { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinLogoIcon },
-  { label: "Email", href: `mailto:${profile.email}`, icon: EnvelopeIcon },
-];
+import type { Profile } from "@/types";
+import type { ResolvedCv } from "@/types/cv";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -26,7 +22,59 @@ const fadeUp = (delay: number) => ({
   transition: { duration: 0.5, delay, ease: "easeOut" as const },
 });
 
-export function HeroSection() {
+export interface HeroSectionProps {
+  /**
+   * Canonical profile for the site chrome. Kept separate from `styledCv.profile`
+   * because a variant may tailor its headline and summary — the site should show
+   * `siteHeadline` regardless of which CV happens to be published.
+   */
+  profile: Profile;
+  /** The published styled CV. Null when none is published. */
+  styledCv: ResolvedCv | null;
+  /** The published ATS CV. Null when none is published. */
+  atsCv: ResolvedCv | null;
+  /**
+   * Break-glass: render the frozen hardcoded `CvStyledStatic` instead of the
+   * data-driven CV. Set by `CV_FALLBACK_STATIC=1` server-side. See the resilience
+   * design — this is the one path that depends on no data source at all.
+   */
+  staticFallback?: boolean;
+}
+
+export function HeroSection({
+  profile,
+  styledCv,
+  atsCv,
+  staticFallback = false,
+}: HeroSectionProps) {
+  const socialLinks = [
+    { label: "GitHub", href: profile.githubUrl, icon: GithubLogoIcon },
+    { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinLogoIcon },
+    { label: "Email", href: `mailto:${profile.email}`, icon: EnvelopeIcon },
+  ];
+
+  /**
+   * The styled CV, rendered in both the modal and the hidden print portal.
+   *
+   * `staticFallback` swaps in the frozen hardcoded component — the break-glass
+   * path that works even when every content source is unavailable.
+   *
+   * A plain function called inline, not a component: declaring a component
+   * during render gives it a new identity each pass and remounts its whole
+   * subtree.
+   */
+  const renderStyledCv = () => {
+    if (staticFallback) return <CvStyledStatic />;
+    if (!styledCv) {
+      return (
+        <p className="font-mono text-xs text-center py-16 text-muted">
+          No styled CV is currently published.
+        </p>
+      );
+    }
+    return <CvStyledDynamic cv={styledCv} />;
+  };
+
   const [isCvOpen, setIsCvOpen] = useState(false);
   const [isPrinting, setIsPrinting] = useState(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
@@ -81,7 +129,7 @@ export function HeroSection() {
   // heavy @react-pdf/renderer lib is imported on demand so it stays out of the
   // initial hero bundle and never runs during SSR.
   const downloadAtsPdf = async () => {
-    if (isGeneratingPdf) {
+    if (isGeneratingPdf || !atsCv) {
       return;
     }
     setIsGeneratingPdf(true);
@@ -90,7 +138,7 @@ export function HeroSection() {
         import("@react-pdf/renderer"),
         import("@/components/shared/CvAtsDynamic"),
       ]);
-      const blob = await pdf(<CvAtsDynamic />).toBlob();
+      const blob = await pdf(<CvAtsDynamic cv={atsCv} />).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
@@ -230,7 +278,7 @@ export function HeroSection() {
 
         {/* Social icons */}
         <motion.div {...fadeUp(0.4)} className="flex items-center gap-4">
-          {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+          {socialLinks.map(({ label, href, icon: Icon }) => (
             <a
               key={label}
               href={href}
@@ -340,7 +388,7 @@ export function HeroSection() {
                     background: "transparent",
                   }}
                   onClick={downloadAtsPdf}
-                  disabled={isGeneratingPdf}
+                  disabled={isGeneratingPdf || !atsCv}
                 >
                   {isGeneratingPdf ? "Generating..." : "Download ATS CV"}
                 </Button>
@@ -372,14 +420,16 @@ export function HeroSection() {
             </div>
 
             {cvView === "styled" ? (
-              <CvStyledStatic />
-            ) : atsViewerModules ? (
+              renderStyledCv()
+            ) : atsViewerModules && atsCv ? (
               <atsViewerModules.PDFViewer width="100%" height={700} showToolbar>
-                <atsViewerModules.CvAtsDynamic />
+                <atsViewerModules.CvAtsDynamic cv={atsCv} />
               </atsViewerModules.PDFViewer>
             ) : (
               <p className="font-mono text-xs text-center py-16 text-muted">
-                Loading ATS CV preview...
+                {atsCv
+                  ? "Loading ATS CV preview..."
+                  : "No ATS CV is currently published."}
               </p>
             )}
           </div>
@@ -388,8 +438,8 @@ export function HeroSection() {
 
       {/* Hidden print portal — only its contents reach the printer / PDF */}
       {isPrinting && (
-        <div className="cv-print-root" aria-hidden="true">
-          <CvStyledStatic />
+        <div className="cv-print-root cv-print-scope" aria-hidden="true">
+          {renderStyledCv()}
         </div>
       )}
     </section>

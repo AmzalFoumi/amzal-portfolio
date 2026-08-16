@@ -2,6 +2,7 @@ import type { EducationEntry } from "@/types";
 
 export const education: EducationEntry[] = [
   {
+    key: "sliit-bsc",
     institution: "SLIIT",
     degree: "BSc Hons",
     field: "Information Technology specializing in Software Engineering",
@@ -16,6 +17,7 @@ export const education: EducationEntry[] = [
     ],
   },
   // {
+  //   key: "cima-dip-ma",
   //   institution: "CIMA",
   //   degree: "",
   //   field: "Accounting and Business Management",
@@ -25,6 +27,7 @@ export const education: EducationEntry[] = [
   //   description: "Completed CIMA Operational Level Case study.",
   // },
   {
+    key: "royal-college-al",
     institution: "Royal College Colombo",
     degree: "GCE A/L",
     field: "Physical Sciences",

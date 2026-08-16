@@ -2,6 +2,7 @@ import { Certification } from "@/types";
 
 export const certifications: Certification[] = [
   {
+    key: "aws-ai-practitioner",
     name: "AWS Certified AI Practitioner",
     issuer: "Amazon Web Services Training and Certification",
     issueDate: "Jul 2026",
@@ -11,6 +12,7 @@ export const certifications: Certification[] = [
     logoUrl: "/certifications/aws-certified-ai-practitioner.png",
   },
   {
+    key: "aws-cloud-practitioner",
     name: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services Training and Certification",
     issueDate: "Jul 2026",

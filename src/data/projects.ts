@@ -3,18 +3,20 @@ import type { Project } from "@/types";
 // Number of tags to show on project cards (homepage)
 export const PROJECT_CARD_TAG_LIMIT = 4;
 
-// CV visibility flags (per project): `showInAtsCv: false` hides a project from the
-// generated ATS PDF (CvAtsDynamic.tsx). `showInStyledCv: false` is honored only
-// once the styled CV becomes data-driven — CvStyledStatic.tsx is currently hardcoded
-// and ignores it. Omitting a flag means the project is shown.
+// `key` is the stable identifier CV variants target for inclusion and field
+// overrides. It matches `slug` today, but the two are independent — renaming a
+// slug is a URL change, renaming a key orphans every variant override.
 //
-// `atsCvUrlPreference` / `styledCvUrlPreference` (per project): "live" | "repo" | "none",
-// independently choosing which URL (if any) is shown next to the project on each CV.
-// Defaults to "live" when omitted.
-
-// [PLACEHOLDER] Replace all project entries with your real projects
+// CV visibility flags (per project): `showInAtsCv: false` / `showInStyledCv: false`
+// hide a project from that CV format. Omitting a flag means the project is shown.
+// These are the format-level defaults; a CV variant can override them per item.
+//
+// `atsCvUrls` / `styledCvUrls` (per project): an ordered checklist of which URLs
+// appear next to the project on each CV — "live", "repo", or "link:<key>" for an
+// entry in `links[]`. Omit for all available URLs; `[]` for none.
 export const projects: Project[] = [
   {
+    key: "agentic-erp",
     slug: "agentic-erp",
     title: "Agentic ERP",
     shortDescription:
@@ -40,10 +42,11 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/AmzalFoumi/agentic-erp",
     featured: true,
     tagLimit: 7,
-    atsCvUrlPreference: "repo",
-    styledCvUrlPreference: "repo",
+    atsCvUrls: ["repo"],
+    styledCvUrls: ["repo"],
   },
   {
+    key: "aesth-ai",
     slug: "aesth-ai",
     title: "Aesth-ai",
     shortDescription:
@@ -64,11 +67,12 @@ export const projects: Project[] = [
     liveUrl: "https://aesth-ai-hazel.vercel.app",
     repoUrl: "https://github.com/AmzalFoumi/aesth-ai",
     featured: true,
-    atsCvUrlPreference: "live",
-    styledCvUrlPreference: "live",
+    atsCvUrls: ["live"],
+    styledCvUrls: ["live"],
   },
 
   {
+    key: "distributed-health",
     slug: "distributed-health",
     title: "Distributed Health",
     shortDescription:
@@ -93,6 +97,7 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/Distributed-Health-System",
     links: [
       {
+        key: "system-design-writeup",
         label: "System Design Writeup",
         // url: "https://medium.com/@mohamedamzal6/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a",
         url: "https://medium.com/aws-in-plain-english/system-design-from-minikube-to-eks-with-terraform-e024a54f4a5a",
@@ -100,10 +105,13 @@ export const projects: Project[] = [
     ],
     featured: true,
     tagLimit: 7,
-    atsCvUrlPreference: "repo",
-    styledCvUrlPreference: "repo",
+    // The writeup is available as "link:system-design-writeup" if you ever want
+    // it on a CV — today it stays site-only, matching previous behaviour.
+    atsCvUrls: ["repo"],
+    styledCvUrls: ["repo"],
   },
   {
+    key: "asl-finance-hub",
     slug: "asl-finance-hub",
     title: "ASL Finance Hub",
     shortDescription:
@@ -130,12 +138,13 @@ export const projects: Project[] = [
     featured: false,
     tagLimit: 8,
     liveUrl: "https://finance.aiesec.lk",
-    repoUrl: "https://github.com/AIESEC-LK/asl-finance-hub.git ",
-    atsCvUrlPreference: "live",
-    styledCvUrlPreference: "live",
+    repoUrl: "https://github.com/AIESEC-LK/asl-finance-hub.git",
+    atsCvUrls: ["live"],
+    styledCvUrls: ["live"],
   },
 
   {
+    key: "kidsfeed",
     slug: "kidsfeed",
     title: "KidsFeed",
     shortDescription:
@@ -158,10 +167,11 @@ export const projects: Project[] = [
     // Cut from the styled CV to make room for Agentic ERP on one A4 page.
     showInStyledCv: false,
     showInAtsCv: false,
-    atsCvUrlPreference: "repo",
-    styledCvUrlPreference: "repo",
+    atsCvUrls: ["repo"],
+    styledCvUrls: ["repo"],
   },
   {
+    key: "itinerary-ai",
     slug: "itinerary-ai",
     title: "Itinerary.ai",
     shortDescription:
@@ -180,10 +190,11 @@ export const projects: Project[] = [
     year: "2025",
     repoUrl: "https://github.com/lakindu62/itinerary_ai",
     featured: true,
-    atsCvUrlPreference: "repo",
-    styledCvUrlPreference: "repo",
+    atsCvUrls: ["repo"],
+    styledCvUrls: ["repo"],
   },
   {
+    key: "aiesec-lk",
     slug: "aiesec-lk",
     title: "aiesec.lk",
     shortDescription:
@@ -196,7 +207,7 @@ export const projects: Project[] = [
     featured: false,
     showInAtsCv: false,
     showInStyledCv: false,
-    atsCvUrlPreference: "live",
-    styledCvUrlPreference: "live",
+    atsCvUrls: ["live"],
+    styledCvUrls: ["live"],
   },
 ];

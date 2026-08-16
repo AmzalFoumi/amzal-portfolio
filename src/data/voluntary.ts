@@ -1,9 +1,11 @@
 import type { VoluntaryGroup } from "@/types";
 
-// CV visibility flags (per role): `showInAtsCv: false` hides a role from the
-// generated ATS PDF (CvAtsDynamic.tsx). `showInStyledCv: false` is honored only
-// once the styled CV becomes data-driven — CvStyledStatic.tsx is currently hardcoded
-// and ignores it. Omitting a flag means the role is shown.
+// `key` is the stable identifier CV variants target for inclusion and field
+// overrides. Never rename one — it orphans every variant override pointing at it.
+//
+// CV visibility flags (per role): `showInAtsCv: false` / `showInStyledCv: false`
+// hide a role from that CV format. Omitting a flag means the role is shown.
+// These are the format-level defaults; a CV variant can override them per item.
 export const voluntary: VoluntaryGroup[] = [
   {
     organisation: "AIESEC in Sri Lanka",
@@ -12,6 +14,7 @@ export const voluntary: VoluntaryGroup[] = [
     workMode: "Part-time",
     roles: [
       {
+        key: "asl-se-team-lead",
         role: "Software Engineering Team Lead",
         startYear: "Feb 2026",
         endYear: "Present",
@@ -20,6 +23,7 @@ export const voluntary: VoluntaryGroup[] = [
         tags: ["Leadership", "Software Delivery", "ASL Finance Dashboard"],
       },
       {
+        key: "asl-software-engineer",
         role: "Software Engineer | National Dev Team",
         startYear: "Mar 2025",
         endYear: "Feb 2026",
@@ -37,6 +41,7 @@ export const voluntary: VoluntaryGroup[] = [
 
     roles: [
       {
+        key: "sliit-ir-manager",
         role: "International Relations Manager | Incoming Global Talent",
         startYear: "Jan 2026",
         endYear: "Present",
@@ -47,6 +52,7 @@ export const voluntary: VoluntaryGroup[] = [
         showInStyledCv: false,
       },
       {
+        key: "sliit-senior-tl-ir",
         role: "Senior Team Leader - International Relations | Incoming Global Talent",
         startYear: "Jan 2025",
         endYear: "Jan 2026",
@@ -57,6 +63,7 @@ export const voluntary: VoluntaryGroup[] = [
         showInStyledCv: false,
       },
       {
+        key: "sliit-b2b-sales",
         role: "Team Member - B2B Sales | Incoming Global Talent",
         startYear: "Aug 2024",
         endYear: "Jan 2025",
@@ -67,6 +74,7 @@ export const voluntary: VoluntaryGroup[] = [
         showInStyledCv: false,
       },
       {
+        key: "sliit-ocvp-benchmark",
         role: "Organizing Committee Vice President - Partnership Development | Benchmark 3.0",
         startYear: "Sep 2024",
         endYear: "Dec 2024",

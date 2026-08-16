@@ -1,4 +1,6 @@
-export const profile = {
+import type { Profile } from "@/types";
+
+export const profile: Profile = {
   name: "Amzal Foumi",
   title:
     // "SWE Undergrad @ SLIIT | Full-Stack Engineer | Cloud Dev and AI Enthusiast | AIESECer | Royalist",

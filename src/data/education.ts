@@ -9,11 +9,7 @@ export const education: EducationEntry[] = [
     endYear: "Nov 2027",
     grade: "CGPA 3.97",
     activities: "AIESEC in SLIIT",
-    achievements: [
-      "Dean's List",
-      "Best International Relations and Matching Leader - iGT",
-      "Most Outstanding Event of the Year",
-    ],
+    achievements: [],
   },
   // {
   //   institution: "CIMA",

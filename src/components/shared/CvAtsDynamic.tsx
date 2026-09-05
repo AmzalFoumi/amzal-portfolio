@@ -132,39 +132,6 @@ export function CvAtsDynamic() {
           </Text>
         ))}
 
-        {/* Experience — honors `showInAtsCv` on each role (undefined = shown).
-            A group whose roles are all hidden is skipped entirely. */}
-        <Text style={styles.sectionTitle}>Technical Experience</Text>
-        {voluntary.map((group) => {
-          const roles = group.roles.filter(
-            (role) => role.showInAtsCv !== false,
-          );
-          if (roles.length === 0) {
-            return null;
-          }
-          return roles.map((role) => (
-            <View
-              key={`${group.organisation}-${role.role}`}
-              style={styles.entry}
-              wrap={false}
-            >
-              <Text style={styles.entryHead}>
-                {role.role}, {group.organisation}
-              </Text>
-              <Text style={styles.entryMeta}>
-                {role.startYear} - {role.endYear}
-                {group.engagementType ? ` | ${group.engagementType}` : ""}
-              </Text>
-              <Bullet>{role.description}</Bullet>
-              {role.tags && role.tags.length > 0 && (
-                <Text style={styles.entryMeta}>
-                  Focus: {role.tags.join(", ")}
-                </Text>
-              )}
-            </View>
-          ));
-        })}
-
         {/* Projects — honors `showInAtsCv` on each project (undefined = shown). */}
         <Text style={styles.sectionTitle}>Projects</Text>
         {projects
@@ -197,6 +164,41 @@ export function CvAtsDynamic() {
               </View>
             );
           })}
+
+        {/* Experience — honors `showInAtsCv` on each role (undefined = shown).
+            A group whose roles are all hidden is skipped entirely. */}
+        <Text style={styles.sectionTitle}>
+          Technical Volunteering Experience
+        </Text>
+        {voluntary.map((group) => {
+          const roles = group.roles.filter(
+            (role) => role.showInAtsCv !== false,
+          );
+          if (roles.length === 0) {
+            return null;
+          }
+          return roles.map((role) => (
+            <View
+              key={`${group.organisation}-${role.role}`}
+              style={styles.entry}
+              wrap={false}
+            >
+              <Text style={styles.entryHead}>
+                {role.role}, {group.organisation}
+              </Text>
+              <Text style={styles.entryMeta}>
+                {role.startYear} - {role.endYear}
+                {group.engagementType ? ` | ${group.engagementType}` : ""}
+              </Text>
+              <Bullet>{role.description}</Bullet>
+              {role.tags && role.tags.length > 0 && (
+                <Text style={styles.entryMeta}>
+                  Focus: {role.tags.join(", ")}
+                </Text>
+              )}
+            </View>
+          ));
+        })}
 
         {/* Education */}
         <Text style={styles.sectionTitle}>Education</Text>

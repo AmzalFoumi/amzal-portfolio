@@ -2,11 +2,11 @@ export const profile = {
   name: "Amzal Foumi",
   title:
     // "SWE Undergrad @ SLIIT | Full-Stack Engineer | Cloud Dev and AI Enthusiast | AIESECer | Royalist",
-    "Aspiring Software Engineer | Cloud, DevOps and AI | 2x AWS Certified | Engineering scalable solutions, one commit at a time",
+    "Aspiring Software Engineer | Full-stack, Cloud & Agentic AI | 2x AWS Certified | Engineering scalable solutions one commit at a time",
 
   // Site-only headline (Hero/Footer). Kept separate from `title` so CV/PDF exports are unaffected.
   siteHeadline:
-    "Aspiring Software Engineer | Cloud, DevOps and AI | 2x AWS Certified | Engineering scalable solutions, one commit at a time",
+    "Aspiring Software Engineer | Full-stack, Cloud & Agentic AI | 2x AWS Certified | Engineering scalable solutions one commit at a time",
   location: "Colombo, Western Province, Sri Lanka",
   email: "mohamedamzal6@gmail.com",
   phone: "+94 70 158 8018",
@@ -49,7 +49,7 @@ export const profile = {
     },
     {
       label: "Platforms & Services",
-      items: ["Supabase", "Payload CMS", "Clerk"],
+      items: ["Supabase", "Payload CMS", "Clerk", "ThunderID"],
     },
     {
       label: "Cloud & DevOps",
@@ -87,7 +87,7 @@ export const profile = {
     },
   ],
   summary: [
-    "I am a third-year Software Engineering student at SLIIT, maintaining a GPA of 3.97 and ranking in the top 1% of my batch while also being 2X AWS Certified. I focus on Software Engineering, Cloud, DevOps and Agentic AI applications. I also leverage AI tools to accelerate my learning and workflows while expanding my skill set through leadership roles, personal projects, and live delivery work. I am actively seeking a Software Engineering roles where I can contribute my technical and leadership experience to challenging problems.",
+    "I am a third-year Software Engineering student at SLIIT, maintaining a GPA of 3.97 and ranking in the top 1% of my batch while also being 2X AWS Certified. I focus on Software Engineering, Cloud, DevOps and Agentic AI applications. I also leverage AI tools to accelerate my learning and workflows while expanding my skill set through leadership roles, personal projects, and live delivery work. I am actively seeking Software Engineering roles where I can contribute my technical and leadership experience to challenging problems.",
   ],
   honors: [
     "Most Outstanding Event of the Year - Benchmark 3.0",

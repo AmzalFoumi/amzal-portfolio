@@ -167,7 +167,7 @@ export function CvAtsDynamic() {
 
         {/* Experience — honors `showInAtsCv` on each role (undefined = shown).
             A group whose roles are all hidden is skipped entirely. */}
-        <Text style={styles.sectionTitle}>
+        <Text style={styles.sectionTitle} break>
           Technical Volunteering Experience
         </Text>
         {voluntary.map((group) => {
